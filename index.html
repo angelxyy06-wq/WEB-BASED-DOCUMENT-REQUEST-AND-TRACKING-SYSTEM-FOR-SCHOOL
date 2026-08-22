@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BPES - School Document Request and Tracking System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="logo">
+        <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
+        <span class="logo-text">BPES</span>
+      </a>
+
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link active">Home</a></li>
+          <li><a href="/request" class="nav-link">Request a Document</a></li>
+          <li><a href="/track" class="nav-link">Track Request</a></li>
+          <li><a href="/feedback" class="nav-link">Feedback</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-form" role="search">
+          <label for="search-input" class="visually-hidden">Search system</label>
+          <input type="search" id="search-input" name="search" placeholder="Search system...">
+          <button type="submit" class="search-btn" aria-label="Search">
+            <img src="assets/icons/search.svg" alt="">
+          </button>
+        </form>
+
+        <button class="icon-btn" aria-label="Notifications">
+          <img src="assets/icons/bell.svg" alt="">
+        </button>
+
+        <button class="icon-btn" aria-label="Settings">
+          <img src="assets/icons/settings.svg" alt="">
+        </button>
+
+        <a href="/login" class="btn btn-login">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <img src="assets/hero-school.jpg" alt="Bahay Pare Elementary School campus" class="hero-bg">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <span class="badge">OFFICIAL PORTAL</span>
+        <h1 class="hero-title">School Document Request and Tracking System</h1>
+        <p class="hero-subtitle">
+          Streamline your academic administrative needs. Securely request, track,
+          and receive official school documents from the comfort of your home.
+        </p>
+
+        <div class="hero-actions">
+          <a href="/request" class="btn btn-primary">
+            <img src="assets/icons/plus.svg" alt="">
+            Request a Document
+          </a>
+          <a href="/track" class="btn btn-secondary">
+            <img src="assets/icons/clipboard.svg" alt="">
+            Track My Request
+          </a>
+        </div>
+      </div>
+
+      <!-- Feature highlight cards -->
+      <div class="hero-features">
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">
+            <img src="assets/icons/clock.svg" alt="">
+          </span>
+          <div class="feature-text">
+            <h3>Fast Processing</h3>
+            <p>Standard 3-5 day turnaround</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">
+            <img src="assets/icons/shield.svg" alt="">
+          </span>
+          <div class="feature-text">
+            <h3>Secure Portal</h3>
+            <p>End-to-end data encryption</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">
+            <img src="assets/icons/bell-outline.svg" alt="">
+          </span>
+          <div class="feature-text">
+            <h3>Live Updates</h3>
+            <p>SMS &amp; Email notifications</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Common Documents Section -->
+    <section class="common-documents">
+      <div class="section-header">
+        <div>
+          <h2>Common Documents</h2>
+          <p>Select a document to start your request immediately.</p>
+        </div>
+        <a href="/documents" class="view-all-link">View All Documents &gt;</a>
+      </div>
+
+      <div class="document-grid">
+        <article class="document-card">
+          <span class="doc-icon" aria-hidden="true">
+            <img src="assets/icons/document-list.svg" alt="">
+          </span>
+          <h3>SF10 (Form 137)</h3>
+          <p>Official Permanent Record (SF10)</p>
+          <a href="/request/sf10" class="request-link">Request Now &gt;</a>
+        </article>
+
+        <article class="document-card">
+          <span class="doc-icon" aria-hidden="true">
+            <img src="assets/icons/check-badge.svg" alt="">
+          </span>
+          <h3>Certification</h3>
+          <p>Enrollment or Good Moral Character</p>
+          <a href="/request/certification" class="request-link">Request Now &gt;</a>
+        </article>
+
+        <article class="document-card">
+          <span class="doc-icon" aria-hidden="true">
+            <img src="assets/icons/graduation-cap.svg" alt="">
+          </span>
+          <h3>Diploma</h3>
+          <p>Certified true copy of Graduation</p>
+          <a href="/request/diploma" class="request-link">Request Now &gt;</a>
+        </article>
+
+        <article class="document-card">
+          <span class="doc-icon" aria-hidden="true">
+            <img src="assets/icons/file.svg" alt="">
+          </span>
+          <h3>4Ps Certificate</h3>
+          <p>For 4Ps beneficiaries</p>
+          <a href="/request/4ps-certificate" class="request-link">Request Now &gt;</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+      <div class="section-header centered">
+        <h2>How It Works</h2>
+        <p>Follow these four simple steps to get your documents processed efficiently.</p>
+      </div>
+
+      <div class="steps-list">
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Submit Request</h3>
+          <p>Fill out the online request form with the required details.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Wait for Approval</h3>
+          <p>The Registrar's Office will review and verify your request.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>Track Progress</h3>
+          <p>Use your tracking ID to see the real-time status of your request.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">4</span>
+          <h3>Claim Document</h3>
+          <p>Pick up your document at the office or receive it digitally.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h4>Bahay Pare Elementary School</h4>
+        <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
+      </div>
+
+      <nav class="footer-links">
+        <a href="/contact">Contact Us</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/campus-map">Campus Map</a>
+      </nav>
+
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="">
+        </a>
+        <a href="#" aria-label="Instagram">
+          <img src="assets/icons/instagram.svg" alt="">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
