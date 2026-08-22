@@ -91,16 +91,25 @@ button {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.btn-login {
-  background-color: #002045;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
+.profile-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #1A365D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
 }
 
-.btn-login:hover {
+.profile-btn:hover {
   background-color: #1e293b;
+}
+
+.profile-btn img {
+  width: 40px;
+  height: 40px;
 }
 
 /* ============================
@@ -178,41 +187,6 @@ button {
   display: flex;
   align-items: center;
   gap: 14px;
-}
-
-.search-form {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-form input {
-  width: 200px;
-  padding: 8px 14px 8px 36px;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  background-color: #f8fafc;
-  font-size: 14px;
-  color: #1e293b;
-}
-
-.search-form input:focus {
-  outline: none;
-  border-color: #94a3b8;
-  background-color: #ffffff;
-}
-
-.search-btn {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.search-btn img {
-  width: 16px;
-  height: 16px;
-  opacity: 0.5;
 }
 
 .icon-btn {
@@ -652,10 +626,6 @@ section {
   .nav-list {
     gap: 18px;
     flex-wrap: wrap;
-  }
-
-  .search-form input {
-    width: 140px;
   }
 
   .hero {
