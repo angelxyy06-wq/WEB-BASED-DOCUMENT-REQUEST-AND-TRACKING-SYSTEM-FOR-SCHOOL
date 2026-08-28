@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BPES - School Document Request and Tracking System</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- Header / Navigation -->
@@ -27,19 +33,83 @@
 
       <div class="header-actions">
 
-        <button class="icon-btn" aria-label="Notifications">
-          <img src="assets/icons/bell.svg" alt="">
-        </button>
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
+            <img src="assets/icons/bell.svg" alt="">
+          </button>
 
-        <button class="icon-btn" aria-label="Settings">
-          <img src="assets/icons/settings.svg" alt="">
-        </button>
+          <div class="dropdown-panel" id="notif-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/bell.svg" alt="">
+              <span>Notifications</span>
+            </div>
 
-        <a href="/login" class="profile-btn" aria-label="Profile">
-  <img src="assets/icons/profile.svg" alt="">
-</a>
+            <div class="notif-item">
+              <span class="notif-dot"></span>
+              <div class="notif-content">
+                <div class="notif-title-row">
+                  <span class="notif-title">Request ready</span>
+                  <span class="notif-time">2h</span>
+                </div>
+                <p class="notif-desc">Your SF10 (Form 137) request is ready for release.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
+            <img src="assets/icons/settings.svg" alt="">
+          </button>
+
+          <div class="dropdown-panel" id="settings-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/settings.svg" alt="">
+              <span>Settings</span>
+            </div>
+
+            <div class="settings-row">
+              <span>Notification</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <span>Notification Sound</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown-wrap">
+          <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
+            <img src="assets/icons/profile.svg" alt="">
+          </button>
+
+          <div class="dropdown-panel profile-panel" id="profile-panel">
+            <div class="dropdown-header">
+              <span class="profile-icon-badge">
+                <img src="assets/icons/greyprofile.svg" alt="">
+              </span>
+              <span>My Profile</span>
+            </div>
+            
+            <p class="profile-name">Juan Manuel Dela Cruz</p>
+            <div class="profile-sub-info">
+              <p class="profile-email">Student123@gmail.com</p>
+              <p class="profile-lrn">LRN: <strong>102345120098</strong></p>
+            </div>
+
+            <span class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></span>
+          </div>
+        </div>
       </div>
-    </div>
+
   </header>
 
   <main>
@@ -58,11 +128,11 @@
         </p>
 
         <div class="hero-actions">
-          <a href="/request" class="btn btn-primary">
+          <a href="/request" class="btn-doc btn-doc-primary">
             <img src="assets/icons/plus.svg" alt="">
             Request a Document
           </a>
-          <a href="/track" class="btn btn-secondary">
+          <a href="/track" class="btn-doc btn-doc-secondary">
             <img src="assets/icons/clipboard.svg" alt="">
             Track My Request
           </a>
@@ -70,36 +140,42 @@
       </div>
 
       <!-- Feature highlight cards -->
-      <div class="hero-features">
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">
-            <img src="assets/icons/clock.svg" alt="">
-          </span>
-          <div class="feature-text">
-            <h3>Fast Processing</h3>
-            <p>Standard 3-5 day turnaround</p>
-          </div>
-        </article>
+      <div class="row g-3 hero-features">
+        <div class="col-12 col-md-4">
+          <article class="feature-card h-100">
+            <span class="feature-icon" aria-hidden="true">
+              <img src="assets/icons/clock.svg" alt="">
+            </span>
+            <div class="feature-text">
+              <h3>Fast Processing</h3>
+              <p>Standard 3-5 day turnaround</p>
+            </div>
+          </article>
+        </div>
 
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">
-            <img src="assets/icons/shield.svg" alt="">
-          </span>
-          <div class="feature-text">
-            <h3>Secure Portal</h3>
-            <p>End-to-end data encryption</p>
-          </div>
-        </article>
+        <div class="col-12 col-md-4">
+          <article class="feature-card h-100">
+            <span class="feature-icon" aria-hidden="true">
+              <img src="assets/icons/shield.svg" alt="">
+            </span>
+            <div class="feature-text">
+              <h3>Secure Portal</h3>
+              <p>End-to-end data encryption</p>
+            </div>
+          </article>
+        </div>
 
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">
-            <img src="assets/icons/bell-outline.svg" alt="">
-          </span>
-          <div class="feature-text">
-            <h3>Live Updates</h3>
-            <p>SMS &amp; Email notifications</p>
-          </div>
-        </article>
+        <div class="col-12 col-md-4">
+          <article class="feature-card h-100">
+            <span class="feature-icon" aria-hidden="true">
+              <img src="assets/icons/bell-outline.svg" alt="">
+            </span>
+            <div class="feature-text">
+              <h3>Live Updates</h3>
+              <p>SMS &amp; Email notifications</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -113,42 +189,50 @@
         <a href="/documents" class="view-all-link">View All Documents &gt;</a>
       </div>
 
-      <div class="document-grid">
-        <article class="document-card">
-          <span class="doc-icon" aria-hidden="true">
-            <img src="assets/icons/document-list.svg" alt="">
-          </span>
-          <h3>SF10 (Form 137)</h3>
-          <p>Official Permanent Record (SF10)</p>
-          <a href="/request/sf10" class="request-link">Request Now &gt;</a>
-        </article>
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="document-card h-100">
+            <span class="doc-icon" aria-hidden="true">
+              <img src="assets/icons/document-list.svg" alt="">
+            </span>
+            <h3>SF10 (Form 137)</h3>
+            <p>Official Permanent Record (SF10)</p>
+            <a href="/request/sf10" class="request-link">Request Now &gt;</a>
+          </article>
+        </div>
 
-        <article class="document-card">
-          <span class="doc-icon" aria-hidden="true">
-            <img src="assets/icons/check-badge.svg" alt="">
-          </span>
-          <h3>Certification</h3>
-          <p>Enrollment or Good Moral Character</p>
-          <a href="/request/certification" class="request-link">Request Now &gt;</a>
-        </article>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="document-card h-100">
+            <span class="doc-icon" aria-hidden="true">
+              <img src="assets/icons/check-badge.svg" alt="">
+            </span>
+            <h3>Certification</h3>
+            <p>Enrollment or Good Moral Character</p>
+            <a href="/request/certification" class="request-link">Request Now &gt;</a>
+          </article>
+        </div>
 
-        <article class="document-card">
-          <span class="doc-icon" aria-hidden="true">
-            <img src="assets/icons/graduation-cap.svg" alt="">
-          </span>
-          <h3>Diploma</h3>
-          <p>Certified true copy of Graduation</p>
-          <a href="/request/diploma" class="request-link">Request Now &gt;</a>
-        </article>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="document-card h-100">
+            <span class="doc-icon" aria-hidden="true">
+              <img src="assets/icons/graduation-cap.svg" alt="">
+            </span>
+            <h3>Diploma</h3>
+            <p>Certified true copy of Graduation</p>
+            <a href="/request/diploma" class="request-link">Request Now &gt;</a>
+          </article>
+        </div>
 
-        <article class="document-card">
-          <span class="doc-icon" aria-hidden="true">
-            <img src="assets/icons/file.svg" alt="">
-          </span>
-          <h3>4Ps Certificate</h3>
-          <p>For 4Ps beneficiaries</p>
-          <a href="/request/4ps-certificate" class="request-link">Request Now &gt;</a>
-        </article>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="document-card h-100">
+            <span class="doc-icon" aria-hidden="true">
+              <img src="assets/icons/file.svg" alt="">
+            </span>
+            <h3>4Ps Certificate</h3>
+            <p>For 4Ps beneficiaries</p>
+            <a href="/request/4ps-certificate" class="request-link">Request Now &gt;</a>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -159,29 +243,37 @@
         <p>Follow these four simple steps to get your documents processed efficiently.</p>
       </div>
 
-      <div class="steps-list">
-        <div class="step">
-          <span class="step-number">1</span>
-          <h3>Submit Request</h3>
-          <p>Fill out the online request form with the required details.</p>
+      <div class="row g-4 steps-list">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3>Submit Request</h3>
+            <p>Fill out the online request form with the required details.</p>
+          </div>
         </div>
 
-        <div class="step">
-          <span class="step-number">2</span>
-          <h3>Wait for Approval</h3>
-          <p>The Registrar's Office will review and verify your request.</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3>Wait for Approval</h3>
+            <p>The Registrar's Office will review and verify your request.</p>
+          </div>
         </div>
 
-        <div class="step">
-          <span class="step-number">3</span>
-          <h3>Track Progress</h3>
-          <p>Use your tracking ID to see the real-time status of your request.</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3>Track Progress</h3>
+            <p>Use your tracking ID to see the real-time status of your request.</p>
+          </div>
         </div>
 
-        <div class="step">
-          <span class="step-number">4</span>
-          <h3>Claim Document</h3>
-          <p>Pick up your document at the office or receive it digitally.</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="step">
+            <span class="step-number">4</span>
+            <h3>Claim Document</h3>
+            <p>Pick up your document at the office or receive it digitally.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -216,4 +308,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

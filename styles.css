@@ -1,6 +1,4 @@
-/* ============================
-   Reset & Base
-   ============================ */
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -50,10 +48,8 @@ button {
   white-space: nowrap;
 }
 
-/* ============================
-   Buttons
-   ============================ */
-.btn {
+/* Buttons */
+.btn-doc {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -67,27 +63,27 @@ button {
     opacity 0.2s ease;
 }
 
-.btn img {
+.btn-doc img {
   width: 16px;
   height: 16px;
 }
 
-.btn-primary {
+.btn-doc-primary {
   background-color: #ffffff;
   color: #0f172a;
 }
 
-.btn-primary:hover {
+.btn-doc-primary:hover {
   opacity: 0.9;
 }
 
-.btn-secondary {
+.btn-doc-secondary {
   background-color: transparent;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.btn-secondary:hover {
+.btn-doc-secondary:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -112,9 +108,7 @@ button {
   height: 40px;
 }
 
-/* ============================
-   Header
-   ============================ */
+/* Header */
 .site-header {
   border-bottom: 1px solid #e2e8f0;
   background-color: #ffffff;
@@ -208,9 +202,211 @@ button {
   height: 18px;
 }
 
-/* ============================
-   Hero
-   ============================ */
+/* Dropdowns (Notifications, Settings, Profile) */
+.dropdown-wrap {
+  position: relative;
+}
+
+.dropdown-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 280px;
+  background-color:  #d9d9d9;
+  border-radius: 28px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  padding: 18px;
+  z-index: 200;
+}
+
+.dropdown-panel.show {
+  display: block;
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 590;
+  color: #333333;
+  margin-bottom: 14px;
+}
+
+.dropdown-header img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Notifications panel */
+
+#notif-panel {
+  padding: 24px 20px;
+  min-height: 233px;
+}
+
+#notif-panel .dropdown-header {
+  margin-bottom: 20px;
+}
+
+.notif-item {
+  display: flex;
+  gap: 10px;
+}
+
+.notif-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.notif-content {
+  flex: 1;
+}
+
+.notif-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.notif-title {
+  font-size: 17px;
+  font-weight: 590;
+  color:#333333 ;
+}
+
+.notif-time {
+  font-size: 12px;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.notif-desc {
+  font-size: 12px;
+  color: #333333;
+  margin-top: 2px;
+}
+
+/* Settings panel */
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 17px;
+  font-weight: 590;
+  color:#333333 ;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 3px;
+  top: 3px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #1a365d;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(18px);
+}
+
+/* Profile panel */
+.profile-icon-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon-badge img {
+  width: 26px;
+  height: 26px;
+}
+
+.profile-name {
+  text-align: center;
+}
+
+.profile-sub-info {
+  width: fit-content;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.profile-name {
+  font-size: 15px;
+  font-weight: 510;
+  color:#333333 ;
+  margin-bottom: 6px;
+}
+
+.profile-email,
+.profile-lrn {
+  font-size: 13px;
+  color:#333333 ;
+  margin-bottom: 6px;
+}
+
+.profile-lrn strong {
+  font-weight: 600;
+  color: #333333;
+}
+
+.logout-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+  margin-top: 10px;
+}
+
+.logout-link img {
+  width: 24px;
+  height: auto;
+}
+
+/* Hero */
 .hero {
   position: relative;
   min-height: 560px;
@@ -289,11 +485,8 @@ button {
   position: relative;
   z-index: 2;
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 auto !important;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
   transform: translateY(50%);
 }
 
@@ -323,18 +516,18 @@ button {
   height: 18px;
 }
 
-.feature-card:nth-child(1) .feature-icon {
+
+.hero-features > div:nth-child(1) .feature-icon {
   background-color: #1a365d;
 }
 
-.feature-card:nth-child(2) .feature-icon {
+.hero-features > div:nth-child(2) .feature-icon {
   background-color: #66affe;
 }
 
-.feature-card:nth-child(3) .feature-icon {
+.hero-features > div:nth-child(3) .feature-icon {
   background-color: #d3e4fe;
 }
-
 
 .feature-text h3 {
   font-size: 15px;
@@ -348,9 +541,7 @@ button {
   color: #64748b;
 }
 
-/* ============================
-   Section shared styles
-   ============================ */
+/* Section shared styles */
 section {
   padding: 120px 32px 80px;
   max-width: 1280px;
@@ -393,17 +584,10 @@ section {
   text-decoration: underline;
 }
 
-/* ============================
-   Common Documents
-   ============================ */
-.document-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
+/* Common Documents */
 
 .document-card {
-  border: 1px solid #c4c6cf;
+  border: 1px solid #cfcbc4;
   border-radius: 12px;
   padding: 22px;
   transition:
@@ -455,9 +639,7 @@ section {
   text-decoration: underline;
 }
 
-/* ============================
-   How It Works
-   ============================ */
+/* How It Works */
 .how-it-works {
   background-color: #eff6ff;
   max-width: 100%;
@@ -473,21 +655,18 @@ section {
 }
 .steps-list {
   max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  margin: 0 auto !important;
   position: relative;
 }
-
+/* Horizontal line for the steps */
 .steps-list::before {
   content: "";
   position: absolute;
-  top: 24px;
+  top: 55px;
   left: 12.5%;
   right: 12.5%;
   height: 2px;
-  background-color: #cbd5e1;
+  background-color: #e1d7cb;
   z-index: 0;
 }
 
@@ -501,13 +680,13 @@ section {
 }
 
 .step-number {
-  width: 48px;
-  height: 48px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background-color: #ffffff;
   border: 2px solid #eff4ff;
   color: #000000d8;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -528,9 +707,7 @@ section {
   max-width: 220px;
 }
 
-/* ============================
-   Footer
-   ============================ */
+/* Footer */
 .site-footer {
   border-top: 1px solid #c4c6cf;
   background-color: #e5eeff;
@@ -590,25 +767,10 @@ section {
 }
 
 
-/* ============================
-   Responsive
-   ============================ */
-@media (max-width: 1024px) {
-  .document-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .steps-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
-
+/* Responsive */
+@media (max-width: 991px) {
   .steps-list::before {
     display: none;
-  }
-
-  .hero-features {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -644,10 +806,6 @@ section {
 
   section {
     padding: 100px 20px 60px;
-  }
-
-  .document-grid {
-    grid-template-columns: 1fr;
   }
 
   .section-header {
