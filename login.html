@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - BPES Document Request and Tracking System</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="login-page">
+
+    <!-- Left panel -->
+    <div class="login-left">
+      <img src="assets/logo.jpg" alt="BPES Logo" class="login-logo">
+      <h1 class="login-title">Bahay Pare Elementary School Document Request and Tracking System</h1>
+      <p class="login-tagline">Empowering the next generation through quality education and digital innovation.</p>
+    </div>
+
+    <!-- Right panel -->
+    <div class="login-right">
+      <div class="login-form-box">
+        <h2 class="login-heading">Welcome!</h2>
+        <p class="login-subheading">Please enter your credentials to access the portal.</p>
+
+        <label for="login-id" class="login-label">Email or LRN</label>
+        <div class="login-input-wrap">
+          <img src="assets/icons/person-outline.svg" alt="" class="login-input-icon">
+          <input type="text" id="login-id" placeholder="Enter your Email or LRN">
+        </div>
+
+        <label for="login-password" class="login-label">Password</label>
+        <div class="login-input-wrap">
+          <img src="assets/icons/lock.svg" alt="" class="login-input-icon">
+          <input type="password" id="login-password" placeholder="Enter your password">
+          <img src="assets/icons/eye-off.svg" alt="" class="login-input-icon-right">
+        </div>
+
+        <div class="login-row">
+          <label class="login-checkbox">
+            <input type="checkbox">
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="login-forgot">Forgot password?</a>
+        </div>
+
+        <a href="user-role.html" id="login-submit-btn" class="login-btn">
+          Login
+          <img src="assets/icons/login-arrow.svg" alt="" class="login-btn-icon">
+        </a>
+        <p class="login-signup">Don't have an account? <a href="signup.html">Sign up here</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

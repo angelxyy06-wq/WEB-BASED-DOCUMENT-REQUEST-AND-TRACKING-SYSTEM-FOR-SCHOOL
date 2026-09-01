@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Document - BPES Document Request and Tracking System</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
+        <span class="logo-text">BPES</span>
+      </a>
+
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="request.html" class="nav-link active">Request a Document</a></li>
+          <li><a href="/track" class="nav-link">Track Request</a></li>
+          <li><a href="/feedback" class="nav-link">Feedback</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
+            <img src="assets/icons/bell.svg" alt="">
+          </button>
+
+          <div class="dropdown-panel" id="notif-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/bell.svg" alt="">
+              <span>Notifications</span>
+            </div>
+
+            <div class="notif-item">
+              <span class="notif-dot"></span>
+              <div class="notif-content">
+                <div class="notif-title-row">
+                  <span class="notif-title">Request ready</span>
+                  <span class="notif-time">2h</span>
+                </div>
+                <p class="notif-desc">Your SF10 (Form 137) request is ready for release.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
+            <img src="assets/icons/settings.svg" alt="">
+          </button>
+
+          <div class="dropdown-panel" id="settings-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/settings.svg" alt="">
+              <span>Settings</span>
+            </div>
+
+            <div class="settings-row">
+              <span>Notification</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <span>Notification Sound</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown-wrap">
+          <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
+            <img src="assets/icons/profile.svg" alt="">
+          </button>
+
+          <div class="dropdown-panel profile-panel" id="profile-panel">
+            <div class="dropdown-header">
+              <span class="profile-icon-badge">
+                <img src="assets/icons/greyprofile.svg" alt="">
+              </span>
+              <span>My Profile</span>
+            </div>
+
+            <p class="profile-name">Juan Manuel Dela Cruz</p>
+            <div class="profile-sub-info">
+              <p class="profile-email">Student123@gmail.com</p>
+              <p class="profile-lrn">LRN: <strong>102345120098</strong></p>
+            </div>
+
+            <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="request-hero">
+      <h1 class="request-hero-title">Request a School Document</h1>
+      <p class="request-hero-sub">Select the document you need from the categories below. All requests are processed
+        within 3-5 working days.</p>
+    </section>
+
+    <!-- Document category cards -->
+    <section class="request-grid-section">
+      <div class="row g-4 g-md-5">
+        <div class="col-12 col-md-6">
+          <article class="request-card h-100">
+            <span class="request-card-icon">
+              <img src="assets/icons/check-badge.svg" alt="">
+            </span>
+            <h3>Certifications</h3>
+            <p>Request school certificates such as Certificate of Enrollment, Good Moral Certificate, and other
+              available school documents.</p>
+            <div class="request-card-footer">
+              <span class="request-pill">Est. 2-3 days</span>
+              <a href="#" class="request-now-link">Request Now <img src="assets/icons/arrow-right-blue.svg" alt=""></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <article class="request-card h-100">
+            <span class="request-card-icon">
+              <img src="assets/icons/sf10-icon.svg" alt="">
+            </span>
+            <h3>SF10 (Form 137)</h3>
+            <p>The unified Learner's Permanent Record (SF10). Essential for tracking academic progress and official
+              DepEd reporting.</p>
+            <div class="request-card-footer">
+              <span class="request-pill">Est. 5 days</span>
+              <a href="#" class="request-now-link">Request Now <img src="assets/icons/arrow-right-blue.svg" alt=""></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <article class="request-card h-100">
+            <span class="request-card-icon">
+              <img src="assets/icons/document-list.svg" alt="">
+            </span>
+            <h3>4Ps Certificate</h3>
+            <p>A document that verifies a student's status as a beneficiary of the Pantawid Pamilyang Pilipino Program
+              (4Ps), which may be used for school requirements and other official purposes.</p>
+            <div class="request-card-footer">
+              <span class="request-pill">Est. 2 days</span>
+              <a href="#" class="request-now-link">Request Now <img src="assets/icons/arrow-right-blue.svg" alt=""></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <article class="request-card h-100">
+            <span class="request-card-icon">
+              <img src="assets/icons/award.svg" alt="">
+            </span>
+            <h3>Diploma</h3>
+            <p>Official Graduation Diploma issued to students as proof of their successful completion and graduation
+              from the school.</p>
+            <div class="request-card-footer">
+              <span class="request-pill">Est. 7-10 days</span>
+              <a href="#" class="request-now-link">Request Now <img src="assets/icons/arrow-right-blue.svg" alt=""></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Track Your Application CTA -->
+    <section class="track-cta-section">
+      <div class="track-cta-inner">
+        <div class="track-cta-text">
+          <h2>Track Your Application</h2>
+          <p>Already made a request? Enter your reference number to check the current status of your document
+            processing. Stay updated in real-time.</p>
+
+          <div class="track-cta-form">
+            <label for="track-ref" class="visually-hidden">Reference number</label>
+            <input type="text" id="track-ref" placeholder="Enter reference number">
+            <a href="/track" class="track-now-btn">Track Now</a>
+          </div>
+        </div>
+
+        <div class="track-cta-photo">
+          <img src="assets/track-photo.jpg" alt="School staff assisting a student with a document request"
+            class="track-photo-img">
+          <div class="track-photo-overlay">
+            <div class="track-avatars">
+              <span class="avatar-circle"></span>
+              <span class="avatar-circle"></span>
+              <span class="avatar-circle"></span>
+            </div>
+            <span class="track-stat-text">120+ Documents processed today</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h4>Bahay Pare Elementary School</h4>
+        <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
+      </div>
+
+
+      <div class="footer-links">
+        <span>Contact Us</span>
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+        <span>Campus Map</span>
+      </div>
+
+
+      <div class="footer-social">
+        <span aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

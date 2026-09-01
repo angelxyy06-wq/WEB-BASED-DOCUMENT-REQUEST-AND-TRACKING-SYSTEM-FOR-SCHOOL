@@ -7,7 +7,8 @@
   <title>BPES - School Document Request and Tracking System</title>
 
   <!-- Bootstrap CSS (CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -25,7 +26,7 @@
       <nav class="main-nav">
         <ul class="nav-list">
           <li><a href="/" class="nav-link active">Home</a></li>
-          <li><a href="/request" class="nav-link">Request a Document</a></li>
+          <li><a href="request.html" class="nav-link">Request a Document</a></li>
           <li><a href="/track" class="nav-link">Track Request</a></li>
           <li><a href="/feedback" class="nav-link">Feedback</a></li>
         </ul>
@@ -98,14 +99,14 @@
               </span>
               <span>My Profile</span>
             </div>
-            
+
             <p class="profile-name">Juan Manuel Dela Cruz</p>
             <div class="profile-sub-info">
               <p class="profile-email">Student123@gmail.com</p>
               <p class="profile-lrn">LRN: <strong>102345120098</strong></p>
             </div>
 
-            <span class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></span>
+            <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
           </div>
         </div>
       </div>
@@ -128,7 +129,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="/request" class="btn-doc btn-doc-primary">
+          <a href="/request.html" class="btn-doc btn-doc-primary">
             <img src="assets/icons/plus.svg" alt="">
             Request a Document
           </a>
@@ -186,7 +187,7 @@
           <h2>Common Documents</h2>
           <p>Select a document to start your request immediately.</p>
         </div>
-        <a href="/documents" class="view-all-link">View All Documents &gt;</a>
+        <a href="/request.html" class="view-all-link">View All Documents &gt;</a>
       </div>
 
       <div class="row g-4">
@@ -197,7 +198,9 @@
             </span>
             <h3>SF10 (Form 137)</h3>
             <p>Official Permanent Record (SF10)</p>
-            <a href="/request/sf10" class="request-link">Request Now &gt;</a>
+            <a href="/request.html" class="request-link">
+              Request Now <img src="assets/icons/arrow-right-blue.svg" alt="">
+            </a>
           </article>
         </div>
 
@@ -208,7 +211,9 @@
             </span>
             <h3>Certification</h3>
             <p>Enrollment or Good Moral Character</p>
-            <a href="/request/certification" class="request-link">Request Now &gt;</a>
+            <a href="/request.html" class="request-link">
+              Request Now <img src="assets/icons/arrow-right-blue.svg" alt="">
+            </a>
           </article>
         </div>
 
@@ -219,7 +224,9 @@
             </span>
             <h3>Diploma</h3>
             <p>Certified true copy of Graduation</p>
-            <a href="/request/diploma" class="request-link">Request Now &gt;</a>
+            <a href="/request.html" class="request-link">
+              Request Now <img src="assets/icons/arrow-right-blue.svg" alt="">
+            </a>
           </article>
         </div>
 
@@ -230,7 +237,9 @@
             </span>
             <h3>4Ps Certificate</h3>
             <p>For 4Ps beneficiaries</p>
-            <a href="/request/4ps-certificate" class="request-link">Request Now &gt;</a>
+            <a href="/request.html" class="request-link">
+              Request Now <img src="assets/icons/arrow-right-blue.svg" alt="">
+            </a>
           </article>
         </div>
       </div>
@@ -289,19 +298,16 @@
       </div>
 
       <div class="footer-links">
-        <a href="#">Contact Us</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Campus Map</a>
+        <span>Contact Us</span>
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+        <span>Campus Map</span>
       </div>
 
       <div class="footer-social">
-        <a href="#" aria-label="Facebook">
+        <span aria-label="Facebook">
           <img src="assets/icons/facebook.svg" alt="">
-        </a>
-        <a href="#" aria-label="Instagram">
-          <img src="assets/icons/instagram.svg" alt="">
-        </a>
+        </span>
       </div>
     </div>
   </footer>

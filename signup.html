@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - BPES Document Request and Tracking System</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="signup-page">
+    <div class="signup-card">
+
+      <div class="signup-icon-badge">
+        <img src="assets/icons/graduation-cap-badge.svg" alt="">
+      </div>
+
+      <h2 class="signup-heading">Create an Account</h2>
+      <p class="signup-subheading">Bahay Pare Elementary School Portal</p>
+
+      <label for="signup-name" class="login-label">Full Name</label>
+      <div class="login-input-wrap">
+        <img src="assets/icons/person-outline.svg" alt="" class="login-input-icon">
+        <input type="text" id="signup-name" placeholder="Juan Dela Cruz">
+      </div>
+
+      <label for="signup-email" class="login-label">Email Address</label>
+      <div class="login-input-wrap">
+        <img src="assets/icons/mail.svg" alt="" class="login-input-icon">
+        <input type="email" id="signup-email" placeholder="juan@example.com">
+      </div>
+
+      <label for="signup-lrn" class="login-label">LRN (Learner Reference Number)</label>
+      <div class="login-input-wrap">
+        <img src="assets/icons/id-badge.svg" alt="" class="login-input-icon">
+        <input type="text" id="signup-lrn" placeholder="12-digit LRN">
+      </div>
+      <p class="field-hint">Required for student verification.</p>
+
+      <label for="signup-password" class="login-label">Password</label>
+      <div class="login-input-wrap">
+        <img src="assets/icons/lock.svg" alt="" class="login-input-icon">
+        <input type="password" id="signup-password">
+      </div>
+
+      <label for="signup-confirm-password" class="login-label">Confirm Password</label>
+      <div class="login-input-wrap">
+        <img src="assets/icons/confirm-lock.svg" alt="" class="login-input-icon">
+        <input type="password" id="signup-confirm-password">
+      </div>
+
+      <a href="user-role.html" id="signup-submit-btn" class="login-btn">
+        Create Account
+        <img src="assets/icons/arrow-right-long.svg" alt="" class="login-btn-icon">
+      </a>
+      <hr class="signup-divider">
+
+      <p class="login-signup">Already have an account? <a href="login.html">Log in here</a></p>
+
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
