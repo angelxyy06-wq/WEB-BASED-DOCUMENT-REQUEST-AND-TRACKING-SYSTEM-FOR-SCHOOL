@@ -43,6 +43,41 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// Star rating (Feedback page)
+document.addEventListener('DOMContentLoaded', function () {
+  const starRow = document.querySelector('.feedback-star-row');
+  if (!starRow) return;
+
+  const stars = Array.from(starRow.querySelectorAll('.feedback-star'));
+  const STAR_EMPTY = 'assets/icons/star-outline.svg';
+  const STAR_FILLED = 'assets/icons/star-filled.svg';
+
+  let selectedRating = 0;
+
+  function paintStars(count) {
+    stars.forEach(function (star, index) {
+      star.src = index < count ? STAR_FILLED : STAR_EMPTY;
+    });
+  }
+
+  stars.forEach(function (star, index) {
+    const value = index + 1;
+
+    star.addEventListener('mouseenter', function () {
+      paintStars(value);
+    });
+
+    star.addEventListener('click', function () {
+      selectedRating = value;
+      starRow.setAttribute('data-rating', selectedRating);
+      paintStars(selectedRating);
+    });
+  });
+
+  starRow.addEventListener('mouseleave', function () {
+    paintStars(selectedRating);
+  });
+});
 
 // Login / Signup / Role validation
 document.addEventListener('DOMContentLoaded', function () {
@@ -88,3 +123,35 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
  
+// Feedback submit (frontend-only fake success)
+document.addEventListener('DOMContentLoaded', function () {
+  const submitBtn = document.querySelector('.feedback-submit-btn');
+  const toast = document.getElementById('feedback-toast');
+  if (!submitBtn || !toast) return;
+
+  const starRow = document.querySelector('.feedback-star-row');
+  const stars = starRow ? Array.from(starRow.querySelectorAll('.feedback-star')) : [];
+  const categorySelect = document.getElementById('feedback-category');
+  const detailTextarea = document.getElementById('feedback-detail');
+  const anonymousToggle = document.querySelector('.feedback-anonymous-row input[type="checkbox"]');
+
+  let toastTimeout;
+
+  submitBtn.addEventListener('click', function () {
+    toast.classList.add('show');
+
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(function () {
+      toast.classList.remove('show');
+    }, 3000);
+
+    // Reset form
+    stars.forEach(function (star) {
+      star.src = 'assets/icons/star-outline.svg';
+    });
+    if (starRow) starRow.removeAttribute('data-rating');
+    if (categorySelect) categorySelect.selectedIndex = 0;
+    if (detailTextarea) detailTextarea.value = '';
+    if (anonymousToggle) anonymousToggle.checked = false;
+  });
+});

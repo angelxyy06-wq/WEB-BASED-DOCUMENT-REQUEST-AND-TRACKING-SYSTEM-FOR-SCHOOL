@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Documents - BPES Document Request and Tracking System</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
+        <span class="logo-text">BPES</span>
+      </div>
+
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="request.html" class="nav-link active">Request a Document</a></li>
+          <li><a href="track.html" class="nav-link">Track Request</a></li>
+          <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
+            <img src="assets/icons/bell.svg" alt="">
+          </button>
+
+          <div class="dropdown-panel" id="notif-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/bell.svg" alt="">
+              <span>Notifications</span>
+            </div>
+
+            <div class="notif-item">
+              <span class="notif-dot"></span>
+              <div class="notif-content">
+                <div class="notif-title-row">
+                  <span class="notif-title">Request ready</span>
+                  <span class="notif-time">2h</span>
+                </div>
+                <p class="notif-desc">Your SF10 (Form 137) request is ready for release.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
+            <img src="assets/icons/settings.svg" alt="">
+          </button>
+
+          <div class="dropdown-panel" id="settings-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/settings.svg" alt="">
+              <span>Settings</span>
+            </div>
+
+            <div class="settings-row">
+              <span>Notification</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <span>Notification Sound</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown-wrap">
+          <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
+            <img src="assets/icons/profile.svg" alt="">
+          </button>
+
+          <div class="dropdown-panel profile-panel" id="profile-panel">
+            <div class="dropdown-header">
+              <span class="profile-icon-badge">
+                <img src="assets/icons/greyprofile.svg" alt="">
+              </span>
+              <span>My Profile</span>
+            </div>
+
+            <p class="profile-name">Juan Manuel Dela Cruz</p>
+            <div class="profile-sub-info">
+              <p class="profile-email">Student123@gmail.com</p>
+              <p class="profile-lrn">LRN: <strong>102345120098</strong></p>
+            </div>
+
+            <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="request-hero request-hero-left">
+      <h1 class="request-hero-title">Request Documents</h1>
+      <p class="request-hero-sub">Fill out the form below to request official school records and certifications.</p>
+    </section>
+
+    <!-- Request Form Section -->
+    <section class="request-form-section">
+      <div class="request-form-layout">
+
+        <!-- Form Card -->
+        <div class="request-form-card">
+          <form class="request-form">
+
+            <div class="row g-4">
+              <div class="col-12 col-md-6">
+                <label for="requester-name" class="form-field-label">Requester's Full Name</label>
+                <input type="text" id="requester-name" name="requester-name" class="form-field-input"
+                  placeholder="Enter your full name">
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="student-name" class="form-field-label">Student's Full Name</label>
+                <input type="text" id="student-name" name="student-name" class="form-field-input"
+                  placeholder="Enter student's name">
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="contact-number" class="form-field-label">Contact Number</label>
+                <input type="text" id="contact-number" name="contact-number" class="form-field-input"
+                  placeholder="+63 000 000 0000">
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="email-address" class="form-field-label">Email Address</label>
+                <input type="text" id="email-address" name="email-address" class="form-field-input"
+                  placeholder="example@email.com">
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="year-level" class="form-field-label">Student's Year Level</label>
+                <input type="text" id="year-level" name="year-level" class="form-field-input"
+                  placeholder="Enter student's year level">
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="lrn" class="form-field-label">Learner Reference Number (LRN)</label>
+                <input type="text" id="lrn" name="lrn" class="form-field-input" placeholder="Enter LRN">
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="year-graduated" class="form-field-label">Year Graduated (If Applicable)</label>
+                <input type="text" id="year-graduated" name="year-graduated" class="form-field-input"
+                  placeholder="Enter year graduated">
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="number-copies" class="form-field-label">Number of Copies</label>
+                <input type="text" id="number-copies" name="number-copies" class="form-field-input"
+                  placeholder="Enter the number of copies needed">
+              </div>
+
+              <div class="col-12">
+                <label for="document-type" class="form-field-label">Document Type</label>
+                <select id="document-type" name="document-type" class="form-field-select">
+                  <option value="sf10">SF10 (Form 137)</option>
+                  <option value="certifications">Certifications</option>
+                  <option value="4ps">4Ps Certificate</option>
+                  <option value="diploma">Diploma</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label for="additional-notes" class="form-field-label">Additional Notes / Purpose</label>
+                <textarea id="additional-notes" name="additional-notes" class="form-field-textarea" rows="5"
+                  placeholder="Specify any additional instructions or the purpose of the request..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-certify-row">
+              <label class="form-certify-check">
+                <input type="checkbox" id="certify-info" name="certify-info">
+                <span>I hereby certify that the information provided is true and correct. I understand that
+                  processing will begin once the request is confirmed, and that standard school policies apply to
+                  all document releases.</span>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <a href="request.html" class="form-cancel-btn">Cancel</a>
+              <a href="request-submitted.html" class="form-submit-btn">Submit Request</a>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="request-form-sidebar">
+
+          <div class="wait-time-card">
+            <div class="wait-time-header">
+              <span class="wait-time-icon">
+                <img src="assets/icons/clock-outline.svg" alt="">
+              </span>
+              <h3>Avg Wait Time</h3>
+            </div>
+
+            <div class="wait-time-row">
+              <span>Standard Request</span>
+              <strong>3-5 Days</strong>
+            </div>
+
+            <div class="wait-time-row">
+              <span>Expedited</span>
+              <strong class="wait-time-highlight">24-48 Hours</strong>
+            </div>
+          </div>
+
+          <div class="help-card">
+            <div class="help-card-header">
+              <span class="help-card-icon">
+                <img src="assets/icons/question.svg" alt="">
+              </span>
+              <h3>Need Help?</h3>
+            </div>
+            <p>If you have questions regarding your records or have special requirements, please contact the
+              Registrar's Office.</p>
+            <span class="help-card-link">105929@deped.gov.ph <img src="assets/icons/arrow-right-long.svg" alt=""></span>
+             <img src="assets/icons/graduation-cap-outline.svg" alt="" class="help-card-watermark">
+          </div>
+
+              <div class="location-card">
+                <img src="assets/student-photo.jpg" alt="BPES campus" class="location-card-img">
+                <div class="location-card-overlay">
+                  <span><img src="assets/icons/pin-location.svg" alt=""> BPES, Candaba, Pampanga</span>
+                </div>
+              </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h4>Bahay Pare Elementary School</h4>
+        <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
+      </div>
+
+      <div class="footer-links">
+        <span>Contact Us</span>
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+        <span>Campus Map</span>
+      </div>
+
+      <div class="footer-social">
+        <span aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
