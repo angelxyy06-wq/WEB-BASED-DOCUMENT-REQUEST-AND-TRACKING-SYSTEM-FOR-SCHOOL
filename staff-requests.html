@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Management - BPES Document Request and Tracking System</title>
+ 
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+ 
+  <link rel="stylesheet" href="styles.css">
+</head>
+ 
+<body>
+ 
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
+        <span class="logo-text">BPES</span>
+      </div>
+ 
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="staff-dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="staff-requests.html" class="nav-link active">Requests</a></li>
+          <li><a href="staff-release-completed.html" class="nav-link">Release &amp; Completed</a></li>
+          <li><a href="staff-feedback.html" class="nav-link">Feedback</a></li>
+        </ul>
+      </nav>
+ 
+      <div class="header-actions">
+ 
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
+            <img src="assets/icons/bell.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel" id="notif-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/bell.svg" alt="">
+              <span>Notifications</span>
+            </div>
+ 
+            <div class="notif-item">
+              <span class="notif-dot"></span>
+              <div class="notif-content">
+                <div class="notif-title-row">
+                  <span class="notif-title">New request submitted</span>
+                  <span class="notif-time">2h</span>
+                </div>
+                <p class="notif-desc">Maria Santos submitted a request for SF10 (Form 137).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
+            <img src="assets/icons/settings.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel" id="settings-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/settings.svg" alt="">
+              <span>Settings</span>
+            </div>
+ 
+            <div class="settings-row">
+              <span>Notification</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+ 
+            <div class="settings-row">
+              <span>Notification Sound</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="dropdown-wrap">
+          <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
+            <img src="assets/icons/profile.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel profile-panel" id="profile-panel">
+            <div class="dropdown-header">
+              <span class="profile-icon-badge">
+                <img src="assets/icons/greyprofile.svg" alt="">
+              </span>
+              <span>My Profile</span>
+            </div>
+ 
+            <p class="profile-name">Maricris Garcia</p>
+            <div class="profile-sub-info">
+              <p class="profile-email">SchoolStaff123@gmail.com</p>
+              <p class="profile-lrn">Registrar</p>
+            </div>
+ 
+            <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+ 
+  <main class="staff-main">
+ 
+    <!-- Page Heading -->
+    <section class="page-heading">
+      <h1 class="page-title">Request Management</h1>
+      <p class="page-subtitle">Review and manage all incoming document requests.</p>
+    </section>
+ 
+    <!-- Filters Bar -->
+    <section class="filters-bar-section">
+      <div class="filters-bar">
+        <div class="filter-group filter-group-search">
+          <label for="requests-search-input" class="filter-label">Search Requests</label>
+          <div class="filter-search-row">
+            <div class="search-box filter-search-box">
+              <img src="assets/icons/search.svg" alt="" class="search-icon">
+              <input type="search" id="requests-search-input" class="search-input"
+                placeholder="Search by student, parent, or ID...">
+            </div>
+            <button type="button" class="filter-search-btn" id="requests-search-btn">Search</button>
+          </div>
+        </div>
+ 
+        <div class="filter-group">
+          <label class="filter-label">Status</label>
+          <div class="dropdown-wrap status-filter-wrap">
+            <button type="button" class="status-filter-btn" id="requests-status-filter-btn"
+              data-dropdown-toggle="requests-status-filter-panel">
+              <span id="requests-status-filter-label">All Statuses</span>
+              <img src="assets/icons/chevron-down.svg" alt="" class="status-filter-chevron">
+            </button>
+ 
+            <div class="dropdown-panel status-filter-panel" id="requests-status-filter-panel">
+              <button type="button" class="status-filter-option" data-status="all">All Statuses</button>
+              <button type="button" class="status-filter-option" data-status="pending">
+                <span class="status-dot status-dot-pending"></span> Pending
+              </button>
+              <button type="button" class="status-filter-option" data-status="processing">
+                <span class="status-dot status-dot-processing"></span> Processing
+              </button>
+              <button type="button" class="status-filter-option" data-status="ready">
+                <span class="status-dot status-dot-ready"></span> Ready
+              </button>
+              <button type="button" class="status-filter-option" data-status="completed">
+                <img src="assets/icons/check-badge.svg" alt="" class="status-filter-icon"> Completed
+              </button>
+              <button type="button" class="status-filter-option" data-status="rejected">
+                <img src="assets/icons/x-circle.svg" alt="" class="status-filter-icon"> Rejected
+              </button>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="filter-group">
+          <label for="requests-date-filter" class="filter-label">Date Submitted</label>
+          <input type="date" id="requests-date-filter" class="filter-date-input">
+        </div>
+ 
+        <div class="filter-group filter-group-clear">
+          <button type="button" class="filter-clear-btn" id="requests-clear-filters-btn">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Requests Table -->
+    <section class="recent-requests-section">
+      <div class="table-responsive requests-table-wrap">
+        <table class="requests-table management-table" id="management-requests-table">
+          <thead>
+            <tr>
+              <th scope="col">Request No.</th>
+              <th scope="col">Student Name</th>
+              <th scope="col">Parent/Guardian</th>
+              <th scope="col">Document</th>
+              <th scope="col">Date Submitted</th>
+              <th scope="col">Status</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-status="pending" data-date="2026-08-13">
+              <td class="req-no">REQ-2024-089</td>
+              <td>Santos, Maria Clara</td>
+              <td>Jose Santos</td>
+              <td>SF10 (Form 137)</td>
+              <td>Aug 13, 2026</td>
+              <td>
+                <span class="status-badge status-badge-pending">
+                  <span class="status-dot status-dot-pending"></span> Pending
+                </span>
+              </td>
+              <td><a href="staff-request-details.html" class="view-btn">View</a></td>
+            </tr>
+            <tr data-status="processing" data-date="2026-08-14">
+              <td class="req-no">REQ-2024-088</td>
+              <td>Dela Cruz, Juan Manuel</td>
+              <td>Rose Dela Cruz</td>
+              <td>Good Moral Cert.</td>
+              <td>Aug 14, 2026</td>
+              <td>
+                <span class="status-badge status-badge-processing">
+                  <span class="status-dot status-dot-processing"></span> Processing
+                </span>
+              </td>
+              <td><button type="button" class="view-btn" disabled>View</button></td>
+            </tr>
+            <tr data-status="ready" data-date="2026-08-06">
+              <td class="req-no">REQ-2024-087</td>
+              <td>Dizon, Derick John</td>
+              <td>Anna Dizon</td>
+              <td>Cert. of Enrollment</td>
+              <td>Aug 6, 2026</td>
+              <td>
+                <span class="status-badge status-badge-ready">
+                  <span class="status-dot status-dot-ready"></span> Ready
+                </span>
+              </td>
+              <td><button type="button" class="view-btn" disabled>View</button></td>
+            </tr>
+            <tr data-status="completed" data-date="2026-08-01">
+              <td class="req-no">REQ-2024-085</td>
+              <td>Reyes, John</td>
+              <td>Jay Reyes</td>
+              <td>4Ps Certificate</td>
+              <td>Aug 1, 2026</td>
+              <td>
+                <span class="status-badge status-badge-completed">
+                  <img src="assets/icons/check-circle-green.svg" alt="" class="status-filter-icon"> Completed
+                </span>
+              </td>
+              <td><button type="button" class="view-btn" disabled>View</button></td>
+            </tr>
+            <tr data-status="rejected" data-date="2026-08-03">
+              <td class="req-no">REQ-2024-082</td>
+              <td>Bautista, Mark</td>
+              <td>Rosa Bautista</td>
+              <td>Good Moral Cert.</td>
+              <td>Aug 3, 2026</td>
+              <td>
+                <span class="status-badge status-badge-rejected">
+                  <img src="assets/icons/x-circle.svg" alt="" class="status-filter-icon"> Rejected
+                </span>
+              </td>
+              <td><button type="button" class="view-btn" disabled>View</button></td>
+            </tr>
+            <tr id="management-no-results-row" class="no-results-row" style="display: none;">
+              <td colspan="7">No requests found for this status.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+ 
+      <div class="table-pagination">
+        <p class="pagination-info">Showing 1-5 of 50</p>
+ 
+        <div class="pagination-controls">
+          <button type="button" class="pagination-btn" id="management-pagination-prev" aria-label="Previous page"
+            disabled>
+            <img src="assets/icons/chevron-left.svg" alt="">
+          </button>
+          <button type="button" class="pagination-btn" id="management-pagination-next" aria-label="Next page">
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </button>
+        </div>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h4>Bahay Pare Elementary School</h4>
+        <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
+      </div>
+ 
+      <div class="footer-links">
+        <span>Contact Us</span>
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+        <span>Campus Map</span>
+      </div>
+ 
+      <div class="footer-social">
+        <span aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </footer>
+ 
+  <script src="script.js"></script>
+</body>
+ 
+</html>
+ 
