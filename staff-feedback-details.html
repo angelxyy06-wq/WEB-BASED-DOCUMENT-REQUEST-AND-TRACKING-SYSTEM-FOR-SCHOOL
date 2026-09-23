@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Details - BPES Document Request and Tracking System</title>
+ 
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+ 
+  <link rel="stylesheet" href="styles.css">
+</head>
+ 
+<body>
+ 
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
+        <span class="logo-text">BPES</span>
+      </div>
+ 
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="staff-dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="staff-requests.html" class="nav-link">Requests</a></li>
+          <li><a href="staff-release-completed.html" class="nav-link">Release &amp; Completed</a></li>
+          <li><a href="staff-feedback.html" class="nav-link active">Feedback</a></li>
+        </ul>
+      </nav>
+ 
+      <div class="header-actions">
+ 
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
+            <img src="assets/icons/bell.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel" id="notif-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/bell.svg" alt="">
+              <span>Notifications</span>
+            </div>
+ 
+            <div class="notif-item">
+              <span class="notif-dot"></span>
+              <div class="notif-content">
+                <div class="notif-title-row">
+                  <span class="notif-title">New feedback received</span>
+                  <span class="notif-time">2h</span>
+                </div>
+                <p class="notif-desc">Jose Santos rated their request experience 5 stars.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
+            <img src="assets/icons/settings.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel" id="settings-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/settings.svg" alt="">
+              <span>Settings</span>
+            </div>
+ 
+            <div class="settings-row">
+              <span>Notification</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+ 
+            <div class="settings-row">
+              <span>Notification Sound</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="dropdown-wrap">
+          <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
+            <img src="assets/icons/profile.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel profile-panel" id="profile-panel">
+            <div class="dropdown-header">
+              <span class="profile-icon-badge">
+                <img src="assets/icons/greyprofile.svg" alt="">
+              </span>
+              <span>My Profile</span>
+            </div>
+ 
+            <p class="profile-name">Maricris Garcia</p>
+            <div class="profile-sub-info">
+              <p class="profile-email">SchoolStaff123@gmail.com</p>
+              <p class="profile-lrn">Registrar</p>
+            </div>
+ 
+            <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+ 
+  <main class="staff-main">
+ 
+    <!-- Back to Feedback -->
+    <div class="back-to-requests-row">
+      <a href="staff-feedback.html" class="back-to-requests-link">
+        <img src="assets/icons/arrow-left.svg" alt="">
+        Back to Feedback
+      </a>
+    </div>
+ 
+    <!-- Page Heading -->
+    <section class="page-heading">
+      <h1 class="page-title">Feedback Details</h1>
+    </section>
+ 
+    <!-- Two Column Layout -->
+    <div class="feedback-details-layout">
+ 
+      <!-- Left Column -->
+      <div class="feedback-details-col">
+ 
+        <div class="feedback-details-card">
+          <h2 class="details-card-title">
+            <img src="assets/icons/message-with-pencil.svg" alt="">
+            Feedback Information
+          </h2>
+ 
+          <div class="details-grid">
+            <div class="details-field">
+              <p class="details-label">Request No.</p>
+              <p class="details-value feedback-request-no">REQ-2026-089</p>
+            </div>
+            <div class="details-field">
+              <p class="details-label">Date Submitted</p>
+              <p class="details-value">Aug 13, 2026</p>
+            </div>
+          </div>
+ 
+          <div class="details-purpose">
+            <p class="details-label">Rating</p>
+            <div class="feedback-details-stars" aria-label="5 out of 5 stars">
+              <img src="assets/icons/star-filled-feedback.svg" alt="">
+              <img src="assets/icons/star-filled-feedback.svg" alt="">
+              <img src="assets/icons/star-filled-feedback.svg" alt="">
+              <img src="assets/icons/star-filled-feedback.svg" alt="">
+              <img src="assets/icons/star-filled-feedback.svg" alt="">
+            </div>
+          </div>
+        </div>
+ 
+        <div class="feedback-details-card">
+          <h2 class="details-card-title">
+            <img src="assets/icons/profile-requester.svg" alt="">
+            Requester Information
+          </h2>
+ 
+          <div class="feedback-requester-row">
+            <div class="feedback-avatar">JS</div>
+            <div class="feedback-requester-text">
+              <p class="feedback-requester-name">Jose Santos</p>
+              <p class="feedback-requester-role">Parent</p>
+            </div>
+          </div>
+ 
+          <div class="feedback-contact-box">
+            <div class="feedback-contact-item">
+              <img src="assets/icons/email.svg" alt="">
+              <div>
+                <p class="feedback-contact-label">Email</p>
+                <p class="feedback-contact-value">jose.santos@email.com</p>
+              </div>
+            </div>
+            <div class="feedback-contact-item">
+              <img src="assets/icons/contact.svg" alt="">
+              <div>
+                <p class="feedback-contact-label">Contact</p>
+                <p class="feedback-contact-value">+63 917 123 4567</p>
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+ 
+      <!-- Right Column -->
+      <div class="feedback-details-col">
+ 
+        <div class="feedback-message-card">
+          <h2 class="details-card-title">
+            <img src="assets/icons/message-feedback.svg" alt="">
+            Feedback Message
+          </h2>
+ 
+          <p class="feedback-message-text">
+            &ldquo;Very helpful and easy to use. The request process was clear and I was able to track the document
+            easily.&rdquo;
+          </p>
+        </div>
+ 
+        <div class="feedback-details-card">
+          <h2 class="details-card-title">
+            <img src="assets/icons/document-associated.svg" alt="">
+            Associated Request Context
+          </h2>
+ 
+          <div class="details-grid">
+            <div class="details-field">
+              <p class="details-label">Student Name</p>
+              <p class="details-value feedback-student-name">
+                <img src="assets/icons/graduation-cap-grey.svg" alt="">
+                Angelo Santos
+              </p>
+            </div>
+            <div class="details-field">
+              <p class="details-label">Document Requested</p>
+              <span class="feedback-doc-pill">SF10</span>
+            </div>
+            <div class="details-field">
+              <p class="details-label">Request Date</p>
+              <p class="details-value">Aug 10, 2026</p>
+            </div>
+            <div class="details-field">
+              <p class="details-label">Status</p>
+              <span class="status-badge status-badge-completed">
+                <img src="assets/icons/check-circle-green.svg" alt="" class="status-filter-icon">
+                Completed
+              </span>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+ 
+    </div>
+ 
+  </main>
+ 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h4>Bahay Pare Elementary School</h4>
+        <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
+      </div>
+ 
+      <div class="footer-links">
+        <span>Contact Us</span>
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+        <span>Campus Map</span>
+      </div>
+ 
+      <div class="footer-social">
+        <span aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </footer>
+ 
+  <script src="script.js"></script>
+</body>
+ 
+</html>
+ 

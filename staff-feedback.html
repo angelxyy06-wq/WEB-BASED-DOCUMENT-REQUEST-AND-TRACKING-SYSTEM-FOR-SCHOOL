@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Management - BPES Document Request and Tracking System</title>
+ 
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+ 
+  <link rel="stylesheet" href="styles.css">
+</head>
+ 
+<body>
+ 
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
+        <span class="logo-text">BPES</span>
+      </div>
+ 
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="staff-dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="staff-requests.html" class="nav-link">Requests</a></li>
+          <li><a href="staff-release-completed.html" class="nav-link">Release &amp; Completed</a></li>
+          <li><a href="staff-feedback.html" class="nav-link active">Feedback</a></li>
+        </ul>
+      </nav>
+ 
+      <div class="header-actions">
+ 
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
+            <img src="assets/icons/bell.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel" id="notif-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/bell.svg" alt="">
+              <span>Notifications</span>
+            </div>
+ 
+            <div class="notif-item">
+              <span class="notif-dot"></span>
+              <div class="notif-content">
+                <div class="notif-title-row">
+                  <span class="notif-title">New feedback received</span>
+                  <span class="notif-time">2h</span>
+                </div>
+                <p class="notif-desc">Jose Santos rated their request experience 5 stars.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="dropdown-wrap">
+          <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
+            <img src="assets/icons/settings.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel" id="settings-panel">
+            <div class="dropdown-header">
+              <img src="assets/icons/settings.svg" alt="">
+              <span>Settings</span>
+            </div>
+ 
+            <div class="settings-row">
+              <span>Notification</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+ 
+            <div class="settings-row">
+              <span>Notification Sound</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="dropdown-wrap">
+          <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
+            <img src="assets/icons/profile.svg" alt="">
+          </button>
+ 
+          <div class="dropdown-panel profile-panel" id="profile-panel">
+            <div class="dropdown-header">
+              <span class="profile-icon-badge">
+                <img src="assets/icons/greyprofile.svg" alt="">
+              </span>
+              <span>My Profile</span>
+            </div>
+ 
+            <p class="profile-name">Maricris Garcia</p>
+            <div class="profile-sub-info">
+              <p class="profile-email">SchoolStaff123@gmail.com</p>
+              <p class="profile-lrn">Registrar</p>
+            </div>
+ 
+            <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+ 
+  <main class="staff-main">
+ 
+    <!-- Page Heading -->
+    <section class="page-heading">
+      <h1 class="page-title">Feedback Management</h1>
+      <p class="page-subtitle">View and review feedback submitted by parents and guardians.</p>
+    </section>
+ 
+    <!-- Summary Stat Cards -->
+    <section class="stats-section">
+      <div class="row g-3 stats-row">
+        <div class="col-6 col-md-3">
+          <article class="stat-card feedback-stat-card h-100">
+            <div class="feedback-stat-top">
+              <span class="feedback-stat-icon feedback-stat-icon-total">
+                <img src="assets/icons/message-square.svg" alt="">
+              </span>
+              <span class="feedback-stat-label">Total</span>
+            </div>
+            <p class="stat-value">24</p>
+            <p class="feedback-stat-caption">All feedback received</p>
+          </article>
+        </div>
+ 
+        <div class="col-6 col-md-3">
+          <article class="stat-card feedback-stat-card h-100">
+            <div class="feedback-stat-top">
+              <span class="feedback-stat-icon feedback-stat-icon-positive">
+                <img src="assets/icons/smile.svg" alt="">
+              </span>
+              <span class="feedback-stat-label">Positive</span>
+            </div>
+            <p class="stat-value">18</p>
+            <p class="feedback-stat-caption">4 or 5 stars</p>
+          </article>
+        </div>
+ 
+        <div class="col-6 col-md-3">
+          <article class="stat-card feedback-stat-card h-100">
+            <div class="feedback-stat-top">
+              <span class="feedback-stat-icon feedback-stat-icon-neutral">
+                <img src="assets/icons/neutral.svg" alt="">
+              </span>
+              <span class="feedback-stat-label">Neutral</span>
+            </div>
+            <p class="stat-value">4</p>
+            <p class="feedback-stat-caption">3 stars</p>
+          </article>
+        </div>
+ 
+        <div class="col-6 col-md-3">
+          <article class="stat-card feedback-stat-card h-100">
+            <div class="feedback-stat-top">
+              <span class="feedback-stat-icon feedback-stat-icon-negative">
+                <img src="assets/icons/sad.svg" alt="">
+              </span>
+              <span class="feedback-stat-label">Negative</span>
+            </div>
+            <p class="stat-value">2</p>
+            <p class="feedback-stat-caption">1 or 2 stars</p>
+          </article>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Recent Feedback -->
+    <section class="recent-requests-section feedback-section">
+      <div class="recent-requests-header">
+        <div>
+          <h2>Recent Feedback</h2>
+        </div>
+ 
+        <div class="recent-requests-controls">
+          <div class="search-box">
+            <img src="assets/icons/search.svg" alt="" class="search-icon">
+            <input type="search" id="feedback-search-input" class="search-input" placeholder="Search feedback...">
+          </div>
+ 
+          <div class="dropdown-wrap status-filter-wrap">
+            <button type="button" class="status-filter-btn" id="feedback-rating-filter-btn"
+              data-dropdown-toggle="feedback-rating-filter-panel">
+              <span id="feedback-rating-filter-label">All Ratings</span>
+              <img src="assets/icons/chevron-down.svg" alt="" class="status-filter-chevron">
+            </button>
+ 
+            <div class="dropdown-panel status-filter-panel" id="feedback-rating-filter-panel">
+              <button type="button" class="status-filter-option" data-rating="all">All Ratings</button>
+              <button type="button" class="status-filter-option" data-rating="positive">Positive (4-5 stars)</button>
+              <button type="button" class="status-filter-option" data-rating="neutral">Neutral (3 stars)</button>
+              <button type="button" class="status-filter-option" data-rating="negative">Negative (1-2 stars)</button>
+            </div>
+          </div>
+ 
+          <div class="dropdown-wrap status-filter-wrap">
+            <button type="button" class="status-filter-btn" id="feedback-sort-btn"
+              data-dropdown-toggle="feedback-sort-panel">
+              <span id="feedback-sort-label">Newest First</span>
+              <img src="assets/icons/chevron-down.svg" alt="" class="status-filter-chevron">
+            </button>
+ 
+            <div class="dropdown-panel status-filter-panel" id="feedback-sort-panel">
+              <button type="button" class="status-filter-option" data-sort="newest">Newest First</button>
+              <button type="button" class="status-filter-option" data-sort="oldest">Oldest First</button>
+              <button type="button" class="status-filter-option" data-sort="highest">Highest Rated</button>
+              <button type="button" class="status-filter-option" data-sort="lowest">Lowest Rated</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Feedback list -->
+      <div class="feedback-list">
+        <article class="feedback-item" data-rating="positive" data-date="2026-08-13" data-stars="5">
+          <div class="feedback-avatar">JS</div>
+ 
+          <div class="feedback-body">
+            <div class="feedback-item-top">
+              <span class="feedback-name">Jose Santos</span>
+              <span class="feedback-pill">REQ-2026-089</span>
+              <span class="feedback-pill">SF10</span>
+            </div>
+ 
+            <div class="feedback-stars" aria-label="5 out of 5 stars">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+            </div>
+ 
+            <p class="feedback-quote">&ldquo;Very helpful and easy to use.&rdquo;</p>
+          </div>
+ 
+          <div class="feedback-meta">
+            <p class="feedback-date">Aug 13, 2026</p>
+            <a href="staff-feedback-details.html" class="feedback-view-link">View Details</a>
+          </div>
+        </article>
+ 
+        <article class="feedback-item" data-rating="positive" data-date="2026-08-12" data-stars="4">
+          <div class="feedback-avatar">JR</div>
+ 
+          <div class="feedback-body">
+            <div class="feedback-item-top">
+              <span class="feedback-name">Jay Reyes</span>
+              <span class="feedback-pill">REQ-2026-088</span>
+              <span class="feedback-pill">Good Moral Cert.</span>
+            </div>
+ 
+            <div class="feedback-stars" aria-label="4 out of 5 stars">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+              <img src="assets/icons/star-filled-dark.svg" alt="">
+              <img src="assets/icons/star-no-fill.svg" alt="">
+            </div>
+ 
+            <p class="feedback-quote">&ldquo;The process was smooth, but I wish the confirmation email arrived
+              faster.&rdquo;</p>
+          </div>
+ 
+          <div class="feedback-meta">
+            <p class="feedback-date">Aug 12, 2026</p>
+            <button type="button" class="feedback-view-link feedback-view-link-disabled" disabled>View
+              Details</button>
+          </div>
+        </article>
+
+        <article class="feedback-item" data-rating="positive" data-date="2026-08-15" data-stars="5">
+  <div class="feedback-avatar">MV</div>
+
+  <div class="feedback-body">
+    <div class="feedback-item-top">
+      <span class="feedback-name">Mark Villanueva</span>
+      <span class="feedback-pill">REQ-2026-085</span>
+      <span class="feedback-pill">4Ps Certificate</span>
+    </div>
+
+    <div class="feedback-stars" aria-label="5 out of 5 stars">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+    </div>
+
+    <p class="feedback-quote">&ldquo;Fast and convenient, thank you!&rdquo;</p>
+  </div>
+
+  <div class="feedback-meta">
+    <p class="feedback-date">Aug 15, 2026</p>
+    <button type="button" class="feedback-view-link feedback-view-link-disabled" disabled>View
+      Details</button>
+  </div>
+</article>
+
+<article class="feedback-item" data-rating="neutral" data-date="2026-08-10" data-stars="3">
+  <div class="feedback-avatar">AD</div>
+
+  <div class="feedback-body">
+    <div class="feedback-item-top">
+      <span class="feedback-name">Anna Dizon</span>
+      <span class="feedback-pill">REQ-2026-087</span>
+      <span class="feedback-pill">Cert. of Enrollment</span>
+    </div>
+
+    <div class="feedback-stars" aria-label="3 out of 5 stars">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+    </div>
+
+    <p class="feedback-quote">&ldquo;It took a bit longer than expected, but the staff were polite.&rdquo;</p>
+  </div>
+
+  <div class="feedback-meta">
+    <p class="feedback-date">Aug 10, 2026</p>
+    <button type="button" class="feedback-view-link feedback-view-link-disabled" disabled>View
+      Details</button>
+  </div>
+</article>
+
+<article class="feedback-item" data-rating="negative" data-date="2026-08-09" data-stars="2">
+  <div class="feedback-avatar">RB</div>
+
+  <div class="feedback-body">
+    <div class="feedback-item-top">
+      <span class="feedback-name">Rosa Bautista</span>
+      <span class="feedback-pill">REQ-2026-086</span>
+      <span class="feedback-pill">Good Moral Cert.</span>
+    </div>
+
+    <div class="feedback-stars" aria-label="2 out of 5 stars">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+    </div>
+
+    <p class="feedback-quote">&ldquo;My request was rejected without much explanation.&rdquo;</p>
+  </div>
+
+  <div class="feedback-meta">
+    <p class="feedback-date">Aug 9, 2026</p>
+    <button type="button" class="feedback-view-link feedback-view-link-disabled" disabled>View
+      Details</button>
+  </div>
+</article>
+
+<article class="feedback-item" data-rating="negative" data-date="2026-08-05" data-stars="1">
+  <div class="feedback-avatar">GT</div>
+
+  <div class="feedback-body">
+    <div class="feedback-item-top">
+      <span class="feedback-name">Grace Tan</span>
+      <span class="feedback-pill">REQ-2026-084</span>
+      <span class="feedback-pill">Diploma Replacement</span>
+    </div>
+
+    <div class="feedback-stars" aria-label="1 out of 5 stars">
+      <img src="assets/icons/star-filled-dark.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+      <img src="assets/icons/star-no-fill.svg" alt="">
+    </div>
+
+    <p class="feedback-quote">&ldquo;Still waiting after two weeks.&rdquo;</p>
+  </div>
+
+  <div class="feedback-meta">
+    <p class="feedback-date">Aug 5, 2026</p>
+    <button type="button" class="feedback-view-link feedback-view-link-disabled" disabled>View
+      Details</button>
+  </div>
+</article>
+
+ 
+        <div id="feedback-no-results" class="no-results-row" style="display: none;">
+          <p>No feedback found for this filter.</p>
+        </div>
+      </div>
+ 
+      <div class="table-pagination">
+        <p class="pagination-info">Showing 1-6 of 24</p>
+ 
+        <div class="pagination-controls">
+          <button type="button" class="pagination-btn" id="feedback-pagination-prev" aria-label="Previous page"
+            disabled>
+            <img src="assets/icons/chevron-left.svg" alt="">
+          </button>
+          <button type="button" class="pagination-btn" id="feedback-pagination-next" aria-label="Next page">
+            <img src="assets/icons/chevron-right.svg" alt="">
+          </button>
+        </div>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h4>Bahay Pare Elementary School</h4>
+        <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
+      </div>
+ 
+      <div class="footer-links">
+        <span>Contact Us</span>
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+        <span>Campus Map</span>
+      </div>
+ 
+      <div class="footer-social">
+        <span aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </footer>
+ 
+  <script src="script.js"></script>
+</body>
+ 
+</html>
+ 

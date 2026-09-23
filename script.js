@@ -121,6 +121,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  const parentCard = document.getElementById('parent-role-card');
+  if (parentCard) {
+    parentCard.addEventListener('click', function (event) {
+      event.preventDefault();
+      const savedEmail = (sessionStorage.getItem('bpesEmail') || '').trim().toLowerCase();
+
+      if (savedEmail === AUTHORIZED_STAFF_EMAIL) {
+        window.location.href = 'invalid-email.html';
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+  }
 });
 
 // Feedback submit (frontend-only fake success)
@@ -311,6 +325,131 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Status + Date + Document filter + search (Release & Completed page)
+document.addEventListener('DOMContentLoaded', function () {
+  const filterOptions = document.querySelectorAll('#release-status-filter-panel .status-filter-option');
+  const filterLabel = document.getElementById('release-status-filter-label');
+  const filterPanel = document.getElementById('release-status-filter-panel');
+  const searchInput = document.getElementById('release-search-input');
+  const tableRows = document.querySelectorAll('#release-requests-table tbody tr[data-status]');
+  const noResultsRow = document.getElementById('release-no-results-row');
+
+  if (!tableRows.length) return;
+
+  // Advanced filter panel pieces
+  const advPanel = document.getElementById('release-adv-filter-panel');
+  const advPills = advPanel ? advPanel.querySelectorAll('.adv-filter-pill') : [];
+  const dateField = document.getElementById('release-adv-date-field');
+  const documentField = document.getElementById('release-adv-document-field');
+  const dateInput = document.getElementById('release-adv-date-input');
+  const documentSelect = document.getElementById('release-adv-document-select');
+  const clearBtn = document.getElementById('release-adv-filter-clear');
+
+  let currentStatus = 'all';
+
+  function applyFilters() {
+    const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    const selectedDate = dateInput ? dateInput.value : '';
+    const selectedDocument = documentSelect ? documentSelect.value : '';
+    let visibleCount = 0;
+
+    tableRows.forEach(function (row) {
+      const statusMatch = currentStatus === 'all' || row.getAttribute('data-status') === currentStatus;
+      const dateMatch = selectedDate === '' || row.getAttribute('data-date') === selectedDate;
+      const documentMatch = selectedDocument === '' || row.getAttribute('data-document') === selectedDocument;
+
+      const reqNoCell = row.querySelector('.req-no');
+      const reqNo = reqNoCell ? reqNoCell.textContent.trim().toLowerCase() : '';
+
+      const cells = row.querySelectorAll('td');
+      const nameCell = cells[1] ? cells[1].textContent.trim().toLowerCase() : '';
+
+      const searchMatch = searchTerm === '' || reqNo.includes(searchTerm) || nameCell.includes(searchTerm);
+
+      const isMatch = statusMatch && dateMatch && documentMatch && searchMatch;
+      row.style.display = isMatch ? '' : 'none';
+      if (isMatch) visibleCount++;
+    });
+
+    if (noResultsRow) {
+      noResultsRow.style.display = visibleCount === 0 ? '' : 'none';
+    }
+  }
+
+  // "All Statuses" dropdown (unchanged behavior)
+  filterOptions.forEach(function (option) {
+    option.addEventListener('click', function () {
+      currentStatus = option.getAttribute('data-status');
+
+      if (filterLabel) filterLabel.textContent = option.textContent.trim();
+
+      filterOptions.forEach(function (opt) {
+        opt.classList.remove('active');
+      });
+      option.classList.add('active');
+
+      if (filterPanel) filterPanel.classList.remove('show');
+
+      applyFilters();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+  }
+
+  // Advanced filter pills: "Status" opens the existing dropdown, others reveal a field
+  advPills.forEach(function (pill) {
+    pill.addEventListener('click', function (event) {
+      event.stopPropagation();
+      const type = pill.getAttribute('data-filter');
+
+      if (type === 'status') {
+        if (advPanel) advPanel.classList.remove('show');
+        if (filterPanel) filterPanel.classList.add('show');
+        return;
+      }
+
+      if (type === 'date' && dateField) {
+        dateField.hidden = !dateField.hidden;
+        if (documentField) documentField.hidden = true;
+      }
+
+      if (type === 'document' && documentField) {
+        documentField.hidden = !documentField.hidden;
+        if (dateField) dateField.hidden = true;
+      }
+    });
+  });
+
+  if (dateInput) {
+    dateInput.addEventListener('change', applyFilters);
+  }
+
+  if (documentSelect) {
+    documentSelect.addEventListener('change', applyFilters);
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function () {
+      currentStatus = 'all';
+      if (searchInput) searchInput.value = '';
+      if (dateInput) dateInput.value = '';
+      if (documentSelect) documentSelect.value = '';
+      if (filterLabel) filterLabel.textContent = 'All Statuses';
+
+      filterOptions.forEach(function (opt) {
+        opt.classList.remove('active');
+      });
+
+      if (dateField) dateField.hidden = true;
+      if (documentField) documentField.hidden = true;
+
+      applyFilters();
+    });
+  }
+});
+
 // Status & Timeline progression (Request Details page)
 document.addEventListener('DOMContentLoaded', function () {
   const steps = document.querySelectorAll('.status-timeline .timeline-step');
@@ -394,6 +533,125 @@ document.addEventListener('DOMContentLoaded', function () {
     readyBtn.addEventListener('click', function () {
       setActiveStep(stepLabels.indexOf('Ready for Release'));
     });
+  }
+});
+ 
+// Feedback Management page: rating filter + sort + search
+document.addEventListener('DOMContentLoaded', function () {
+  const feedbackList = document.querySelector('.feedback-list');
+  const feedbackItems = Array.from(document.querySelectorAll('.feedback-item'));
+  const noResults = document.getElementById('feedback-no-results');
+  const searchInput = document.getElementById('feedback-search-input');
+ 
+  if (!feedbackItems.length) return;
+ 
+  const ratingOptions = document.querySelectorAll('#feedback-rating-filter-panel .status-filter-option');
+  const ratingLabel = document.getElementById('feedback-rating-filter-label');
+  const ratingPanel = document.getElementById('feedback-rating-filter-panel');
+ 
+  const sortOptions = document.querySelectorAll('#feedback-sort-panel .status-filter-option');
+  const sortLabel = document.getElementById('feedback-sort-label');
+  const sortPanel = document.getElementById('feedback-sort-panel');
+ 
+  let currentRating = 'all';
+  let currentSort = 'newest';
+ 
+  function applyFiltersAndSort() {
+    const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    let visibleCount = 0;
+ 
+    // Filter — hides items that don't match the rating tier or search term
+    feedbackItems.forEach(function (item) {
+      const ratingMatch = currentRating === 'all' || item.getAttribute('data-rating') === currentRating;
+ 
+      const nameEl = item.querySelector('.feedback-name');
+      const quoteEl = item.querySelector('.feedback-quote');
+      const name = nameEl ? nameEl.textContent.trim().toLowerCase() : '';
+      const quote = quoteEl ? quoteEl.textContent.trim().toLowerCase() : '';
+      const pills = Array.from(item.querySelectorAll('.feedback-pill'))
+        .map(function (pill) { return pill.textContent.trim().toLowerCase(); })
+        .join(' ');
+ 
+      const searchMatch = searchTerm === '' ||
+        name.includes(searchTerm) ||
+        quote.includes(searchTerm) ||
+        pills.includes(searchTerm);
+ 
+      const isMatch = ratingMatch && searchMatch;
+      item.style.display = isMatch ? '' : 'none';
+      if (isMatch) visibleCount++;
+    });
+ 
+    // Sort — reorders every item (visible or hidden) so filters + sort combine correctly
+    const sorted = feedbackItems.slice().sort(function (a, b) {
+      const dateA = a.getAttribute('data-date');
+      const dateB = b.getAttribute('data-date');
+      const starsA = parseInt(a.getAttribute('data-stars'), 10);
+      const starsB = parseInt(b.getAttribute('data-stars'), 10);
+ 
+      switch (currentSort) {
+        case 'oldest':
+          return dateA < dateB ? -1 : dateA > dateB ? 1 : 0;
+        case 'highest':
+          return starsB - starsA;
+        case 'lowest':
+          return starsA - starsB;
+        case 'newest':
+        default:
+          return dateA < dateB ? 1 : dateA > dateB ? -1 : 0;
+      }
+    });
+ 
+    sorted.forEach(function (item) {
+      feedbackList.appendChild(item);
+    });
+ 
+    // Keep the "no results" message
+    if (noResults) {
+      feedbackList.appendChild(noResults);
+      noResults.style.display = visibleCount === 0 ? '' : 'none';
+    }
+  }
+ 
+  // Rating filter dropdown
+  ratingOptions.forEach(function (option) {
+    option.addEventListener('click', function () {
+      currentRating = option.getAttribute('data-rating');
+ 
+      if (ratingLabel) ratingLabel.textContent = option.textContent.trim();
+ 
+      ratingOptions.forEach(function (opt) {
+        opt.classList.remove('active');
+      });
+      option.classList.add('active');
+ 
+      if (ratingPanel) ratingPanel.classList.remove('show');
+ 
+      applyFiltersAndSort();
+    });
+  });
+ 
+  // Sort dropdown
+  sortOptions.forEach(function (option) {
+    option.addEventListener('click', function () {
+      currentSort = option.getAttribute('data-sort');
+ 
+      if (sortLabel) sortLabel.textContent = option.textContent.trim();
+ 
+      sortOptions.forEach(function (opt) {
+        opt.classList.remove('active');
+      });
+      option.classList.add('active');
+ 
+      if (sortPanel) sortPanel.classList.remove('show');
+ 
+      applyFiltersAndSort();
+    });
+  });
+ 
+  // Search by name, request number/document tag, or quote text
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFiltersAndSort);
   }
 });
  

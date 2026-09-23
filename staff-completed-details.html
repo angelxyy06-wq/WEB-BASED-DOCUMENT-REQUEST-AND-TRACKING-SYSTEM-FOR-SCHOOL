@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Request Details - BPES Document Request and Tracking System</title>
+  <title>Completed Request Details - BPES Document Request and Tracking System</title>
  
   <!-- Bootstrap CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -115,35 +115,24 @@
  
   <main class="staff-main">
  
-    <!-- Back to Requests -->
+    <!-- Back to Release & Completed -->
     <div class="back-to-requests-row">
-      <a href="staff-requests.html" class="back-to-requests-link">
-        <img src="assets/icons/blue-arrow-left.svg" alt="">
-        Back to Requests
+      <a href="staff-release-completed.html" class="back-to-requests-link">
+        <img src="assets/icons/arrow-left.svg" alt="">
+        Back to Release &amp; Completed Requests
       </a>
     </div>
  
-    <!-- Page Heading + Actions -->
+    <!-- Page Heading -->
     <section class="details-page-header">
       <div class="details-page-heading-text">
-        <h1 class="page-title">Request Details</h1>
-        <p class="page-subtitle">Reviewing document request REQ-2024-089</p>
-      </div>
- 
-      <div class="details-header-actions">
-        <a href="staff-requests.html" class="reject-btn">
-          <img src="assets/icons/x-red.svg" alt="">
-          Reject Request
-        </a>
-        <button type="button" class="approve-btn">
-          <img src="assets/icons/check-white.svg" alt="">
-          Approve Request
-        </button>
+        <h1 class="page-title">Completed Request Details</h1>
+        <p class="page-subtitle">Reviewing completed document request REQ-2024-089</p>
       </div>
     </section>
  
     <!-- Two Column Layout -->
-    <div class="details-layout">
+    <div class="details-layout details-layout-readonly">
  
       <!-- Main Column -->
       <div class="details-main-col">
@@ -235,12 +224,10 @@
  
           <div class="current-status-box">
             <p class="current-status-label">Current Status</p>
-            <span class="current-status-badge">
-              <img src="assets/icons/progress.svg" alt="">
-              IN PROGRESS
-            </span>
+            <span class="current-status-badge">Completed</span>
           </div>
  
+          <!-- All steps are done -->
           <ol class="status-timeline">
             <li class="timeline-step timeline-step-done">
               <span class="timeline-step-icon"><img src="assets/icons/check.svg" alt=""></span>
@@ -256,37 +243,26 @@
                 <p class="timeline-step-time">Oct 24, 10:15 AM</p>
               </div>
             </li>
-            <li class="timeline-step timeline-step-active">
-              <span class="timeline-step-icon"></span>
+            <li class="timeline-step timeline-step-done">
+              <span class="timeline-step-icon"><img src="assets/icons/check.svg" alt=""></span>
               <div class="timeline-step-text">
                 <p class="timeline-step-title">Processing</p>
                 <p class="timeline-step-time">Active Step</p>
               </div>
             </li>
-            <li class="timeline-step timeline-step-pending">
-              <span class="timeline-step-icon"></span>
+            <li class="timeline-step timeline-step-done">
+              <span class="timeline-step-icon"><img src="assets/icons/check.svg" alt=""></span>
               <div class="timeline-step-text">
                 <p class="timeline-step-title">Ready for Release</p>
               </div>
             </li>
-            <li class="timeline-step timeline-step-pending">
-              <span class="timeline-step-icon"></span>
+            <li class="timeline-step timeline-step-done">
+              <span class="timeline-step-icon"><img src="assets/icons/check.svg" alt=""></span>
               <div class="timeline-step-text">
                 <p class="timeline-step-title">Completed</p>
               </div>
             </li>
           </ol>
- 
-          <div class="timeline-actions">
-            <button type="button" class="timeline-action-btn" id="mark-processing-btn">
-              <img src="assets/icons/settings-black.svg" alt="">
-              Mark as Processing
-            </button>
-            <button type="button" class="timeline-action-btn" id="mark-ready-btn">
-              <img src="assets/icons/download.svg" alt="">
-              Mark as Ready for Release
-            </button>
-          </div>
         </div>
       </aside>
  
