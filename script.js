@@ -88,8 +88,46 @@ document.addEventListener('DOMContentLoaded', function () {
   if (loginBtn) {
     loginBtn.addEventListener('click', function (event) {
       event.preventDefault();
+
       const emailField = document.getElementById('login-id');
+      const passwordField = document.getElementById('login-password');
+      const emailError = document.getElementById('login-id-error');
+      const passwordError = document.getElementById('login-password-error');
+
       const enteredEmail = emailField ? emailField.value.trim() : '';
+      const enteredPassword = passwordField ? passwordField.value.trim() : '';
+
+      let hasError = false;
+
+      if (!enteredEmail) {
+        if (emailError) {
+          emailError.textContent = 'Please enter your Email or LRN.';
+          emailError.style.display = 'block';
+        }
+        hasError = true;
+      } else if (
+        enteredEmail.toLowerCase().includes('staff') &&
+        enteredEmail.toLowerCase() !== AUTHORIZED_STAFF_EMAIL
+      ) {
+
+        if (emailError) {
+          emailError.textContent = 'Wrong email. Please check your email and try again.';
+          emailError.style.display = 'block';
+        }
+        hasError = true;
+      } else {
+        if (emailError) emailError.style.display = 'none';
+      }
+
+      if (!enteredPassword) {
+        if (passwordError) passwordError.style.display = 'block';
+        hasError = true;
+      } else {
+        if (passwordError) passwordError.style.display = 'none';
+      }
+
+      if (hasError) return;
+
       sessionStorage.setItem('bpesEmail', enteredEmail);
       window.location.href = 'user-role.html';
     });
@@ -100,8 +138,63 @@ document.addEventListener('DOMContentLoaded', function () {
   if (signupBtn) {
     signupBtn.addEventListener('click', function (event) {
       event.preventDefault();
+      const nameField = document.getElementById('signup-name');
       const emailField = document.getElementById('signup-email');
+      const lrnField = document.getElementById('signup-lrn');
+      const passwordField = document.getElementById('signup-password');
+      const confirmField = document.getElementById('signup-confirm-password');
+
+      const nameError = document.getElementById('signup-name-error');
+      const emailError = document.getElementById('signup-email-error');
+      const lrnError = document.getElementById('signup-lrn-error');
+      const passwordError = document.getElementById('signup-password-error');
+      const confirmError = document.getElementById('signup-confirm-password-error');
+
+      const enteredName = nameField ? nameField.value.trim() : '';
       const enteredEmail = emailField ? emailField.value.trim() : '';
+      const enteredLrn = lrnField ? lrnField.value.trim() : '';
+      const enteredPassword = passwordField ? passwordField.value.trim() : '';
+      const enteredConfirm = confirmField ? confirmField.value.trim() : '';
+
+      let hasError = false;
+
+      if (!enteredName) {
+        if (nameError) nameError.style.display = 'block';
+        hasError = true;
+      } else if (nameError) {
+        nameError.style.display = 'none';
+      }
+
+      if (!enteredEmail) {
+        if (emailError) emailError.style.display = 'block';
+        hasError = true;
+      } else if (emailError) {
+        emailError.style.display = 'none';
+      }
+
+      if (!enteredLrn) {
+        if (lrnError) lrnError.style.display = 'block';
+        hasError = true;
+      } else if (lrnError) {
+        lrnError.style.display = 'none';
+      }
+
+      if (!enteredPassword) {
+        if (passwordError) passwordError.style.display = 'block';
+        hasError = true;
+      } else if (passwordError) {
+        passwordError.style.display = 'none';
+      }
+
+      if (!enteredConfirm || enteredConfirm !== enteredPassword) {
+        if (confirmError) confirmError.style.display = 'block';
+        hasError = true;
+      } else if (confirmError) {
+        confirmError.style.display = 'none';
+      }
+
+      if (hasError) return;
+
       sessionStorage.setItem('bpesEmail', enteredEmail);
       window.location.href = 'user-role.html';
     });
@@ -137,21 +230,203 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Request Document Form validation
+document.addEventListener('DOMContentLoaded', function () {
+  const submitBtn = document.getElementById('request-submit-btn');
+  if (!submitBtn) return;
+
+  const requiredFields = [
+    { id: 'requester-name', errorId: 'requester-name-error' },
+    { id: 'student-name', errorId: 'student-name-error' },
+    { id: 'contact-number', errorId: 'contact-number-error' },
+    { id: 'email-address', errorId: 'email-address-error' },
+    { id: 'year-level', errorId: 'year-level-error' },
+    { id: 'lrn', errorId: 'lrn-error' },
+    { id: 'number-copies', errorId: 'number-copies-error' }
+  ];
+
+  submitBtn.addEventListener('click', function (event) {
+    let hasError = false;
+
+    requiredFields.forEach(function (field) {
+      const input = document.getElementById(field.id);
+      const errorText = document.getElementById(field.errorId);
+      const value = input ? input.value.trim() : '';
+
+      if (!value) {
+        if (errorText) errorText.style.display = 'block';
+        hasError = true;
+      } else if (errorText) {
+        errorText.style.display = 'none';
+      }
+    });
+
+    const certifyCheckbox = document.getElementById('certify-info');
+    const certifyError = document.getElementById('certify-info-error');
+    if (certifyCheckbox && !certifyCheckbox.checked) {
+      if (certifyError) certifyError.style.display = 'block';
+      hasError = true;
+    } else if (certifyError) {
+      certifyError.style.display = 'none';
+    }
+
+    if (hasError) {
+      event.preventDefault();
+    }
+  });
+});
+
+// Restrict Contact Number, LRN, and Number of Copies to digits only
+document.addEventListener('DOMContentLoaded', function () {
+  const contactField = document.getElementById('contact-number');
+  const lrnField = document.getElementById('lrn');
+  const copiesField = document.getElementById('number-copies');
+
+  // Contact Number: allow digits and a leading "+" only
+  if (contactField) {
+    contactField.addEventListener('input', function () {
+      let value = contactField.value;
+      const hasPlus = value.startsWith('+');
+      value = value.replace(/[^0-9]/g, '');
+      contactField.value = hasPlus ? '+' + value : value;
+    });
+  }
+
+  // LRN: digits only
+  if (lrnField) {
+    lrnField.addEventListener('input', function () {
+      lrnField.value = lrnField.value.replace(/[^0-9]/g, '');
+    });
+  }
+
+  // Number of Copies: digits only
+  if (copiesField) {
+    copiesField.addEventListener('input', function () {
+      copiesField.value = copiesField.value.replace(/[^0-9]/g, '');
+    });
+  }
+});
+
+// Track Request page validation
+document.addEventListener('DOMContentLoaded', function () {
+  const trackBtn = document.getElementById('track-request-submit-btn');
+  if (!trackBtn) return;
+
+  const VALID_TRACKING_NUMBER = 'REQ-2024-0892';
+
+  const trackingInput = document.getElementById('tracking-number');
+  const trackingError = document.getElementById('tracking-number-error');
+
+  trackBtn.addEventListener('click', function (event) {
+    const value = trackingInput ? trackingInput.value.trim() : '';
+
+    if (!value) {
+      if (trackingError) {
+        trackingError.textContent = 'Please enter a tracking number.';
+        trackingError.style.display = 'block';
+      }
+      event.preventDefault();
+      return;
+    }
+
+    if (value.toUpperCase() !== VALID_TRACKING_NUMBER) {
+      if (trackingError) {
+        trackingError.textContent = 'Your input is invalid.';
+        trackingError.style.display = 'block';
+      }
+      event.preventDefault();
+      return;
+    }
+
+    if (trackingError) trackingError.style.display = 'none';
+  });
+});
+
+// Track Your Application (Request page CTA (Call to Action)) validation
+document.addEventListener('DOMContentLoaded', function () {
+  const trackNowBtn = document.getElementById('track-now-btn');
+  if (!trackNowBtn) return;
+
+  const VALID_TRACKING_NUMBER = 'REQ-2024-0892';
+
+  const refInput = document.getElementById('track-ref');
+  const refError = document.getElementById('track-ref-error');
+
+  trackNowBtn.addEventListener('click', function (event) {
+    const value = refInput ? refInput.value.trim() : '';
+
+    if (!value) {
+      if (refError) {
+        refError.textContent = 'Please enter a reference number.';
+        refError.style.display = 'block';
+      }
+      event.preventDefault();
+      return;
+    }
+
+    if (value.toUpperCase() !== VALID_TRACKING_NUMBER) {
+      if (refError) {
+        refError.textContent = 'Your input is invalid.';
+        refError.style.display = 'block';
+      }
+      event.preventDefault();
+      return;
+    }
+
+    if (refError) refError.style.display = 'none';
+  });
+});
+
 // Feedback submit (frontend-only fake success)
 document.addEventListener('DOMContentLoaded', function () {
-  const submitBtn = document.querySelector('.feedback-submit-btn');
+  const submitBtn = document.getElementById('feedback-submit-btn');
   const toast = document.getElementById('feedback-toast');
   if (!submitBtn || !toast) return;
 
   const starRow = document.querySelector('.feedback-star-row');
   const stars = starRow ? Array.from(starRow.querySelectorAll('.feedback-star')) : [];
+  const ratingError = document.getElementById('feedback-rating-error');
+
   const categorySelect = document.getElementById('feedback-category');
+  const categoryError = document.getElementById('feedback-category-error');
+
   const detailTextarea = document.getElementById('feedback-detail');
+  const detailError = document.getElementById('feedback-detail-error');
+
   const anonymousToggle = document.querySelector('.feedback-anonymous-row input[type="checkbox"]');
 
   let toastTimeout;
 
   submitBtn.addEventListener('click', function () {
+    let hasError = false;
+
+    // Star rating check
+    const currentRating = starRow ? starRow.getAttribute('data-rating') : null;
+    if (!currentRating) {
+      if (ratingError) ratingError.style.display = 'block';
+      hasError = true;
+    } else if (ratingError) {
+      ratingError.style.display = 'none';
+    }
+
+    // Category check
+    if (!categorySelect || !categorySelect.value) {
+      if (categoryError) categoryError.style.display = 'block';
+      hasError = true;
+    } else if (categoryError) {
+      categoryError.style.display = 'none';
+    }
+
+    // Detailed feedback check
+    if (!detailTextarea || !detailTextarea.value.trim()) {
+      if (detailError) detailError.style.display = 'block';
+      hasError = true;
+    } else if (detailError) {
+      detailError.style.display = 'none';
+    }
+
+    if (hasError) return;
+
     toast.classList.add('show');
 
     clearTimeout(toastTimeout);
@@ -456,13 +731,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const processingBtn = document.getElementById('mark-processing-btn');
   const readyBtn = document.getElementById('mark-ready-btn');
   const statusBadge = document.querySelector('.current-status-badge');
- 
+
   if (!steps.length) return;
- 
+
   const stepLabels = Array.from(steps).map(function (step) {
     return step.querySelector('.timeline-step-title').textContent.trim();
   });
- 
+
   function getCurrentIndex() {
     let activeIndex = 0;
     steps.forEach(function (step, index) {
@@ -470,40 +745,40 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     return activeIndex;
   }
- 
+
   function formatNow() {
     const now = new Date();
     const datePart = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     const timePart = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
     return datePart + ', ' + timePart;
   }
- 
+
   function setActiveStep(targetIndex) {
     const currentIndex = getCurrentIndex();
- 
+
     // Only allow moving forward, never back to an earlier step
     if (targetIndex <= currentIndex) return;
- 
+
     steps.forEach(function (step, index) {
       const icon = step.querySelector('.timeline-step-icon');
       const timeEl = step.querySelector('.timeline-step-time');
- 
+
       step.classList.remove('timeline-step-done', 'timeline-step-active', 'timeline-step-pending');
- 
+
       if (index < targetIndex) {
         step.classList.add('timeline-step-done');
- 
+
         if (!icon.querySelector('img')) {
           icon.innerHTML = '<img src="assets/icons/check.svg" alt="">';
         }
- 
+
         if (timeEl && (timeEl.textContent.trim() === 'Active Step' || timeEl.textContent.trim() === '')) {
           timeEl.textContent = formatNow();
         }
       } else if (index === targetIndex) {
         step.classList.add('timeline-step-active');
         icon.innerHTML = '';
- 
+
         if (timeEl) {
           timeEl.textContent = 'Active Step';
         } else {
@@ -517,53 +792,190 @@ document.addEventListener('DOMContentLoaded', function () {
         icon.innerHTML = '';
       }
     });
- 
+
     if (statusBadge) {
       statusBadge.lastChild.textContent = ' ' + stepLabels[targetIndex];
     }
   }
- 
+
+  // Approve marks "Under Review" as done, no step is active yet
+  function markApproved() {
+    const reviewIndex = stepLabels.indexOf('Under Review');
+
+    steps.forEach(function (step, index) {
+      const icon = step.querySelector('.timeline-step-icon');
+      const timeEl = step.querySelector('.timeline-step-time');
+
+      step.classList.remove('timeline-step-done', 'timeline-step-active', 'timeline-step-pending');
+
+      if (index <= reviewIndex) {
+        step.classList.add('timeline-step-done');
+
+        if (!icon.querySelector('img')) {
+          icon.innerHTML = '<img src="assets/icons/check.svg" alt="">';
+        }
+
+        if (timeEl && (timeEl.textContent.trim() === 'Active Step' || timeEl.textContent.trim() === '')) {
+          timeEl.textContent = formatNow();
+        }
+      } else {
+        step.classList.add('timeline-step-pending');
+        icon.innerHTML = '';
+      }
+    });
+
+    if (statusBadge) {
+      statusBadge.lastChild.textContent = ' Approved';
+    }
+  }
+
+  // Approve Request with confirmation popup
+  const approveBtn = document.getElementById('approve-btn');
+  const modal = document.getElementById('approve-modal');
+  const confirmBtn = document.getElementById('approve-confirm-btn');
+  const cancelBtn = document.getElementById('approve-cancel-btn');
+  const toast = document.getElementById('approve-toast');
+
+  if (approveBtn && modal) {
+    approveBtn.addEventListener('click', function () {
+      modal.hidden = false;
+    });
+
+    cancelBtn.addEventListener('click', function () {
+      modal.hidden = true;
+    });
+
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) modal.hidden = true;
+    });
+
+    confirmBtn.addEventListener('click', function () {
+      modal.hidden = true;
+
+      markApproved();
+
+      // Decision is made, so replace Reject/Approve with a label
+      const actions = document.querySelector('.details-header-actions');
+      if (actions) {
+        actions.innerHTML = '<span class="approved-label">Approved</span>';
+      }
+
+      // Next step is Processing
+      if (processingBtn) processingBtn.disabled = false;
+
+      if (toast) {
+        toast.classList.add('show');
+        setTimeout(function () {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+    });
+  }
+
+    // Reject Request: confirmation popup with a required reason
+  const rejectBtn = document.getElementById('reject-btn');
+  const rejectModal = document.getElementById('reject-modal');
+  const rejectConfirmBtn = document.getElementById('reject-confirm-btn');
+  const rejectCancelBtn = document.getElementById('reject-cancel-btn');
+  const rejectReasonSelect = document.getElementById('reject-reason');
+  const rejectReasonError = document.getElementById('reject-reason-error');
+  const rejectToast = document.getElementById('reject-toast');
+
+  if (rejectBtn && rejectModal) {
+    rejectBtn.addEventListener('click', function () {
+      rejectModal.hidden = false;
+    });
+
+    rejectCancelBtn.addEventListener('click', function () {
+      rejectModal.hidden = true;
+    });
+
+    rejectModal.addEventListener('click', function (event) {
+      if (event.target === rejectModal) rejectModal.hidden = true;
+    });
+
+    rejectConfirmBtn.addEventListener('click', function () {
+      if (!rejectReasonSelect.value) {
+        rejectReasonError.style.display = 'block';
+        return;
+      }
+      rejectReasonError.style.display = 'none';
+      rejectModal.hidden = true;
+
+      // Gray out the whole timeline to show the request is closed
+      steps.forEach(function (step) {
+        step.classList.remove('timeline-step-done', 'timeline-step-active');
+        step.classList.add('timeline-step-pending');
+        step.querySelector('.timeline-step-icon').innerHTML = '';
+      });
+
+      if (statusBadge) {
+        statusBadge.lastChild.textContent = ' Rejected';
+      }
+
+      const actions = document.querySelector('.details-header-actions');
+      if (actions) {
+        actions.innerHTML = '<span class="rejected-label">Rejected</span>';
+      }
+
+      if (processingBtn) processingBtn.disabled = true;
+      if (readyBtn) readyBtn.disabled = true;
+
+      if (rejectToast) {
+        rejectToast.classList.add('show');
+        setTimeout(function () {
+          rejectToast.classList.remove('show');
+        }, 3000);
+      }
+    });
+  }
+
+  // Mark as Processing (enables the Ready button)
   if (processingBtn) {
     processingBtn.addEventListener('click', function () {
       setActiveStep(stepLabels.indexOf('Processing'));
+      processingBtn.disabled = true;
+      if (readyBtn) readyBtn.disabled = false;
     });
   }
- 
+
+  // Mark as Ready for Release (disables itself after use)
   if (readyBtn) {
     readyBtn.addEventListener('click', function () {
       setActiveStep(stepLabels.indexOf('Ready for Release'));
+      readyBtn.disabled = true;
     });
   }
 });
- 
+
 // Feedback Management page: rating filter + sort + search
 document.addEventListener('DOMContentLoaded', function () {
   const feedbackList = document.querySelector('.feedback-list');
   const feedbackItems = Array.from(document.querySelectorAll('.feedback-item'));
   const noResults = document.getElementById('feedback-no-results');
   const searchInput = document.getElementById('feedback-search-input');
- 
+
   if (!feedbackItems.length) return;
- 
+
   const ratingOptions = document.querySelectorAll('#feedback-rating-filter-panel .status-filter-option');
   const ratingLabel = document.getElementById('feedback-rating-filter-label');
   const ratingPanel = document.getElementById('feedback-rating-filter-panel');
- 
+
   const sortOptions = document.querySelectorAll('#feedback-sort-panel .status-filter-option');
   const sortLabel = document.getElementById('feedback-sort-label');
   const sortPanel = document.getElementById('feedback-sort-panel');
- 
+
   let currentRating = 'all';
   let currentSort = 'newest';
- 
+
   function applyFiltersAndSort() {
     const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
     let visibleCount = 0;
- 
+
     // Filter — hides items that don't match the rating tier or search term
     feedbackItems.forEach(function (item) {
       const ratingMatch = currentRating === 'all' || item.getAttribute('data-rating') === currentRating;
- 
+
       const nameEl = item.querySelector('.feedback-name');
       const quoteEl = item.querySelector('.feedback-quote');
       const name = nameEl ? nameEl.textContent.trim().toLowerCase() : '';
@@ -571,24 +983,24 @@ document.addEventListener('DOMContentLoaded', function () {
       const pills = Array.from(item.querySelectorAll('.feedback-pill'))
         .map(function (pill) { return pill.textContent.trim().toLowerCase(); })
         .join(' ');
- 
+
       const searchMatch = searchTerm === '' ||
         name.includes(searchTerm) ||
         quote.includes(searchTerm) ||
         pills.includes(searchTerm);
- 
+
       const isMatch = ratingMatch && searchMatch;
       item.style.display = isMatch ? '' : 'none';
       if (isMatch) visibleCount++;
     });
- 
+
     // Sort — reorders every item (visible or hidden) so filters + sort combine correctly
     const sorted = feedbackItems.slice().sort(function (a, b) {
       const dateA = a.getAttribute('data-date');
       const dateB = b.getAttribute('data-date');
       const starsA = parseInt(a.getAttribute('data-stars'), 10);
       const starsB = parseInt(b.getAttribute('data-stars'), 10);
- 
+
       switch (currentSort) {
         case 'oldest':
           return dateA < dateB ? -1 : dateA > dateB ? 1 : 0;
@@ -601,57 +1013,56 @@ document.addEventListener('DOMContentLoaded', function () {
           return dateA < dateB ? 1 : dateA > dateB ? -1 : 0;
       }
     });
- 
+
     sorted.forEach(function (item) {
       feedbackList.appendChild(item);
     });
- 
+
     // Keep the "no results" message
     if (noResults) {
       feedbackList.appendChild(noResults);
       noResults.style.display = visibleCount === 0 ? '' : 'none';
     }
   }
- 
+
   // Rating filter dropdown
   ratingOptions.forEach(function (option) {
     option.addEventListener('click', function () {
       currentRating = option.getAttribute('data-rating');
- 
+
       if (ratingLabel) ratingLabel.textContent = option.textContent.trim();
- 
+
       ratingOptions.forEach(function (opt) {
         opt.classList.remove('active');
       });
       option.classList.add('active');
- 
+
       if (ratingPanel) ratingPanel.classList.remove('show');
- 
+
       applyFiltersAndSort();
     });
   });
- 
+
   // Sort dropdown
   sortOptions.forEach(function (option) {
     option.addEventListener('click', function () {
       currentSort = option.getAttribute('data-sort');
- 
+
       if (sortLabel) sortLabel.textContent = option.textContent.trim();
- 
+
       sortOptions.forEach(function (opt) {
         opt.classList.remove('active');
       });
       option.classList.add('active');
- 
+
       if (sortPanel) sortPanel.classList.remove('show');
- 
+
       applyFiltersAndSort();
     });
   });
- 
+
   // Search by name, request number/document tag, or quote text
   if (searchInput) {
     searchInput.addEventListener('input', applyFiltersAndSort);
   }
 });
- 

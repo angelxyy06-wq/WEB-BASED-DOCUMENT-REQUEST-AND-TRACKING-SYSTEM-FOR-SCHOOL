@@ -134,35 +134,48 @@
                 <label for="requester-name" class="form-field-label">Requester's Full Name</label>
                 <input type="text" id="requester-name" name="requester-name" class="form-field-input"
                   placeholder="Enter your full name">
+                <p id="requester-name-error" class="form-error-text" style="display:none;">Please enter the requester's
+                  full name.</p>
+
               </div>
+
 
               <div class="col-12 col-md-6">
                 <label for="student-name" class="form-field-label">Student's Full Name</label>
                 <input type="text" id="student-name" name="student-name" class="form-field-input"
                   placeholder="Enter student's name">
+                <p id="student-name-error" class="form-error-text" style="display:none;">Please enter the student's
+                  full name.</p>
               </div>
 
               <div class="col-12 col-md-6">
                 <label for="contact-number" class="form-field-label">Contact Number</label>
                 <input type="text" id="contact-number" name="contact-number" class="form-field-input"
-                  placeholder="+63 000 000 0000">
+                  placeholder="+63 000 000 0000" inputmode="tel">
+                <p id="contact-number-error" class="form-error-text" style="display:none;">Please enter a contact
+                  number.</p>
               </div>
 
               <div class="col-12 col-md-6">
                 <label for="email-address" class="form-field-label">Email Address</label>
                 <input type="text" id="email-address" name="email-address" class="form-field-input"
                   placeholder="example@email.com">
+                <p id="email-address-error" class="form-error-text" style="display:none;">Please enter an email
+                  address.</p>
               </div>
 
               <div class="col-12 col-md-6">
                 <label for="year-level" class="form-field-label">Student's Year Level</label>
                 <input type="text" id="year-level" name="year-level" class="form-field-input"
                   placeholder="Enter student's year level">
+                <p id="year-level-error" class="form-error-text" style="display:none;">Please enter the student's year
+                  level.</p>
               </div>
 
               <div class="col-12 col-md-6">
                 <label for="lrn" class="form-field-label">Learner Reference Number (LRN)</label>
-                <input type="text" id="lrn" name="lrn" class="form-field-input" placeholder="Enter LRN">
+                <input type="text" id="lrn" name="lrn" class="form-field-input" placeholder="Enter LRN" inputmode="numeric">
+                <p id="lrn-error" class="form-error-text" style="display:none;">Please enter the LRN.</p>
               </div>
 
               <div class="col-12 col-md-6">
@@ -174,7 +187,9 @@
               <div class="col-12 col-md-6">
                 <label for="number-copies" class="form-field-label">Number of Copies</label>
                 <input type="text" id="number-copies" name="number-copies" class="form-field-input"
-                  placeholder="Enter the number of copies needed">
+                  placeholder="Enter the number of copies needed" inputmode="numeric">
+                <p id="number-copies-error" class="form-error-text" style="display:none;">Please enter the number of
+                  copies.</p>
               </div>
 
               <div class="col-12">
@@ -201,11 +216,13 @@
                   processing will begin once the request is confirmed, and that standard school policies apply to
                   all document releases.</span>
               </label>
+              <p id="certify-info-error" class="form-error-text" style="display:none;">You must certify that the
+                information is true and correct before submitting.</p>
             </div>
 
             <div class="form-actions">
               <a href="request.html" class="form-cancel-btn">Cancel</a>
-              <a href="request-submitted.html" class="form-submit-btn">Submit Request</a>
+              <a href="request-submitted.html" id="request-submit-btn" class="form-submit-btn">Submit Request</a>
             </div>
 
           </form>
@@ -243,15 +260,15 @@
             <p>If you have questions regarding your records or have special requirements, please contact the
               Registrar's Office.</p>
             <span class="help-card-link">105929@deped.gov.ph <img src="assets/icons/arrow-right-long.svg" alt=""></span>
-             <img src="assets/icons/graduation-cap-outline.svg" alt="" class="help-card-watermark">
+            <img src="assets/icons/graduation-cap-outline.svg" alt="" class="help-card-watermark">
           </div>
 
-              <div class="location-card">
-                <img src="assets/student-photo.jpg" alt="BPES campus" class="location-card-img">
-                <div class="location-card-overlay">
-                  <span><img src="assets/icons/pin-location.svg" alt=""> BPES, Candaba, Pampanga</span>
-                </div>
-              </div>
+          <div class="location-card">
+            <img src="assets/student-photo.jpg" alt="BPES campus" class="location-card-img">
+            <div class="location-card-overlay">
+              <span><img src="assets/icons/pin-location.svg" alt=""> BPES, Candaba, Pampanga</span>
+            </div>
+          </div>
 
         </aside>
 

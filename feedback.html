@@ -118,9 +118,6 @@
     <!-- Feedback Section -->
     <section class="feedback-page">
 
-      <!-- decorative confetti -->
-      <img src="assets/icons/confetti.png" alt="" class="feedback-confetti">
-
       <div class="feedback-card">
         <h1 class="feedback-heading">Share Your Feedback</h1>
         <p class="feedback-subheading">Your input helps us improve the learning experience for everyone at
@@ -135,6 +132,7 @@
             <img src="assets/icons/star-outline.svg" alt="" class="feedback-star">
             <img src="assets/icons/star-outline.svg" alt="" class="feedback-star">
           </div>
+          <p id="feedback-rating-error" class="form-error-text" style="display:none;">Please select a star rating.</p>
         </div>
 
         <div class="feedback-field">
@@ -147,12 +145,17 @@
             <option value="staff">Registrar's Office Staff</option>
             <option value="other">Other</option>
           </select>
+          <p id="feedback-category-error" class="form-error-text" style="display:none;">Please select a feedback
+            category.</p>
         </div>
 
         <div class="feedback-field">
           <label for="feedback-detail" class="feedback-label">Your Detailed Feedback</label>
           <textarea id="feedback-detail" name="feedback-detail" class="feedback-textarea" rows="5"
             placeholder="Tell us about your experience..."></textarea>
+          <p id="feedback-detail-error" class="form-error-text" style="display:none;">Please enter your detailed
+            feedback.</p>
+
         </div>
 
         <div class="feedback-anonymous-row">
@@ -166,7 +169,7 @@
           </label>
         </div>
 
-        <button type="button" class="feedback-submit-btn">
+        <button type="button" id="feedback-submit-btn" class="feedback-submit-btn">
           Submit Feedback
           <img src="assets/icons/submit-feedback.svg" alt="">
         </button>
@@ -175,7 +178,6 @@
           <img src="assets/icons/check.svg" alt="">
           <span>Thank you for your feedback!</span>
         </div>
-      </div>
       </div>
 
     </section>

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request Details - BPES Document Request and Tracking System</title>
- 
+
   <!-- Bootstrap CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
- 
+
   <link rel="stylesheet" href="styles.css">
 </head>
- 
+
 <body>
- 
+
   <!-- Header / Navigation -->
   <header class="site-header">
     <div class="header-container">
@@ -22,7 +22,7 @@
         <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
         <span class="logo-text">BPES</span>
       </div>
- 
+
       <nav class="main-nav">
         <ul class="nav-list">
           <li><a href="staff-dashboard.html" class="nav-link">Dashboard</a></li>
@@ -31,20 +31,20 @@
           <li><a href="staff-feedback.html" class="nav-link">Feedback</a></li>
         </ul>
       </nav>
- 
+
       <div class="header-actions">
- 
+
         <div class="dropdown-wrap">
           <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
             <img src="assets/icons/bell.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel" id="notif-panel">
             <div class="dropdown-header">
               <img src="assets/icons/bell.svg" alt="">
               <span>Notifications</span>
             </div>
- 
+
             <div class="notif-item">
               <span class="notif-dot"></span>
               <div class="notif-content">
@@ -57,18 +57,18 @@
             </div>
           </div>
         </div>
- 
+
         <div class="dropdown-wrap">
           <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
             <img src="assets/icons/settings.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel" id="settings-panel">
             <div class="dropdown-header">
               <img src="assets/icons/settings.svg" alt="">
               <span>Settings</span>
             </div>
- 
+
             <div class="settings-row">
               <span>Notification</span>
               <label class="toggle-switch">
@@ -76,7 +76,7 @@
                 <span class="toggle-slider"></span>
               </label>
             </div>
- 
+
             <div class="settings-row">
               <span>Notification Sound</span>
               <label class="toggle-switch">
@@ -86,12 +86,12 @@
             </div>
           </div>
         </div>
- 
+
         <div class="dropdown-wrap">
           <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
             <img src="assets/icons/profile.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel profile-panel" id="profile-panel">
             <div class="dropdown-header">
               <span class="profile-icon-badge">
@@ -99,22 +99,22 @@
               </span>
               <span>My Profile</span>
             </div>
- 
+
             <p class="profile-name">Maricris Garcia</p>
             <div class="profile-sub-info">
               <p class="profile-email">SchoolStaff123@gmail.com</p>
               <p class="profile-lrn">Registrar</p>
             </div>
- 
+
             <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
           </div>
         </div>
       </div>
     </div>
   </header>
- 
+
   <main class="staff-main">
- 
+
     <!-- Back to Requests -->
     <div class="back-to-requests-row">
       <a href="staff-requests.html" class="back-to-requests-link">
@@ -122,38 +122,38 @@
         Back to Requests
       </a>
     </div>
- 
+
     <!-- Page Heading + Actions -->
     <section class="details-page-header">
       <div class="details-page-heading-text">
         <h1 class="page-title">Request Details</h1>
         <p class="page-subtitle">Reviewing document request REQ-2024-089</p>
       </div>
- 
+
       <div class="details-header-actions">
-        <a href="staff-requests.html" class="reject-btn">
+        <button type="button" class="reject-btn" id="reject-btn">
           <img src="assets/icons/x-red.svg" alt="">
           Reject Request
-        </a>
-        <button type="button" class="approve-btn">
+        </button>
+        <button type="button" class="approve-btn" id="approve-btn">
           <img src="assets/icons/check-white.svg" alt="">
           Approve Request
         </button>
       </div>
     </section>
- 
+
     <!-- Two Column Layout -->
     <div class="details-layout">
- 
+
       <!-- Main Column -->
       <div class="details-main-col">
- 
+
         <div class="details-card">
           <h2 class="details-card-title">
             <img src="assets/icons/document-blue.svg" alt="">
             Request Information
           </h2>
- 
+
           <div class="details-grid">
             <div class="details-field">
               <p class="details-label">Reference Number</p>
@@ -172,19 +172,19 @@
               <p class="details-value">2 copies</p>
             </div>
           </div>
- 
+
           <div class="details-purpose">
             <p class="details-label">Purpose</p>
             <p class="details-purpose-text">Enrollment</p>
           </div>
         </div>
- 
+
         <div class="details-card">
           <h2 class="details-card-title">
             <img src="assets/icons/graduation-cap-blue.svg" alt="">
             Student Information
           </h2>
- 
+
           <div class="details-grid">
             <div class="details-field">
               <p class="details-label">Student Name</p>
@@ -200,13 +200,13 @@
             </div>
           </div>
         </div>
- 
+
         <div class="details-card">
           <h2 class="details-card-title">
             <img src="assets/icons/profile-outline.svg" alt="">
             Requestor (Parent/Guardian)
           </h2>
- 
+
           <div class="details-grid">
             <div class="details-field">
               <p class="details-label">Name</p>
@@ -222,9 +222,9 @@
             </div>
           </div>
         </div>
- 
+
       </div>
- 
+
       <!-- Side Column -->
       <aside class="details-side-col">
         <div class="timeline-card-details">
@@ -232,15 +232,15 @@
             <img src="assets/icons/trend-up.svg" alt="">
             Status &amp; Timeline
           </h2>
- 
+
           <div class="current-status-box">
             <p class="current-status-label">Current Status</p>
             <span class="current-status-badge">
               <img src="assets/icons/progress.svg" alt="">
-              IN PROGRESS
+              UNDER REVIEW
             </span>
           </div>
- 
+
           <ol class="status-timeline">
             <li class="timeline-step timeline-step-done">
               <span class="timeline-step-icon"><img src="assets/icons/check.svg" alt=""></span>
@@ -249,18 +249,17 @@
                 <p class="timeline-step-time">Oct 24, 08:30 AM</p>
               </div>
             </li>
-            <li class="timeline-step timeline-step-done">
-              <span class="timeline-step-icon"><img src="assets/icons/check.svg" alt=""></span>
-              <div class="timeline-step-text">
-                <p class="timeline-step-title">Under Review</p>
-                <p class="timeline-step-time">Oct 24, 10:15 AM</p>
-              </div>
-            </li>
             <li class="timeline-step timeline-step-active">
               <span class="timeline-step-icon"></span>
               <div class="timeline-step-text">
-                <p class="timeline-step-title">Processing</p>
+                <p class="timeline-step-title">Under Review</p>
                 <p class="timeline-step-time">Active Step</p>
+              </div>
+            </li>
+            <li class="timeline-step timeline-step-pending">
+              <span class="timeline-step-icon"></span>
+              <div class="timeline-step-text">
+                <p class="timeline-step-title">Processing</p>
               </div>
             </li>
             <li class="timeline-step timeline-step-pending">
@@ -276,24 +275,24 @@
               </div>
             </li>
           </ol>
- 
+
           <div class="timeline-actions">
-            <button type="button" class="timeline-action-btn" id="mark-processing-btn">
+            <button type="button" class="timeline-action-btn" id="mark-processing-btn" disabled>
               <img src="assets/icons/settings-black.svg" alt="">
               Mark as Processing
             </button>
-            <button type="button" class="timeline-action-btn" id="mark-ready-btn">
+            <button type="button" class="timeline-action-btn" id="mark-ready-btn" disabled>
               <img src="assets/icons/download.svg" alt="">
               Mark as Ready for Release
             </button>
           </div>
         </div>
       </aside>
- 
+
     </div>
- 
+
   </main>
- 
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-container">
@@ -301,14 +300,14 @@
         <h4>Bahay Pare Elementary School</h4>
         <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
       </div>
- 
+
       <div class="footer-links">
         <span>Contact Us</span>
         <span>Privacy Policy</span>
         <span>Terms of Service</span>
         <span>Campus Map</span>
       </div>
- 
+
       <div class="footer-social">
         <span aria-label="Facebook">
           <img src="assets/icons/facebook.svg" alt="">
@@ -316,9 +315,50 @@
       </div>
     </div>
   </footer>
- 
+
+  <!-- Approve confirmation popup -->
+  <div class="modal-overlay" id="approve-modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="approve-modal-title">
+      <h3 id="approve-modal-title">Approve this request?</h3>
+      <p>REQ-2024-089 will be marked as approved and the requester will be notified.</p>
+      <div class="modal-actions">
+        <button type="button" class="form-cancel-btn" id="approve-cancel-btn">Cancel</button>
+        <button type="button" class="form-submit-btn" id="approve-confirm-btn">Approve</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-toast" id="approve-toast">Request approved. You can now start processing.</div>
+
+  <!-- Reject confirmation popup -->
+  <div class="modal-overlay" id="reject-modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="reject-modal-title">
+      <h3 id="reject-modal-title">Reject this request?</h3>
+      <p>REQ-2024-089 will be marked as rejected and the requester will be notified.</p>
+
+      <div class="adv-filter-field" style="text-align: left; margin-top: 16px;">
+        <label for="reject-reason" class="form-field-label">Reason for rejection</label>
+        <select id="reject-reason" class="form-field-select">
+          <option value="" selected disabled>Select a reason</option>
+          <option value="missing-documents">Missing documents</option>
+          <option value="incorrect-lrn">Incorrect LRN</option>
+          <option value="incomplete-info">Incomplete information</option>
+          <option value="duplicate">Duplicate request</option>
+          <option value="other">Other</option>
+        </select>
+        <p id="reject-reason-error" class="form-error-text" style="display:none;">Please select a reason.</p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="form-cancel-btn" id="reject-cancel-btn">Cancel</button>
+        <button type="button" class="reject-btn" id="reject-confirm-btn">Reject</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-toast page-toast-reject" id="reject-toast">Request rejected.</div>
+
   <script src="script.js"></script>
 </body>
- 
+
 </html>
- 

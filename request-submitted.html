@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request Submitted - BPES Document Request and Tracking System</title>
- 
+
   <!-- Bootstrap CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
- 
+
   <link rel="stylesheet" href="styles.css">
 </head>
- 
+
 <body>
- 
+
   <!-- Header / Navigation -->
   <header class="site-header">
     <div class="header-container">
@@ -22,7 +22,7 @@
         <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
         <span class="logo-text">BPES</span>
       </div>
- 
+
       <nav class="main-nav">
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link">Home</a></li>
@@ -31,20 +31,20 @@
           <li><a href="feedback.html" class="nav-link">Feedback</a></li>
         </ul>
       </nav>
- 
+
       <div class="header-actions">
- 
+
         <div class="dropdown-wrap">
           <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
             <img src="assets/icons/bell.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel" id="notif-panel">
             <div class="dropdown-header">
               <img src="assets/icons/bell.svg" alt="">
               <span>Notifications</span>
             </div>
- 
+
             <div class="notif-item">
               <span class="notif-dot"></span>
               <div class="notif-content">
@@ -57,18 +57,18 @@
             </div>
           </div>
         </div>
- 
+
         <div class="dropdown-wrap">
           <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
             <img src="assets/icons/settings.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel" id="settings-panel">
             <div class="dropdown-header">
               <img src="assets/icons/settings.svg" alt="">
               <span>Settings</span>
             </div>
- 
+
             <div class="settings-row">
               <span>Notification</span>
               <label class="toggle-switch">
@@ -76,7 +76,7 @@
                 <span class="toggle-slider"></span>
               </label>
             </div>
- 
+
             <div class="settings-row">
               <span>Notification Sound</span>
               <label class="toggle-switch">
@@ -86,12 +86,12 @@
             </div>
           </div>
         </div>
- 
+
         <div class="dropdown-wrap">
           <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
             <img src="assets/icons/profile.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel profile-panel" id="profile-panel">
             <div class="dropdown-header">
               <span class="profile-icon-badge">
@@ -99,45 +99,42 @@
               </span>
               <span>My Profile</span>
             </div>
- 
+
             <p class="profile-name">Juan Manuel Dela Cruz</p>
             <div class="profile-sub-info">
               <p class="profile-email">Student123@gmail.com</p>
               <p class="profile-lrn">LRN: <strong>102345120098</strong></p>
             </div>
- 
+
             <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
           </div>
         </div>
       </div>
     </div>
   </header>
- 
+
   <main>
- 
+
     <!-- Success Hero -->
     <section class="submitted-hero">
- 
-      <!-- decorative confetti -->
-     <img src="assets/icons/confetti.png" alt="" class="confetti-graphic">
- 
+
       <div class="submitted-icon-circle">
         <img src="assets/icons/check-green.svg" alt="">
       </div>
- 
+
       <h1 class="submitted-title">Request Submitted Successfully</h1>
       <p class="submitted-sub">Your request has been recorded. Our administrative staff will begin processing your
         document shortly. You can track the progress using the tracking number below.</p>
     </section>
- 
+
     <!-- Summary + Next Steps -->
     <section class="submitted-section">
       <div class="submitted-layout">
- 
+
         <!-- Request Summary Card -->
         <div class="summary-card">
           <h2 class="summary-card-title">Request Summary</h2>
- 
+
           <div class="summary-grid">
             <div class="summary-field">
               <span class="summary-label">Tracking Number</span>
@@ -148,7 +145,7 @@
                 </button>
               </div>
             </div>
- 
+
             <div class="summary-field">
               <span class="summary-label">Status</span>
               <span class="status-badge">
@@ -156,29 +153,29 @@
                 Pending Review
               </span>
             </div>
- 
+
             <div class="summary-field">
               <span class="summary-label">Document Type</span>
               <span class="summary-value">SF10 (Form 137)</span>
             </div>
- 
+
             <div class="summary-field">
               <span class="summary-label">Date Submitted</span>
               <span class="summary-value">August 14, 2026 &bull; 02:15 PM</span>
             </div>
           </div>
- 
+
           <div class="summary-note">
             <img src="assets/icons/info-circle.svg" alt="">
             <p>Typical processing time for this document is 3-5 working days. You will receive an email notification
               once your document is ready for pick-up.</p>
           </div>
         </div>
- 
+
         <!-- Next Steps Card -->
         <div class="next-steps-card">
           <h2 class="next-steps-title">Next Steps</h2>
- 
+
           <ul class="next-steps-list">
             <li>
               <img src="assets/icons/check-circle.svg" alt="">
@@ -189,14 +186,14 @@
               <span>Receive confirmation email within 24 hours.</span>
             </li>
           </ul>
- 
+
           <div class="next-steps-graphic">
             <img src="assets/icons/graduation-cap-full.svg" alt="">
           </div>
         </div>
- 
+
       </div>
- 
+
       <!-- Page Actions -->
       <div class="submitted-actions">
         <a href="track.html" class="track-request-btn">
@@ -208,11 +205,11 @@
           Back to Home
         </a>
       </div>
- 
+
     </section>
- 
+
   </main>
- 
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-container">
@@ -220,14 +217,14 @@
         <h4>Bahay Pare Elementary School</h4>
         <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
       </div>
- 
+
       <div class="footer-links">
         <span>Contact Us</span>
         <span>Privacy Policy</span>
         <span>Terms of Service</span>
         <span>Campus Map</span>
       </div>
- 
+
       <div class="footer-social">
         <span aria-label="Facebook">
           <img src="assets/icons/facebook.svg" alt="">
@@ -235,10 +232,9 @@
       </div>
     </div>
   </footer>
- 
- 
+
+
   <script src="script.js"></script>
 </body>
- 
+
 </html>
- 

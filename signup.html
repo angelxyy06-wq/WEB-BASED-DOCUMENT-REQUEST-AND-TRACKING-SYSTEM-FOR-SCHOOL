@@ -30,12 +30,14 @@
         <img src="assets/icons/person-outline.svg" alt="" class="login-input-icon">
         <input type="text" id="signup-name" placeholder="Juan Dela Cruz">
       </div>
+      <p id="signup-name-error" class="login-error-text" style="display:none;">Please enter your full name.</p>
 
       <label for="signup-email" class="login-label">Email Address</label>
       <div class="login-input-wrap">
         <img src="assets/icons/mail.svg" alt="" class="login-input-icon">
         <input type="email" id="signup-email" placeholder="juan@example.com">
       </div>
+      <p id="signup-email-error" class="login-error-text" style="display:none;">Please enter your email address.</p>
 
       <label for="signup-lrn" class="login-label">LRN (Learner Reference Number)</label>
       <div class="login-input-wrap">
@@ -43,18 +45,22 @@
         <input type="text" id="signup-lrn" placeholder="12-digit LRN">
       </div>
       <p class="field-hint">Required for student verification.</p>
+      <p id="signup-lrn-error" class="login-error-text" style="display:none;">Please enter your LRN.</p>
 
       <label for="signup-password" class="login-label">Password</label>
       <div class="login-input-wrap">
         <img src="assets/icons/lock.svg" alt="" class="login-input-icon">
         <input type="password" id="signup-password">
       </div>
+      <p id="signup-password-error" class="login-error-text" style="display:none;">Please enter a password.</p>
 
       <label for="signup-confirm-password" class="login-label">Confirm Password</label>
       <div class="login-input-wrap">
         <img src="assets/icons/confirm-lock.svg" alt="" class="login-input-icon">
         <input type="password" id="signup-confirm-password">
       </div>
+      <p id="signup-confirm-password-error" class="login-error-text" style="display:none;">Passwords do not match, or
+        confirmation is empty.</p>
 
       <a href="user-role.html" id="signup-submit-btn" class="login-btn">
         Create Account
