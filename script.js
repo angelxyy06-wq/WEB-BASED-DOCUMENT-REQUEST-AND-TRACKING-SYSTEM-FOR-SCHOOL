@@ -272,6 +272,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (hasError) {
       event.preventDefault();
+    } else {
+      const docTypeSelect = document.getElementById('document-type');
+      if (docTypeSelect) {
+        const selected = docTypeSelect.options[docTypeSelect.selectedIndex];
+        sessionStorage.setItem('bpesDocType', selected.textContent.trim());
+      }
     }
   });
 });
@@ -312,33 +318,38 @@ document.addEventListener('DOMContentLoaded', function () {
   const trackBtn = document.getElementById('track-request-submit-btn');
   if (!trackBtn) return;
 
-  const VALID_TRACKING_NUMBER = 'REQ-2024-0892';
+  const TRACKING_DESTINATIONS = {
+    'REQ-2024-00123': 'track-request-completed.html',
+    'REQ-2024-00456': 'track-request-processing.html',
+    'REQ-2024-00892': 'track-request-rejected.html'
+  };
 
   const trackingInput = document.getElementById('tracking-number');
   const trackingError = document.getElementById('tracking-number-error');
 
-  trackBtn.addEventListener('click', function (event) {
-    const value = trackingInput ? trackingInput.value.trim() : '';
+  trackBtn.addEventListener('click', function () {
+    const value = trackingInput ? trackingInput.value.trim().toUpperCase() : '';
 
     if (!value) {
       if (trackingError) {
         trackingError.textContent = 'Please enter a tracking number.';
         trackingError.style.display = 'block';
       }
-      event.preventDefault();
       return;
     }
 
-    if (value.toUpperCase() !== VALID_TRACKING_NUMBER) {
+    const destination = TRACKING_DESTINATIONS[value];
+
+    if (!destination) {
       if (trackingError) {
         trackingError.textContent = 'Your input is invalid.';
         trackingError.style.display = 'block';
       }
-      event.preventDefault();
       return;
     }
 
-    if (trackingError) trackingError.style.display = 'none';
+    trackingError.style.display = 'none';
+    window.location.href = destination;
   });
 });
 
@@ -347,33 +358,38 @@ document.addEventListener('DOMContentLoaded', function () {
   const trackNowBtn = document.getElementById('track-now-btn');
   if (!trackNowBtn) return;
 
-  const VALID_TRACKING_NUMBER = 'REQ-2024-0892';
+  const TRACKING_DESTINATIONS = {
+    'REQ-2024-00123': 'track-request-completed.html',
+    'REQ-2024-00456': 'track-request-processing.html',
+    'REQ-2024-00892': 'track-request-rejected.html'
+  };
 
   const refInput = document.getElementById('track-ref');
   const refError = document.getElementById('track-ref-error');
 
-  trackNowBtn.addEventListener('click', function (event) {
-    const value = refInput ? refInput.value.trim() : '';
+  trackNowBtn.addEventListener('click', function () {
+    const value = refInput ? refInput.value.trim().toUpperCase() : '';
 
     if (!value) {
       if (refError) {
         refError.textContent = 'Please enter a reference number.';
         refError.style.display = 'block';
       }
-      event.preventDefault();
       return;
     }
 
-    if (value.toUpperCase() !== VALID_TRACKING_NUMBER) {
+    const destination = TRACKING_DESTINATIONS[value];
+
+    if (!destination) {
       if (refError) {
         refError.textContent = 'Your input is invalid.';
         refError.style.display = 'block';
       }
-      event.preventDefault();
       return;
     }
 
-    if (refError) refError.style.display = 'none';
+    refError.style.display = 'none';
+    window.location.href = destination;
   });
 });
 
@@ -442,6 +458,23 @@ document.addEventListener('DOMContentLoaded', function () {
     if (categorySelect) categorySelect.selectedIndex = 0;
     if (detailTextarea) detailTextarea.value = '';
     if (anonymousToggle) anonymousToggle.checked = false;
+  });
+});
+
+// Populate Document Type on Request Submitted page from the selected type
+document.addEventListener('DOMContentLoaded', function () {
+  const summaryFields = document.querySelectorAll('.summary-field');
+  if (!summaryFields.length) return;
+
+  const docType = sessionStorage.getItem('bpesDocType');
+  if (!docType) return;
+
+  summaryFields.forEach(function (field) {
+    const label = field.querySelector('.summary-label');
+    if (label && label.textContent.trim() === 'Document Type') {
+      const value = field.querySelector('.summary-value');
+      if (value) value.textContent = docType;
+    }
   });
 });
 
@@ -872,7 +905,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-    // Reject Request: confirmation popup with a required reason
+  // Reject Request: confirmation popup with a required reason
   const rejectBtn = document.getElementById('reject-btn');
   const rejectModal = document.getElementById('reject-modal');
   const rejectConfirmBtn = document.getElementById('reject-confirm-btn');
@@ -880,7 +913,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const rejectReasonSelect = document.getElementById('reject-reason');
   const rejectReasonError = document.getElementById('reject-reason-error');
   const rejectToast = document.getElementById('reject-toast');
+  const rejectOtherField = document.getElementById('reject-other-field');
+  const rejectOtherText = document.getElementById('reject-other-text');
+  const rejectOtherError = document.getElementById('reject-other-error');
 
+  if (rejectReasonSelect) {
+    rejectReasonSelect.addEventListener('change', function () {
+      rejectOtherField.style.display = rejectReasonSelect.value === 'other' ? 'block' : 'none';
+    });
+  }
   if (rejectBtn && rejectModal) {
     rejectBtn.addEventListener('click', function () {
       rejectModal.hidden = false;
@@ -900,6 +941,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
       rejectReasonError.style.display = 'none';
+
+      if (rejectReasonSelect.value === 'other' && !rejectOtherText.value.trim()) {
+        rejectOtherError.style.display = 'block';
+        return;
+      }
+      if (rejectOtherError) rejectOtherError.style.display = 'none';
+
       rejectModal.hidden = true;
 
       // Gray out the whole timeline to show the request is closed
@@ -1064,5 +1112,19 @@ document.addEventListener('DOMContentLoaded', function () {
   // Search by name, request number/document tag, or quote text
   if (searchInput) {
     searchInput.addEventListener('input', applyFiltersAndSort);
+  }
+});
+
+// Prefill Document Type dropdown from URL query parameter (Request Form page)
+document.addEventListener('DOMContentLoaded', function () {
+  const docTypeSelect = document.getElementById('document-type');
+  if (!docTypeSelect) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const docParam = params.get('doc');
+
+  if (docParam) {
+    const exists = Array.from(docTypeSelect.options).some(opt => opt.value === docParam);
+    if (exists) docTypeSelect.value = docParam;
   }
 });

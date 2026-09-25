@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request Management - BPES Document Request and Tracking System</title>
- 
+
   <!-- Bootstrap CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
- 
+
   <link rel="stylesheet" href="styles.css">
 </head>
- 
+
 <body>
- 
+
   <!-- Header / Navigation -->
   <header class="site-header">
     <div class="header-container">
@@ -22,7 +22,7 @@
         <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
         <span class="logo-text">BPES</span>
       </div>
- 
+
       <nav class="main-nav">
         <ul class="nav-list">
           <li><a href="staff-dashboard.html" class="nav-link">Dashboard</a></li>
@@ -31,20 +31,20 @@
           <li><a href="staff-feedback.html" class="nav-link">Feedback</a></li>
         </ul>
       </nav>
- 
+
       <div class="header-actions">
- 
+
         <div class="dropdown-wrap">
           <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
             <img src="assets/icons/bell.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel" id="notif-panel">
             <div class="dropdown-header">
               <img src="assets/icons/bell.svg" alt="">
               <span>Notifications</span>
             </div>
- 
+
             <div class="notif-item">
               <span class="notif-dot"></span>
               <div class="notif-content">
@@ -57,18 +57,18 @@
             </div>
           </div>
         </div>
- 
+
         <div class="dropdown-wrap">
           <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
             <img src="assets/icons/settings.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel" id="settings-panel">
             <div class="dropdown-header">
               <img src="assets/icons/settings.svg" alt="">
               <span>Settings</span>
             </div>
- 
+
             <div class="settings-row">
               <span>Notification</span>
               <label class="toggle-switch">
@@ -76,7 +76,7 @@
                 <span class="toggle-slider"></span>
               </label>
             </div>
- 
+
             <div class="settings-row">
               <span>Notification Sound</span>
               <label class="toggle-switch">
@@ -86,12 +86,12 @@
             </div>
           </div>
         </div>
- 
+
         <div class="dropdown-wrap">
           <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
             <img src="assets/icons/profile.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel profile-panel" id="profile-panel">
             <div class="dropdown-header">
               <span class="profile-icon-badge">
@@ -99,28 +99,28 @@
               </span>
               <span>My Profile</span>
             </div>
- 
+
             <p class="profile-name">Maricris Garcia</p>
             <div class="profile-sub-info">
               <p class="profile-email">SchoolStaff123@gmail.com</p>
               <p class="profile-lrn">Registrar</p>
             </div>
- 
+
             <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
           </div>
         </div>
       </div>
     </div>
   </header>
- 
+
   <main class="staff-main">
- 
+
     <!-- Page Heading -->
     <section class="page-heading">
       <h1 class="page-title">Request Management</h1>
       <p class="page-subtitle">Review and manage all incoming document requests.</p>
     </section>
- 
+
     <!-- Filters Bar -->
     <section class="filters-bar-section">
       <div class="filters-bar">
@@ -135,7 +135,7 @@
             <button type="button" class="filter-search-btn" id="requests-search-btn">Search</button>
           </div>
         </div>
- 
+
         <div class="filter-group">
           <label class="filter-label">Status</label>
           <div class="dropdown-wrap status-filter-wrap">
@@ -144,7 +144,7 @@
               <span id="requests-status-filter-label">All Statuses</span>
               <img src="assets/icons/chevron-down.svg" alt="" class="status-filter-chevron">
             </button>
- 
+
             <div class="dropdown-panel status-filter-panel" id="requests-status-filter-panel">
               <button type="button" class="status-filter-option" data-status="all">All Statuses</button>
               <button type="button" class="status-filter-option" data-status="pending">
@@ -165,18 +165,18 @@
             </div>
           </div>
         </div>
- 
+
         <div class="filter-group">
           <label for="requests-date-filter" class="filter-label">Date Submitted</label>
           <input type="date" id="requests-date-filter" class="filter-date-input">
         </div>
- 
+
         <div class="filter-group filter-group-clear">
           <button type="button" class="filter-clear-btn" id="requests-clear-filters-btn">Clear Filters</button>
         </div>
       </div>
     </section>
- 
+
     <!-- Requests Table -->
     <section class="recent-requests-section">
       <div class="table-responsive requests-table-wrap">
@@ -256,7 +256,7 @@
                   <img src="assets/icons/x-circle.svg" alt="" class="status-filter-icon"> Rejected
                 </span>
               </td>
-              <td><button type="button" class="view-btn" disabled>View</button></td>
+              <td><a href="staff-request-details-rejected.html" class="view-btn">View</a></td>
             </tr>
             <tr id="management-no-results-row" class="no-results-row" style="display: none;">
               <td colspan="7">No requests found for this status.</td>
@@ -264,10 +264,10 @@
           </tbody>
         </table>
       </div>
- 
+
       <div class="table-pagination">
         <p class="pagination-info">Showing 1-5 of 50</p>
- 
+
         <div class="pagination-controls">
           <button type="button" class="pagination-btn" id="management-pagination-prev" aria-label="Previous page"
             disabled>
@@ -279,9 +279,9 @@
         </div>
       </div>
     </section>
- 
+
   </main>
- 
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-container">
@@ -289,14 +289,14 @@
         <h4>Bahay Pare Elementary School</h4>
         <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
       </div>
- 
+
       <div class="footer-links">
         <span>Contact Us</span>
         <span>Privacy Policy</span>
         <span>Terms of Service</span>
         <span>Campus Map</span>
       </div>
- 
+
       <div class="footer-social">
         <span aria-label="Facebook">
           <img src="assets/icons/facebook.svg" alt="">
@@ -304,9 +304,8 @@
       </div>
     </div>
   </footer>
- 
+
   <script src="script.js"></script>
 </body>
- 
+
 </html>
- 

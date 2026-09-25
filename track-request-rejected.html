@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request Status - BPES Document Request and Tracking System</title>
- 
+
   <!-- Bootstrap CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
- 
+
   <link rel="stylesheet" href="styles.css">
 </head>
- 
+
 <body>
- 
+
   <!-- Header / Navigation -->
   <header class="site-header">
     <div class="header-container">
@@ -22,7 +22,7 @@
         <img src="assets/logo.jpg" alt="BPES Logo" class="logo-img">
         <span class="logo-text">BPES</span>
       </div>
- 
+
       <nav class="main-nav">
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link">Home</a></li>
@@ -31,20 +31,20 @@
           <li><a href="feedback.html" class="nav-link">Feedback</a></li>
         </ul>
       </nav>
- 
+
       <div class="header-actions">
- 
+
         <div class="dropdown-wrap">
           <button class="icon-btn" aria-label="Notifications" data-dropdown-toggle="notif-panel">
             <img src="assets/icons/bell.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel" id="notif-panel">
             <div class="dropdown-header">
               <img src="assets/icons/bell.svg" alt="">
               <span>Notifications</span>
             </div>
- 
+
             <div class="notif-item">
               <span class="notif-dot"></span>
               <div class="notif-content">
@@ -57,18 +57,18 @@
             </div>
           </div>
         </div>
- 
+
         <div class="dropdown-wrap">
           <button class="icon-btn" aria-label="Settings" data-dropdown-toggle="settings-panel">
             <img src="assets/icons/settings.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel" id="settings-panel">
             <div class="dropdown-header">
               <img src="assets/icons/settings.svg" alt="">
               <span>Settings</span>
             </div>
- 
+
             <div class="settings-row">
               <span>Notification</span>
               <label class="toggle-switch">
@@ -76,7 +76,7 @@
                 <span class="toggle-slider"></span>
               </label>
             </div>
- 
+
             <div class="settings-row">
               <span>Notification Sound</span>
               <label class="toggle-switch">
@@ -86,12 +86,12 @@
             </div>
           </div>
         </div>
- 
+
         <div class="dropdown-wrap">
           <button class="profile-btn" aria-label="Profile" data-dropdown-toggle="profile-panel">
             <img src="assets/icons/profile.svg" alt="">
           </button>
- 
+
           <div class="dropdown-panel profile-panel" id="profile-panel">
             <div class="dropdown-header">
               <span class="profile-icon-badge">
@@ -99,185 +99,126 @@
               </span>
               <span>My Profile</span>
             </div>
- 
+
             <p class="profile-name">Juan Manuel Dela Cruz</p>
             <div class="profile-sub-info">
               <p class="profile-email">Student123@gmail.com</p>
               <p class="profile-lrn">LRN: <strong>102345120098</strong></p>
             </div>
- 
+
             <a href="login.html" class="logout-link">Log out<img src="assets/icons/arrow-right.svg" alt=""></a>
           </div>
         </div>
       </div>
     </div>
   </header>
- 
+
   <main>
- 
+
     <!-- Request Status Banner -->
-    <section class="status-banner">
+    <section class="status-banner status-banner-rejected">
       <div class="status-banner-inner">
         <div class="status-banner-text">
           <span class="status-banner-ref">
             <img src="assets/icons/info-circle-blue.svg" alt="">
-            REQUEST #REQ-2024-00456
+            REQUEST #REQ-2024-0892
           </span>
           <h1 class="status-banner-title">Good Moral Certificate</h1>
           <p class="status-banner-sub">Submitted on August 14, 2026 for Student: Dela Cruz, Juan M.</p>
         </div>
- 
-        <div class="status-banner-badge">
+
+        <div class="status-banner-badge status-banner-badge-rejected">
           <span class="status-banner-badge-icon">
-            <img src="assets/icons/clipboard-with-clock.svg" alt="">
+            <img src="assets/icons/x-white.svg" alt="">
           </span>
           <span class="status-banner-badge-text">
             <span class="status-banner-badge-label">Current Status</span>
-            <span class="status-banner-badge-value">Processing</span>
+            <span class="status-banner-badge-value">Rejected</span>
           </span>
         </div>
       </div>
     </section>
- 
+
     <!-- Page Actions -->
     <section class="status-actions-section">
       <a href="track.html" class="back-to-track-link">
         <img src="assets/icons/arrow-left-blue.svg" alt="">
         Back to Track Request
       </a>
- 
+
       <a href="feedback.html" class="give-feedback-btn">
         <img src="assets/icons/feedback.svg" alt="">
         Give Feedback
       </a>
     </section>
- 
-    <!-- Progress Tracker -->
-    <section class="progress-tracker-section">
-      <div class="progress-tracker-card">
-        <h2 class="progress-tracker-title">Progress Tracker</h2>
- 
-        <div class="progress-steps">
-          <div class="progress-step progress-step-done">
-            <span class="progress-step-icon">
-              <img src="assets/icons/check-submitted.svg" alt="">
-            </span>
-            <span class="progress-step-label">Submitted</span>
-            <span class="progress-step-sub">Aug 14, 2026</span>
-          </div>
- 
-          <span class="progress-line progress-line-done"></span>
- 
-          <div class="progress-step progress-step-active">
-            <span class="progress-step-icon">
-              <img src="assets/icons/in-progress.svg" alt="">
-            </span>
-            <span class="progress-step-label">Processing</span>
-            <span class="progress-step-sub">In Progress</span>
-          </div>
- 
-          <span class="progress-line progress-line-half "></span>
- 
-          <div class="progress-step progress-step-pending">
-            <span class="progress-step-icon">
-              <img src="assets/icons/ready-for-pickup.svg" alt="">
-            </span>
-            <span class="progress-step-label">Ready for Pickup</span>
-            <span class="progress-step-sub">Pending</span>
-          </div>
- 
-          <span class="progress-line"></span>
- 
-          <div class="progress-step progress-step-pending">
-            <span class="progress-step-icon">
-              <img src="assets/icons/check-completed.svg" alt="">
-            </span>
-            <span class="progress-step-label">Completed</span>
-            <span class="progress-step-sub">Pending</span>
-          </div>
-        </div>
-      </div>
-    </section>
- 
-    <!-- Request Information + Timeline -->
-    <section class="status-details-section">
+
+    <!-- Request Information + Rejection Reason -->
+    <section class="status-details-section status-details-section-tight">
       <div class="status-details-layout">
- 
+
         <!-- Request Information Card -->
         <div class="request-info-card">
           <h2 class="request-info-title">
             <img src="assets/icons/request-information.svg" alt="">
             Request Information
           </h2>
- 
+
           <img src="assets/icons/document-watermark.svg" alt="" class="request-info-watermark">
- 
+
           <div class="request-info-grid">
             <div class="request-info-field">
               <span class="request-info-label">Student Full Name</span>
               <span class="request-info-value">Juan Manuel Dela Cruz</span>
             </div>
- 
+
             <div class="request-info-field">
               <span class="request-info-label">Learner Reference Number (LRN)</span>
               <span class="request-info-value">102345120098</span>
             </div>
- 
+
             <div class="request-info-field">
               <span class="request-info-label">Document Requested</span>
               <span class="request-info-value">Good Moral Certificate</span>
             </div>
- 
+
             <div class="request-info-field">
               <span class="request-info-label">Number of Copies</span>
               <span class="request-info-value">1 Original Copy</span>
             </div>
           </div>
- 
+
           <div class="request-info-purpose">
             <span class="request-info-label">Purpose of Request</span>
             <p class="request-info-purpose-text">"For enrollment purposes in secondary education (Grade 7)."</p>
           </div>
         </div>
- 
-        <!-- Timeline Card -->
-        <div class="timeline-card">
+
+        <!-- Reason for Rejection Card -->
+        <div class="timeline-card timeline-card-rejected">
           <h2 class="timeline-title">
-            <img src="assets/icons/history.svg" alt="">
-            Timeline
+            <img src="assets/icons/x-red.svg" alt="">
+            Reason for Rejection
           </h2>
- 
-          <ul class="timeline-list">
-            <li class="timeline-item timeline-item-active">
-              <span class="timeline-dot"></span>
-              <span class="timeline-content">
-                <span class="timeline-heading">Request under verification</span>
-                <span class="timeline-desc">Registrar's Office has started the review.</span>
-                <span class="timeline-time">Today, 09:45 AM</span>
-              </span>
-            </li>
- 
-            <li class="timeline-item">
-              <span class="timeline-dot"></span>
-              <span class="timeline-content">
-                <span class="timeline-heading">Request submitted</span>
-                <span class="timeline-desc">Online application received successfully.</span>
-                <span class="timeline-time">Aug 14, 2026, 10:15 AM</span>
-              </span>
-            </li>
-          </ul>
- 
+
+          <p class="rejection-reason-text">Your document request could not be processed at this time. Please review your submission and try again.</p>
+          <p class="rejection-reason-date">Rejected on Aug 15, 2026</p>
+
           <div class="timeline-registrar">
-            <span class="timeline-registrar-label">Assigned Registrar</span>
+            <span class="timeline-registrar-label">Reviewed By</span>
             <span class="timeline-registrar-name">Mrs. Maricris L. Garcia</span>
           </div>
+
+          <a href="request.html" class="track-request-btn resubmit-btn">
+            <img src="assets/icons/document-white.svg" alt="">
+            Submit a New Request
+          </a>
         </div>
- 
+
       </div>
     </section>
- 
+
   </main>
- 
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-container">
@@ -285,14 +226,14 @@
         <h4>Bahay Pare Elementary School</h4>
         <p>&copy; 2026 Bahay Pare Elementary School. All rights reserved. Office Hours: Mon-Fri 8:00 AM - 5:00 PM.</p>
       </div>
- 
+
       <div class="footer-links">
         <span>Contact Us</span>
         <span>Privacy Policy</span>
         <span>Terms of Service</span>
         <span>Campus Map</span>
       </div>
- 
+
       <div class="footer-social">
         <span aria-label="Facebook">
           <img src="assets/icons/facebook.svg" alt="">
@@ -300,10 +241,9 @@
       </div>
     </div>
   </footer>
- 
- 
+
+
   <script src="script.js"></script>
 </body>
- 
+
 </html>
- 

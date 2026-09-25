@@ -2410,6 +2410,11 @@ a.recent-search-item:hover {
   background-color: #FEF3C7;
 }
 
+.status-rejected {
+  color: #991B1B;
+  background-color: #FEE2E2;
+}
+
 .recent-search-chevron {
   width: 14px;
   height: 14px;
@@ -2858,6 +2863,11 @@ a.recent-search-item:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 32px 90px;
+}
+
+/* Track request rejected padding */
+.status-details-section-tight {
+  padding-top: 20px;
 }
 
 .status-details-layout {
@@ -5216,4 +5226,81 @@ a.recent-search-item:hover {
 
 .modal-actions .reject-btn {
   padding: 12px 26px;
+}
+
+/* Request Rejected Page */
+.status-banner-rejected {
+  background-color: #FEF2F2;
+  border-bottom: 1px solid #FCA5A5;
+}
+
+.status-banner-badge-rejected {
+  background-color: #EF4444;
+}
+
+.status-banner-badge-rejected .status-banner-badge-label,
+.status-banner-badge-rejected .status-banner-badge-value {
+  color: #ffffff;
+}
+
+.timeline-card-rejected {
+  display: flex;
+  flex-direction: column;
+}
+
+.rejection-reason-text {
+  font-size: 15px;
+  color: #0B1C30;
+  background-color: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.rejection-reason-date {
+  font-size: 13px;
+  color: #43474E;
+  margin-bottom: 20px;
+}
+
+.resubmit-btn {
+  margin-top: 24px;
+  align-self: center;
+  padding: 10px 22px;
+  font-size: 14px;
+}
+
+/* Staff-side rejected request details */
+.current-status-box-rejected {
+  background-color: #FEF2F2;
+  border-color: #FCA5A5;
+}
+
+.current-status-badge-rejected {
+  background-color: #EF4444;
+}
+
+.current-status-badge-rejected img {
+  filter: brightness(0) invert(1);
+}
+
+/* Completed status banner (Track Request Completed)*/
+.status-banner-completed {
+  background-color: #F0FDF4;
+  border-bottom: 1px solid #86EFAC;
+}
+
+.status-banner-badge-completed {
+  background-color: #22C55E;
+}
+
+.status-banner-badge-completed .status-banner-badge-label,
+.status-banner-badge-completed .status-banner-badge-value {
+  color: #ffffff;
+}
+
+.status-banner-badge-completed img {
+  filter: brightness(0) invert(1);
 }

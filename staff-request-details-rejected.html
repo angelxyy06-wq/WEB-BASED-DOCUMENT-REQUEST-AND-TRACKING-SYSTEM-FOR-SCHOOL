@@ -123,27 +123,20 @@
       </a>
     </div>
 
-    <!-- Page Heading + Actions -->
+    <!-- Page Heading + Status Label -->
     <section class="details-page-header">
       <div class="details-page-heading-text">
         <h1 class="page-title">Request Details</h1>
-        <p class="page-subtitle">Reviewing document request REQ-2024-089</p>
+        <p class="page-subtitle">Reviewing document request REQ-2024-082</p>
       </div>
 
       <div class="details-header-actions">
-        <button type="button" class="reject-btn" id="reject-btn">
-          <img src="assets/icons/x-red.svg" alt="">
-          Reject Request
-        </button>
-        <button type="button" class="approve-btn" id="approve-btn">
-          <img src="assets/icons/check-white.svg" alt="">
-          Approve Request
-        </button>
+        <span class="rejected-label">Rejected</span>
       </div>
     </section>
 
     <!-- Two Column Layout -->
-    <div class="details-layout">
+    <div class="details-layout details-layout-readonly">
 
       <!-- Main Column -->
       <div class="details-main-col">
@@ -157,19 +150,19 @@
           <div class="details-grid">
             <div class="details-field">
               <p class="details-label">Reference Number</p>
-              <p class="details-value details-value-strong">REQ-2024-089</p>
+              <p class="details-value details-value-strong">REQ-2024-082</p>
             </div>
             <div class="details-field">
               <p class="details-label">Date Requested</p>
-              <p class="details-value">Aug 13, 2026</p>
+              <p class="details-value">Aug 3, 2026</p>
             </div>
             <div class="details-field">
               <p class="details-label">Document Type</p>
-              <p class="details-value">SF10 (Form 137)</p>
+              <p class="details-value">Good Moral Certificate</p>
             </div>
             <div class="details-field">
               <p class="details-label">Number of Copies</p>
-              <p class="details-value">2 copies</p>
+              <p class="details-value">1 copy</p>
             </div>
           </div>
 
@@ -188,15 +181,15 @@
           <div class="details-grid">
             <div class="details-field">
               <p class="details-label">Student Name</p>
-              <p class="details-value details-value-strong">Maria Clara Santos</p>
+              <p class="details-value details-value-strong">Mark Bautista</p>
             </div>
             <div class="details-field">
               <p class="details-label">LRN (Learner Reference Number)</p>
-              <p class="details-value">123456789</p>
+              <p class="details-value">123456790</p>
             </div>
             <div class="details-field">
               <p class="details-label">Grade Level</p>
-              <p class="details-value">Grade 6</p>
+              <p class="details-value">Grade 5</p>
             </div>
           </div>
         </div>
@@ -210,15 +203,15 @@
           <div class="details-grid">
             <div class="details-field">
               <p class="details-label">Name</p>
-              <p class="details-value">Jose Santos</p>
+              <p class="details-value">Rosa Bautista</p>
             </div>
             <div class="details-field">
               <p class="details-label">Contact Number</p>
-              <p class="details-value">+63 917 555 0192</p>
+              <p class="details-value">+63 917 555 0231</p>
             </div>
             <div class="details-field">
               <p class="details-label">Email Address</p>
-              <p class="details-value">jose.santos@email.com</p>
+              <p class="details-value">rosa.bautista@email.com</p>
             </div>
           </div>
         </div>
@@ -233,58 +226,23 @@
             Status &amp; Timeline
           </h2>
 
-          <div class="current-status-box">
+          <div class="current-status-box current-status-box-rejected">
             <p class="current-status-label">Current Status</p>
-            <span class="current-status-badge">
-              <img src="assets/icons/progress.svg" alt="">
-              UNDER REVIEW
+            <span class="current-status-badge current-status-badge-rejected">
+              <img src="assets/icons/x-red.svg" alt="">
+              REJECTED
             </span>
           </div>
 
-          <ol class="status-timeline">
-            <li class="timeline-step timeline-step-done">
-              <span class="timeline-step-icon"><img src="assets/icons/check.svg" alt=""></span>
-              <div class="timeline-step-text">
-                <p class="timeline-step-title">Submitted</p>
-                <p class="timeline-step-time">Oct 24, 08:30 AM</p>
-              </div>
-            </li>
-            <li class="timeline-step timeline-step-active">
-              <span class="timeline-step-icon"></span>
-              <div class="timeline-step-text">
-                <p class="timeline-step-title">Under Review</p>
-                <p class="timeline-step-time">Active Step</p>
-              </div>
-            </li>
-            <li class="timeline-step timeline-step-pending">
-              <span class="timeline-step-icon"></span>
-              <div class="timeline-step-text">
-                <p class="timeline-step-title">Processing</p>
-              </div>
-            </li>
-            <li class="timeline-step timeline-step-pending">
-              <span class="timeline-step-icon"></span>
-              <div class="timeline-step-text">
-                <p class="timeline-step-title">Ready for Release</p>
-              </div>
-            </li>
-            <li class="timeline-step timeline-step-pending">
-              <span class="timeline-step-icon"></span>
-              <div class="timeline-step-text">
-                <p class="timeline-step-title">Completed</p>
-              </div>
-            </li>
-          </ol>
+          <div class="rejection-reason-text">
+            Missing documents. The submitted LRN could not be verified against school records.
+          </div>
 
-          <div class="timeline-actions">
-            <button type="button" class="timeline-action-btn" id="mark-processing-btn" disabled>
-              <img src="assets/icons/settings-black.svg" alt="">
-              Mark as Processing
-            </button>
-            <button type="button" class="timeline-action-btn" id="mark-ready-btn" disabled>
-              <img src="assets/icons/download.svg" alt="">
-              Mark as Ready for Release
-            </button>
+          <p class="rejection-reason-date">Rejected on Aug 4, 2026</p>
+
+          <div class="timeline-registrar">
+            <span class="timeline-registrar-label">Reviewed By</span>
+            <span class="timeline-registrar-name">Mrs. Maricris L. Garcia</span>
           </div>
         </div>
       </aside>
@@ -315,57 +273,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Approve confirmation popup -->
-  <div class="modal-overlay" id="approve-modal" hidden>
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="approve-modal-title">
-      <h3 id="approve-modal-title">Approve this request?</h3>
-      <p>REQ-2024-089 will be marked as approved and the requester will be notified.</p>
-      <div class="modal-actions">
-        <button type="button" class="form-cancel-btn" id="approve-cancel-btn">Cancel</button>
-        <button type="button" class="form-submit-btn" id="approve-confirm-btn">Approve</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="page-toast" id="approve-toast">Request approved. You can now start processing.</div>
-
-  <!-- Reject confirmation popup -->
-  <div class="modal-overlay" id="reject-modal" hidden>
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="reject-modal-title">
-      <h3 id="reject-modal-title">Reject this request?</h3>
-      <p>REQ-2024-089 will be marked as rejected and the requester will be notified.</p>
-
-      <div class="adv-filter-field" style="text-align: left; margin-top: 16px;">
-        <label for="reject-reason" class="form-field-label">Reason for rejection</label>
-        <select id="reject-reason" class="form-field-select">
-          <option value="" selected disabled>Select a reason</option>
-          <option value="missing-documents">Missing documents</option>
-          <option value="incorrect-lrn">Incorrect LRN</option>
-          <option value="incomplete-info">Incomplete information</option>
-          <option value="duplicate">Duplicate request</option>
-          <option value="other">Other</option>
-        </select>
-        <p id="reject-reason-error" class="form-error-text" style="display:none;">Please select a reason.</p>
-      </div>
-
-      <div class="adv-filter-field" id="reject-other-field" style="text-align: left; display:none;">
-        <label for="reject-other-text" class="form-field-label">Please specify</label>
-        <textarea id="reject-other-text" class="form-field-textarea" rows="3"
-          placeholder="Enter the reason..."></textarea>
-        <p id="reject-other-error" class="form-error-text" style="display:none;">Please describe the reason.</p>
-      </div>
-
-      <div class="modal-actions">
-        <button type="button" class="form-cancel-btn" id="reject-cancel-btn">Cancel</button>
-        <button type="button" class="reject-btn" id="reject-confirm-btn">Reject</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="page-toast page-toast-reject" id="reject-toast">Request rejected.</div>
-
-
 
   <script src="script.js"></script>
 </body>

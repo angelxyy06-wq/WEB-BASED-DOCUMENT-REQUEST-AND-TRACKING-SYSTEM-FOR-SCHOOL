@@ -135,11 +135,10 @@
                             placeholder="e.g., REQ-2024-00123">
                     </div>
 
-                    <a href="track-request-processing.html" id="track-request-submit-btn"
-                        class="track-request-submit-btn">
+                    <button type="button" id="track-request-submit-btn" class="track-request-submit-btn">
                         Track Request
                         <img src="assets/icons/arrow-right-long.svg" alt="">
-                    </a>
+                    </button>
                 </div>
 
                 <p id="tracking-number-error" class="form-error-text" style="display:none;">Please enter a tracking
@@ -161,7 +160,7 @@
                     <div class="recent-searches-header">
                         <h2>
                             <img src="assets/icons/history.svg" alt="" class="recent-searches-icon">
-                            Recent Searches
+                            Request History
                         </h2>
                         <span class="clear-all-link">Clear All</span>
                     </div>
@@ -169,7 +168,7 @@
                     <ul class="recent-searches-list">
 
                         <li>
-                            <div class="recent-search-item">
+                            <a href="track-request-completed.html" class="recent-search-item">
                                 <span class="recent-search-icon">
                                     <img src="assets/icons/document-list.svg" alt="">
                                 </span>
@@ -181,7 +180,7 @@
                                     <span class="recent-search-status status-completed">Completed</span>
                                     <img src="assets/icons/chevron-right.svg" alt="" class="recent-search-chevron">
                                 </span>
-                            </div>
+                            </a>
                         </li>
                         <li>
                             <a href="track-request-processing.html" class="recent-search-item">
@@ -189,7 +188,7 @@
                                     <img src="assets/icons/graduation-cap.svg" alt="">
                                 </span>
                                 <span class="recent-search-info">
-                                    <span class="recent-search-number">REQ-2024-00498</span>
+                                    <span class="recent-search-number">REQ-2024-00456</span>
                                     <span class="recent-search-doc">Good Moral Certificate</span>
                                 </span>
                                 <span class="recent-search-meta">
@@ -198,8 +197,25 @@
                                 </span>
                             </a>
                         </li>
+                        <li>
+                            <a href="track-request-rejected.html" class="recent-search-item">
+                                <span class="recent-search-icon">
+                                    <img src="assets/icons/document-list.svg" alt="">
+                                </span>
+                                <span class="recent-search-info">
+                                    <span class="recent-search-number">REQ-2024-00892</span>
+                                    <span class="recent-search-doc">Good Moral Certificate</span>
+                                </span>
+                                <span class="recent-search-meta">
+                                    <span class="recent-search-status status-rejected">Rejected</span>
+                                    <img src="assets/icons/chevron-right.svg" alt="" class="recent-search-chevron">
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
+
+
 
                 <!-- Need Help Card -->
                 <div class="help-card track-help-card">
