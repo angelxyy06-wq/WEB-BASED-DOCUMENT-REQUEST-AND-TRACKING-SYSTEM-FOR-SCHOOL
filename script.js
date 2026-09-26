@@ -763,6 +763,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const steps = document.querySelectorAll('.status-timeline .timeline-step');
   const processingBtn = document.getElementById('mark-processing-btn');
   const readyBtn = document.getElementById('mark-ready-btn');
+  const completedBtn = document.getElementById('mark-completed-btn');
   const statusBadge = document.querySelector('.current-status-badge');
 
   if (!steps.length) return;
@@ -987,11 +988,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Mark as Ready for Release (disables itself after use)
+  // Mark as Ready for Release (enables the Completed button)
   if (readyBtn) {
     readyBtn.addEventListener('click', function () {
       setActiveStep(stepLabels.indexOf('Ready for Release'));
       readyBtn.disabled = true;
+      if (completedBtn) completedBtn.disabled = false;
+    });
+  }
+
+  // Mark as Completed (disables itself after use)
+  if (completedBtn) {
+    completedBtn.addEventListener('click', function () {
+      setActiveStep(stepLabels.indexOf('Completed'));
+      completedBtn.disabled = true;
     });
   }
 });
@@ -1013,15 +1023,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const sortLabel = document.getElementById('feedback-sort-label');
   const sortPanel = document.getElementById('feedback-sort-panel');
 
+  const paginationInfo = document.getElementById('feedback-pagination-info');
+  const prevBtn = document.getElementById('feedback-pagination-prev');
+  const nextBtn = document.getElementById('feedback-pagination-next');
+  const PAGE_SIZE = 3;
+
   let currentRating = 'all';
   let currentSort = 'newest';
+  let currentPage = 1;
+  let filteredItems = [];
 
-  function applyFiltersAndSort() {
+   function applyFiltersAndSort() {
     const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
-    let visibleCount = 0;
 
-    // Filter — hides items that don't match the rating tier or search term
-    feedbackItems.forEach(function (item) {
+    filteredItems = feedbackItems.filter(function (item) {
       const ratingMatch = currentRating === 'all' || item.getAttribute('data-rating') === currentRating;
 
       const nameEl = item.querySelector('.feedback-name');
@@ -1037,13 +1052,10 @@ document.addEventListener('DOMContentLoaded', function () {
         quote.includes(searchTerm) ||
         pills.includes(searchTerm);
 
-      const isMatch = ratingMatch && searchMatch;
-      item.style.display = isMatch ? '' : 'none';
-      if (isMatch) visibleCount++;
+      return ratingMatch && searchMatch;
     });
 
-    // Sort — reorders every item (visible or hidden) so filters + sort combine correctly
-    const sorted = feedbackItems.slice().sort(function (a, b) {
+    filteredItems.sort(function (a, b) {
       const dateA = a.getAttribute('data-date');
       const dateB = b.getAttribute('data-date');
       const starsA = parseInt(a.getAttribute('data-stars'), 10);
@@ -1062,16 +1074,74 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    sorted.forEach(function (item) {
+    feedbackItems.slice().sort(function (a, b) {
+      const aIn = filteredItems.indexOf(a);
+      const bIn = filteredItems.indexOf(b);
+      if (aIn === -1 && bIn === -1) return 0;
+      if (aIn === -1) return 1;
+      if (bIn === -1) return -1;
+      return aIn - bIn;
+    }).forEach(function (item) {
       feedbackList.appendChild(item);
     });
 
-    // Keep the "no results" message
     if (noResults) {
       feedbackList.appendChild(noResults);
-      noResults.style.display = visibleCount === 0 ? '' : 'none';
     }
+
+    applyPagination();
   }
+
+  function applyPagination() {
+   const totalItems = filteredItems.length;
+   const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const startIndex = (currentPage - 1) * PAGE_SIZE;
+    const endIndex = startIndex + PAGE_SIZE;
+
+    feedbackItems.forEach(function (item) {
+      item.style.display = 'none';
+    });
+
+     filteredItems.slice(startIndex, endIndex).forEach(function (item) {
+      item.style.display = '';
+    });
+
+    if (noResults) {
+      noResults.style.display = totalItems === 0 ? '' : 'none';
+    }
+
+    if (paginationInfo) {
+      if (totalItems === 0) {
+        paginationInfo.textContent = 'Showing 0 of 0';
+      } else {
+        const shownStart = startIndex + 1;
+        const shownEnd = Math.min(endIndex, totalItems);
+        paginationInfo.textContent = 'Showing ' + shownStart + '-' + shownEnd + ' of ' + totalItems;
+      }
+    }
+
+    if (prevBtn) prevBtn.disabled = currentPage <= 1;
+    if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () {
+      currentPage--;
+      applyPagination();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      currentPage++;
+      applyPagination();
+    });
+  }
+
+  applyFiltersAndSort();
 
   // Rating filter dropdown
   ratingOptions.forEach(function (option) {
@@ -1087,6 +1157,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (ratingPanel) ratingPanel.classList.remove('show');
 
+      currentPage = 1;
       applyFiltersAndSort();
     });
   });
@@ -1105,26 +1176,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (sortPanel) sortPanel.classList.remove('show');
 
+      currentPage = 1;
       applyFiltersAndSort();
     });
   });
 
   // Search by name, request number/document tag, or quote text
   if (searchInput) {
-    searchInput.addEventListener('input', applyFiltersAndSort);
+    searchInput.addEventListener('input', function () {
+      currentPage = 1;
+      applyFiltersAndSort();
+    });
   }
 });
 
-// Prefill Document Type dropdown from URL query parameter (Request Form page)
-document.addEventListener('DOMContentLoaded', function () {
-  const docTypeSelect = document.getElementById('document-type');
-  if (!docTypeSelect) return;
+  // Prefill Document Type dropdown from URL query parameter (Request Form page)
+  document.addEventListener('DOMContentLoaded', function () {
+    const docTypeSelect = document.getElementById('document-type');
+    if (!docTypeSelect) return;
 
-  const params = new URLSearchParams(window.location.search);
-  const docParam = params.get('doc');
+    const params = new URLSearchParams(window.location.search);
+    const docParam = params.get('doc');
 
-  if (docParam) {
-    const exists = Array.from(docTypeSelect.options).some(opt => opt.value === docParam);
-    if (exists) docTypeSelect.value = docParam;
-  }
-});
+    if (docParam) {
+      const exists = Array.from(docTypeSelect.options).some(opt => opt.value === docParam);
+      if (exists) docTypeSelect.value = docParam;
+    }
+  });
