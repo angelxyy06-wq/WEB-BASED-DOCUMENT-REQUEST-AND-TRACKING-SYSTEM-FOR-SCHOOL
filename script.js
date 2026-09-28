@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (savedEmail === AUTHORIZED_STAFF_EMAIL) {
         window.location.href = 'invalid-email.html';
       } else {
-        window.location.href = 'index.html';
+        window.location.href = 'home.html';
       }
     });
   }
