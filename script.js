@@ -99,13 +99,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
       let hasError = false;
 
+
+      const isNumericOnly = /^[0-9]+$/.test(enteredEmail);
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
       if (!enteredEmail) {
         if (emailError) {
           emailError.textContent = 'Please enter your Email or LRN.';
           emailError.style.display = 'block';
         }
         hasError = true;
-      } else if (
+      } else if (!isNumericOnly && !emailPattern.test(enteredEmail)) {
+        if (emailError) {
+          emailError.textContent = 'Please enter a valid email address or LRN.';
+          emailError.style.display = 'block';
+        }
+        hasError = true;
+         } else if (
         enteredEmail.toLowerCase().includes('staff') &&
         enteredEmail.toLowerCase() !== AUTHORIZED_STAFF_EMAIL
       ) {
@@ -165,15 +175,35 @@ document.addEventListener('DOMContentLoaded', function () {
         nameError.style.display = 'none';
       }
 
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
       if (!enteredEmail) {
-        if (emailError) emailError.style.display = 'block';
+        if (emailError) {
+          emailError.textContent = 'Please enter your email address.';
+          emailError.style.display = 'block';
+        }
+        hasError = true;
+      } else if (!emailPattern.test(enteredEmail)) {
+        if (emailError) {
+          emailError.textContent = 'Please enter a valid email address (e.g. juan@example.com).';
+          emailError.style.display = 'block';
+        }
         hasError = true;
       } else if (emailError) {
         emailError.style.display = 'none';
       }
-
+    
       if (!enteredLrn) {
-        if (lrnError) lrnError.style.display = 'block';
+        if (lrnError) {
+          lrnError.textContent = 'Please enter your LRN.';
+          lrnError.style.display = 'block';
+        }
+        hasError = true;
+          } else if (enteredLrn.length !== 12) {
+        if (lrnError) {
+          lrnError.textContent = 'LRN must be exactly 12 digits.';
+          lrnError.style.display = 'block';
+        }
         hasError = true;
       } else if (lrnError) {
         lrnError.style.display = 'none';
@@ -210,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (savedEmail === AUTHORIZED_STAFF_EMAIL) {
         window.location.href = 'staff-dashboard.html';
       } else {
+        sessionStorage.setItem('bpesAttemptedRole', 'staff');
         window.location.href = 'invalid-email.html';
       }
     });
@@ -222,6 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const savedEmail = (sessionStorage.getItem('bpesEmail') || '').trim().toLowerCase();
 
       if (savedEmail === AUTHORIZED_STAFF_EMAIL) {
+        sessionStorage.setItem('bpesAttemptedRole', 'parent');
         window.location.href = 'invalid-email.html';
       } else {
         window.location.href = 'home.html';
@@ -230,18 +262,50 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Invalid Email page — show the correct message depending on which role was attempted
+document.addEventListener('DOMContentLoaded', function () {
+  const invalidText = document.querySelector('.invalid-text');
+  if (!invalidText) return;
+
+  const attemptedRole = sessionStorage.getItem('bpesAttemptedRole');
+
+  if (attemptedRole === 'parent') {
+    invalidText.textContent = 'This account is registered as School Staff and cannot access the Parent portal.';
+  } else {
+    invalidText.textContent = 'The email address you entered is not authorized for School Staff access.';
+  }
+
+  sessionStorage.removeItem('bpesAttemptedRole');
+});
+
 // Request Document Form validation
 document.addEventListener('DOMContentLoaded', function () {
   const submitBtn = document.getElementById('request-submit-btn');
   if (!submitBtn) return;
 
+  const contactField = document.getElementById('contact-number');
+  const countryCodeSelect = document.getElementById('contact-country-code');
+
+    const certifyCheckboxForToggle = document.getElementById('certify-info');
+
+  function updateSubmitState() {
+    if (certifyCheckboxForToggle && certifyCheckboxForToggle.checked) {
+      submitBtn.removeAttribute('aria-disabled');
+    } else {
+      submitBtn.setAttribute('aria-disabled', 'true');
+    }
+  }
+
+  if (certifyCheckboxForToggle) {
+    certifyCheckboxForToggle.addEventListener('change', updateSubmitState);
+  }
+
+  updateSubmitState();
+
   const requiredFields = [
     { id: 'requester-name', errorId: 'requester-name-error' },
     { id: 'student-name', errorId: 'student-name-error' },
-    { id: 'contact-number', errorId: 'contact-number-error' },
-    { id: 'email-address', errorId: 'email-address-error' },
     { id: 'year-level', errorId: 'year-level-error' },
-    { id: 'lrn', errorId: 'lrn-error' },
     { id: 'number-copies', errorId: 'number-copies-error' }
   ];
 
@@ -261,6 +325,30 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
+    // Contact Number: check it's filled AND has the correct digit count for the selected country
+    const contactError = document.getElementById('contact-number-error');
+    const contactCode = countryCodeSelect ? countryCodeSelect.value : '+63';
+    const contactFormat = PHONE_FORMATS[contactCode] || { groups: [3, 3, 4] };
+    const requiredDigits = getMaxDigits(contactFormat.groups);
+    const contactDigits = contactField ? contactField.value.replace(/[^0-9]/g, '') : '';
+
+    if (!contactDigits) {
+      if (contactError) {
+        contactError.textContent = 'Please enter a contact number.';
+        contactError.style.display = 'block';
+      }
+      hasError = true;
+    } else if (contactDigits.length !== requiredDigits) {
+      if (contactError) {
+        contactError.textContent = 'Please enter a valid ' + requiredDigits + '-digit number for the selected country.';
+        contactError.style.display = 'block';
+      }
+      hasError = true;
+    } else if (contactError) {
+      contactError.style.display = 'none';
+    }
+
+
     const certifyCheckbox = document.getElementById('certify-info');
     const certifyError = document.getElementById('certify-info-error');
     if (certifyCheckbox && !certifyCheckbox.checked) {
@@ -270,7 +358,50 @@ document.addEventListener('DOMContentLoaded', function () {
       certifyError.style.display = 'none';
     }
 
-    if (hasError) {
+    // LRN: check it's filled AND exactly 12 digits
+    const lrnFieldSubmit = document.getElementById('lrn');
+    const lrnErrorSubmit = document.getElementById('lrn-error');
+    const enteredLrnValue = lrnFieldSubmit ? lrnFieldSubmit.value.trim() : '';
+
+    if (!enteredLrnValue) {
+      if (lrnErrorSubmit) {
+        lrnErrorSubmit.textContent = 'Please enter the LRN.';
+        lrnErrorSubmit.style.display = 'block';
+      }
+      hasError = true;
+    } else if (enteredLrnValue.length !== 12) {
+      if (lrnErrorSubmit) {
+        lrnErrorSubmit.textContent = 'LRN must be exactly 12 digits.';
+        lrnErrorSubmit.style.display = 'block';
+      }
+      hasError = true;
+    } else if (lrnErrorSubmit) {
+      lrnErrorSubmit.style.display = 'none';
+    }
+
+    // Email Address: check it's filled AND a valid format
+    const emailField = document.getElementById('email-address');
+    const emailError = document.getElementById('email-address-error');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const enteredEmailValue = emailField ? emailField.value.trim() : '';
+
+    if (!enteredEmailValue) {
+      if (emailError) {
+        emailError.textContent = 'Please enter an email address.';
+        emailError.style.display = 'block';
+      }
+      hasError = true;
+    } else if (!emailPattern.test(enteredEmailValue)) {
+      if (emailError) {
+        emailError.textContent = 'Please enter a valid email address (e.g. juan@example.com).';
+        emailError.style.display = 'block';
+      }
+      hasError = true;
+    } else if (emailError) {
+      emailError.style.display = 'none';
+    }    
+    
+     if (hasError) {
       event.preventDefault();
     } else {
       const docTypeSelect = document.getElementById('document-type');
@@ -278,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selected = docTypeSelect.options[docTypeSelect.selectedIndex];
         sessionStorage.setItem('bpesDocType', selected.textContent.trim());
       }
-    }
+     }
   });
 });
 
@@ -288,20 +419,32 @@ document.addEventListener('DOMContentLoaded', function () {
   const lrnField = document.getElementById('lrn');
   const copiesField = document.getElementById('number-copies');
 
-  // Contact Number: allow digits and a leading "+" only
+   // Contact Number: auto-format based on selected country code
+  const countryCodeSelect = document.getElementById('contact-country-code');
+
+  function formatContactField() {
+    const code = countryCodeSelect ? countryCodeSelect.value : '+63';
+    const format = PHONE_FORMATS[code] || { groups: [3, 3, 4] };
+    const maxDigits = getMaxDigits(format.groups);
+
+    let digits = contactField.value.replace(/[^0-9]/g, '');
+    digits = digits.slice(0, maxDigits); // stops extra digits from being typed at all
+
+    contactField.value = formatPhoneNumber(digits, format.groups);
+  }
+
   if (contactField) {
-    contactField.addEventListener('input', function () {
-      let value = contactField.value;
-      const hasPlus = value.startsWith('+');
-      value = value.replace(/[^0-9]/g, '');
-      contactField.value = hasPlus ? '+' + value : value;
-    });
+    contactField.addEventListener('input', formatContactField);
+  }
+
+  if (countryCodeSelect) {
+    countryCodeSelect.addEventListener('change', formatContactField);
   }
 
   // LRN: digits only
   if (lrnField) {
     lrnField.addEventListener('input', function () {
-      lrnField.value = lrnField.value.replace(/[^0-9]/g, '');
+      lrnField.value = lrnField.value.replace(/[^0-9]/g, '').slice(0, 12);
     });
   }
 
@@ -312,6 +455,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+// Phone number format
+const PHONE_FORMATS = {
+  '+63': { groups: [3, 3, 4] },   // Philippines: 917 555 0192
+  '+1':  { groups: [3, 3, 4] },   // US: 555 123 4567
+  '+44': { groups: [4, 6] },      // UK: 7911 123456
+  '+65': { groups: [4, 4] },      // Singapore: 9123 4567
+  '+61': { groups: [3, 3, 3] }    // Australia: 412 345 678
+};
+
+function getMaxDigits(groups) {
+  return groups.reduce(function (sum, g) { return sum + g; }, 0);
+}
+
+function formatPhoneNumber(digits, groups) {
+  let result = '';
+  let index = 0;
+  for (let i = 0; i < groups.length; i++) {
+    if (index >= digits.length) break;
+    if (result) result += ' ';
+    result += digits.slice(index, index + groups[i]);
+    index += groups[i];
+  }
+  return result;
+}
 
 // Track Request page validation
 document.addEventListener('DOMContentLoaded', function () {
@@ -351,6 +519,17 @@ document.addEventListener('DOMContentLoaded', function () {
     trackingError.style.display = 'none';
     window.location.href = destination;
   });
+});
+
+
+// Sign Up LRN: digits only
+document.addEventListener('DOMContentLoaded', function () {
+  const signupLrnField = document.getElementById('signup-lrn');
+  if (signupLrnField) {
+    signupLrnField.addEventListener('input', function () {
+      signupLrnField.value = signupLrnField.value.replace(/[^0-9]/g, '').slice(0, 12);
+    });
+  }
 });
 
 // Track Your Application (Request page CTA (Call to Action)) validation

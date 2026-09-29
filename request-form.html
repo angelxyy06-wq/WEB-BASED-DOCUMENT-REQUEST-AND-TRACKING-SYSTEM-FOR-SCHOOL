@@ -150,8 +150,17 @@
 
               <div class="col-12 col-md-6">
                 <label for="contact-number" class="form-field-label">Contact Number</label>
-                <input type="text" id="contact-number" name="contact-number" class="form-field-input"
-                  placeholder="+63 000 000 0000" inputmode="tel">
+                <div class="phone-input-group">
+                  <select id="contact-country-code" class="phone-code-select">
+                    <option value="+63" selected>PH +63</option>
+                    <option value="+1">US +1</option>
+                    <option value="+44">UK +44</option>
+                    <option value="+65">SG +65</option>
+                    <option value="+61">AU +61</option>
+                  </select>
+                  <input type="text" id="contact-number" name="contact-number"
+                    class="form-field-input phone-number-input" placeholder="000 000 0000" inputmode="tel">
+                </div>
                 <p id="contact-number-error" class="form-error-text" style="display:none;">Please enter a contact
                   number.</p>
               </div>
@@ -174,7 +183,8 @@
 
               <div class="col-12 col-md-6">
                 <label for="lrn" class="form-field-label">Learner Reference Number (LRN)</label>
-                <input type="text" id="lrn" name="lrn" class="form-field-input" placeholder="Enter LRN" inputmode="numeric">
+                <input type="text" id="lrn" name="lrn" class="form-field-input" placeholder="Enter LRN"
+                  inputmode="numeric">
                 <p id="lrn-error" class="form-error-text" style="display:none;">Please enter the LRN.</p>
               </div>
 
@@ -222,7 +232,8 @@
 
             <div class="form-actions">
               <a href="request.html" class="form-cancel-btn">Cancel</a>
-              <a href="request-submitted.html" id="request-submit-btn" class="form-submit-btn">Submit Request</a>
+              <a href="request-submitted.html" id="request-submit-btn" class="form-submit-btn"
+                aria-disabled="true">Submit Request</a>
             </div>
 
           </form>
@@ -241,7 +252,7 @@
 
             <div class="wait-time-row">
               <span>Standard Request</span>
-              <strong>3-5 Days</strong>
+              <strong>1-2 Days</strong>
             </div>
 
             <div class="wait-time-row">

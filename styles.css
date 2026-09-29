@@ -493,11 +493,11 @@ button {
   display: flex;
   align-items: center;
   gap: 14px;
-  background-color: #ffffffcc;
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 18px 20px;
   border-color: #e2e8f080;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
 }
 
 .feature-icon {
@@ -1568,6 +1568,42 @@ section {
   padding: 12px 14px;
 }
 
+.phone-input-group {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.phone-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.phone-code-select {
+  flex: 0 0 100px;
+  font-size: 14px;
+  color: #1e293b;
+  background-color: #ffffff;
+  border: 1px solid #C4C6CF;
+  border-radius: 8px;
+  padding: 12px 8px;
+  appearance: none;
+  background-image: url("assets/icons/chevron-down.svg");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 26px;
+}
+
+.phone-code-select:focus {
+  outline: none;
+  border-color: #0061A5;
+  box-shadow: 0 0 0 3px rgba(0, 97, 165, 0.12);
+}
+
+.phone-number-input {
+  flex: 1;
+}
+
 .form-field-input::placeholder,
 .form-field-textarea::placeholder {
   color: #6B7280;
@@ -1655,6 +1691,12 @@ section {
   color: #ffffff;
   background-color: #002045;
   border: 1px solid #002045;
+}
+
+.form-submit-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .form-submit-btn:hover {
@@ -1853,6 +1895,7 @@ section {
     width: 100%;
   }
 }
+
 
 /* Request Submitted Page */
 .submitted-hero {
@@ -3150,7 +3193,7 @@ a.recent-search-item:hover {
   max-width: 600px;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  box-shadow:  0 20px 50px rgba(0, 0, 0, 0.25);
   padding: 40px;
 }
 
