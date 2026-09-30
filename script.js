@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Login / Signup / Role validation
 document.addEventListener('DOMContentLoaded', function () {
   const AUTHORIZED_STAFF_EMAIL = 'schoolstaff123@gmail.com';
+  const AUTHORIZED_PARENT_EMAIL = 'student123@gmail.com';
 
   // Login page
   const loginBtn = document.getElementById('login-submit-btn');
@@ -125,6 +126,17 @@ document.addEventListener('DOMContentLoaded', function () {
           emailError.style.display = 'block';
         }
         hasError = true;
+        } else if (
+        enteredEmail.toLowerCase().includes('student') &&
+        enteredEmail.toLowerCase() !== AUTHORIZED_PARENT_EMAIL
+      ) {
+
+        if (emailError) {
+          emailError.textContent = 'Wrong email. Please check your email and try again.';
+          emailError.style.display = 'block';
+        }
+        hasError = true;
+        
       } else {
         if (emailError) emailError.style.display = 'none';
       }
@@ -135,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         if (passwordError) passwordError.style.display = 'none';
       }
-
       if (hasError) return;
 
       sessionStorage.setItem('bpesEmail', enteredEmail);
