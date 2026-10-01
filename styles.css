@@ -2593,6 +2593,10 @@ a.recent-search-item:hover {
     justify-content: center;
   }
 
+  .recent-searches-card {
+  min-height: auto;
+}
+
   .recent-search-item {
     display: grid;
     grid-template-columns: 36px 1fr;
