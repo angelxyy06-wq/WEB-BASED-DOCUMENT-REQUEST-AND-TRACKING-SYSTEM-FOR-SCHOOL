@@ -506,7 +506,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const trackingInput = document.getElementById('tracking-number');
   const trackingError = document.getElementById('tracking-number-error');
 
-  trackBtn.addEventListener('click', function () {
+  trackBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+
     const value = trackingInput ? trackingInput.value.trim().toUpperCase() : '';
 
     if (!value) {
@@ -557,7 +559,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const refInput = document.getElementById('track-ref');
   const refError = document.getElementById('track-ref-error');
 
-  trackNowBtn.addEventListener('click', function () {
+  trackNowBtn.addEventListener('click', function (event) {
+     event.preventDefault();
+     
     const value = refInput ? refInput.value.trim().toUpperCase() : '';
 
     if (!value) {

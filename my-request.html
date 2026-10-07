@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track Request - BPES Document Request and Tracking System</title>
+    <title>My Request - BPES Document Request and Tracking System</title>
 
     <!-- Bootstrap CSS (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,7 +27,7 @@
                 <ul class="nav-list">
                     <li><a href="home.html" class="nav-link">Home</a></li>
                     <li><a href="request.html" class="nav-link">Request a Document</a></li>
-                    <li><a href="track.html" class="nav-link active">Track Request</a></li>
+                    <li><a href="my-request.html" class="nav-link active">My Request</a></li>
                     <li><a href="feedback.html" class="nav-link">Feedback</a></li>
                 </ul>
             </nav>
@@ -118,49 +118,21 @@
 
         <!-- Page Hero -->
         <section class="request-hero">
-            <h1 class="request-hero-title">Track Your Request</h1>
+            <h1 class="request-hero-title">My Request</h1>
             <p class="request-hero-sub">Check the real-time status of your academic documents, certificates, and school
                 records with ease.</p>
         </section>
 
-        <!-- Tracking Search Card -->
-        <section class="track-search-section">
-            <div class="track-search-card">
-                <label for="tracking-number" class="form-field-label">TRACKING NUMBER</label>
-
-                <div class="track-search-row">
-                    <div class="track-search-input-wrap">
-                        <img src="assets/icons/search.svg" alt="" class="track-search-icon">
-                        <input type="text" id="tracking-number" name="tracking-number" class="track-search-input"
-                            placeholder="e.g., REQ-2024-00123">
-                    </div>
-
-                    <button type="button" id="track-request-submit-btn" class="track-request-submit-btn">
-                        Track Request
-                        <img src="assets/icons/arrow-right-long.svg" alt="">
-                    </button>
-                </div>
-
-                <p id="tracking-number-error" class="form-error-text" style="display:none;">Please enter a tracking
-                    number.</p>
-
-                <div class="track-search-hint">
-                    <img src="assets/icons/info-circle.svg" alt="">
-                    <span>Tracking numbers were sent to your registered email upon submission.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recent Searches + Need Help -->
+        <!-- Recent Request + Need Help -->
         <section class="track-recent-section">
             <div class="track-recent-layout">
 
-                <!-- Recent Searches Card -->
+                <!-- Recent Request Card -->
                 <div class="recent-searches-card">
                     <div class="recent-searches-header">
                         <h2>
                             <img src="assets/icons/history.svg" alt="" class="recent-searches-icon">
-                            Request Searches
+                            Recent Request
                         </h2>
                         <span class="clear-all-link">Clear All</span>
                     </div>

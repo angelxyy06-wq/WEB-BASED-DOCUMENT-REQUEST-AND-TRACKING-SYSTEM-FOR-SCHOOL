@@ -27,7 +27,7 @@
         <ul class="nav-list">
           <li><a href="home.html" class="nav-link active">Home</a></li>
           <li><a href="request.html" class="nav-link">Request a Document</a></li>
-          <li><a href="track.html" class="nav-link">Track Request</a></li>
+          <li><a href="my-request.html" class="nav-link">My Request</a></li>
           <li><a href="feedback.html" class="nav-link">Feedback</a></li>
         </ul>
       </nav>
@@ -133,7 +133,7 @@
             <img src="assets/icons/plus.svg" alt="">
             Request a Document
           </a>
-          <a href="track.html" class="btn-doc btn-doc-secondary">
+          <a href="my-request.html" class="btn-doc btn-doc-secondary">
             <img src="assets/icons/clipboard.svg" alt="">
             Track My Request
           </a>
@@ -241,6 +241,34 @@
               Request Now <img src="assets/icons/arrow-right-blue.svg" alt="">
             </a>
           </article>
+        </div>
+      </div>
+    </section>
+
+        <!-- Tracking Search Card -->
+    <section class="track-search-section track-search-section-wide">
+      <div class="track-search-card">
+        <label for="tracking-number" class="form-field-label">TRACKING NUMBER</label>
+
+        <div class="track-search-row">
+          <div class="track-search-input-wrap">
+            <img src="assets/icons/search.svg" alt="" class="track-search-icon">
+            <input type="text" id="tracking-number" name="tracking-number" class="track-search-input"
+              placeholder="e.g., REQ-2024-00123">
+          </div>
+
+          <a href="track-request-processing.html" id="track-request-submit-btn"
+            class="track-request-submit-btn">
+            Track Request
+            <img src="assets/icons/arrow-right-long.svg" alt="">
+          </a>
+        </div>
+
+        <p id="tracking-number-error" class="form-error-text" style="display:none;">Please enter a tracking number.</p>
+
+        <div class="track-search-hint">
+          <img src="assets/icons/info-circle.svg" alt="">
+          <span>Tracking numbers were sent to your registered email upon submission.</span>
         </div>
       </div>
     </section>
