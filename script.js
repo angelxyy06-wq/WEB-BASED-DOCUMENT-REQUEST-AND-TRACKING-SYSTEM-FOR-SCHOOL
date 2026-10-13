@@ -83,6 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const AUTHORIZED_STAFF_EMAIL = 'schoolstaff123@gmail.com';
   const AUTHORIZED_PARENT_EMAIL = 'student123@gmail.com';
+  const DEMO_PASSWORD = 'bpes2026';
+
 
   // Login page
   const loginBtn = document.getElementById('login-submit-btn');
@@ -142,7 +144,16 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (!enteredPassword) {
-        if (passwordError) passwordError.style.display = 'block';
+        if (passwordError) {
+          passwordError.textContent = 'Please enter your password.';
+          passwordError.style.display = 'block';
+        }
+        hasError = true;
+        } else if (enteredPassword !== DEMO_PASSWORD) {
+        if (passwordError) {
+          passwordError.textContent = 'Wrong password. Please try again.';
+          passwordError.style.display = 'block';
+        }
         hasError = true;
       } else {
         if (passwordError) passwordError.style.display = 'none';
