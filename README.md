@@ -2,17 +2,6 @@
 
 **Web-Based Document Request and Tracking System for Bahay Pare Elementary School**
 
-**Project Manager:**
-Hernandez, Ferlyn M.
-
-**Group members:**
- - Castillo, Fatima P.
- - Corpuz, Angel I.
- - De Leon, Raven Joy M.
- - Medez, Jenny N.
- - Sales, Leila Francine C.
-
-
  **Project Description:**
 The Web-Based Document Request and Tracking System for Bahay Pare Elementary School is a proposed responsive front-end web application designed to provide a more organized and user-friendly way of handling school document requests. It focuses on commonly requested documents such as certifications, Form 137, SF10, and other school forms.
 
@@ -34,3 +23,19 @@ The project aims to provide a clearer and more organized interface for submittin
 3. Make sure the "Live Server" extension is installed in VS Code.
 4. Right-click on index.html and select "Open with Live Server" to launch the website.
 5. The site will open automatically in your default browser.
+
+**Test login (demo only):** use Student123@gmail.com for Parent or SchoolStaff123@gmail.com for School Staff, with the password bpes2026.
+
+**Live Website**
+https://angelxyy06-wq.github.io/WEB-BASED-DOCUMENT-REQUEST-AND-TRACKING-SYSTEM-FOR-SCHOOL/
+
+
+**Project Manager:**
+Hernandez, Ferlyn M.
+
+**Group members:**
+ - Castillo, Fatima P.
+ - Corpuz, Angel I.
+ - De Leon, Raven Joy M.
+ - Medez, Jenny N.
+ - Sales, Leila Francine C.
