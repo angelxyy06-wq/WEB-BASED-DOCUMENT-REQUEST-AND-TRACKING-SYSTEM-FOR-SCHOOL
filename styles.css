@@ -4235,6 +4235,20 @@ a.recent-search-item:hover {
   background-color: #FEE2E2;
 }
 
+/* Document type dropdown (Request Management page) */
+.status-filter-option[data-document] {
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  padding: 5px 12px;
+  color: #ffffff;
+  background-color: #002045;
+}
+
+.status-filter-option[data-document="all"] {
+  color: #585F6A;
+  background-color: #F1F3F6;
+}
+
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -5498,4 +5512,18 @@ a.recent-search-item:hover {
 
 .status-banner-badge-completed img {
   filter: brightness(0) invert(1);
+}
+
+/* Staff Dashboard: Ready to release table */
+.recent-requests-header .dashboard-ready-title {
+  font-size: 27px;
+}
+
+.dashboard-table thead th:last-child,
+.dashboard-table tbody td:last-child {
+  text-align: center;
+}
+
+.table-pagination-end {
+  justify-content: flex-end;
 }

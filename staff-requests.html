@@ -157,6 +157,28 @@
         </div>
 
         <div class="filter-group">
+          <label class="filter-label">Document Type</label>
+          <div class="dropdown-wrap status-filter-wrap">
+            <button type="button" class="status-filter-btn" id="requests-document-filter-btn"
+              data-dropdown-toggle="requests-document-filter-panel">
+              <span id="requests-document-filter-label">All Documents</span>
+              <img src="assets/icons/chevron-down.svg" alt="" class="status-filter-chevron">
+            </button>
+
+            <div class="dropdown-panel status-filter-panel" id="requests-document-filter-panel">
+              <button type="button" class="status-filter-option" data-document="all">All Documents</button>
+              <button type="button" class="status-filter-option" data-document="sf10">SF10 (Form 137)</button>
+              <button type="button" class="status-filter-option" data-document="good-moral">Good Moral
+                Certificate</button>
+              <button type="button" class="status-filter-option" data-document="enrollment">Certificate of
+                Enrollment</button>
+              <button type="button" class="status-filter-option" data-document="4ps">4Ps Certificate</button>
+              <button type="button" class="status-filter-option" data-document="diploma">Diploma</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
           <label for="requests-date-filter" class="filter-label">Date Submitted</label>
           <input type="date" id="requests-date-filter" class="filter-date-input">
         </div>
@@ -183,7 +205,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-status="pending" data-date="2026-08-13">
+            <tr data-status="pending" data-date="2026-08-13" data-document="sf10">
               <td class="req-no">REQ-2024-089</td>
               <td>Santos, Maria Clara</td>
               <td>Jose Santos</td>
@@ -194,7 +216,7 @@
               </td>
               <td><a href="staff-request-details.html" class="view-btn">View</a></td>
             </tr>
-            <tr data-status="processing" data-date="2026-08-14">
+            <tr data-status="processing" data-date="2026-08-14" data-document="good-moral">
               <td class="req-no">REQ-2024-088</td>
               <td>Dela Cruz, Juan Manuel</td>
               <td>Rose Dela Cruz</td>
@@ -205,7 +227,7 @@
               </td>
               <td><button type="button" class="view-btn" disabled>View</button></td>
             </tr>
-            <tr data-status="ready" data-date="2026-08-06">
+            <tr data-status="ready" data-date="2026-08-06" data-document="enrollment">
               <td class="req-no">REQ-2024-087</td>
               <td>Dizon, Derick John</td>
               <td>Anna Dizon</td>
@@ -216,7 +238,7 @@
               </td>
               <td><button type="button" class="view-btn" disabled>View</button></td>
             </tr>
-            <tr data-status="completed" data-date="2026-08-01">
+            <tr data-status="completed" data-date="2026-08-01" data-document="4ps">
               <td class="req-no">REQ-2024-085</td>
               <td>Reyes, John</td>
               <td>Jay Reyes</td>
@@ -227,7 +249,7 @@
               </td>
               <td><button type="button" class="view-btn" disabled>View</button></td>
             </tr>
-            <tr data-status="rejected" data-date="2026-08-03">
+            <tr data-status="rejected" data-date="2026-08-03" data-document="good-moral">
               <td class="req-no">REQ-2024-082</td>
               <td>Bautista, Mark</td>
               <td>Rosa Bautista</td>
@@ -239,7 +261,7 @@
               <td><a href="staff-request-details-rejected.html" class="view-btn">View</a></td>
             </tr>
             <tr id="management-no-results-row" class="no-results-row" style="display: none;">
-              <td colspan="7">No requests found for this status.</td>
+              <td colspan="7">No requests found.</td>
             </tr>
           </tbody>
         </table>

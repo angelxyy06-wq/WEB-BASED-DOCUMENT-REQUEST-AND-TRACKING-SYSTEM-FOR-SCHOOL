@@ -176,11 +176,11 @@
       </div>
     </section>
 
-    <!-- Recent Requests Table -->
+    <!-- Ready to Release Table -->
     <section class="recent-requests-section">
       <div class="recent-requests-header">
         <div>
-          <h2>Recent Requests</h2>
+          <h2 class="dashboard-ready-title">Ready to release</h2>
         </div>
 
         <div class="recent-requests-controls">
@@ -190,26 +190,26 @@
           </div>
 
           <div class="dropdown-wrap status-filter-wrap">
-            <button type="button" class="status-filter-btn" id="status-filter-btn"
-              data-dropdown-toggle="status-filter-panel">
-              <span id="status-filter-label">All Statuses</span>
+            <button type="button" class="status-filter-btn" id="dashboard-document-filter-btn"
+              data-dropdown-toggle="dashboard-document-filter-panel">
+              <span id="dashboard-document-filter-label">Document Type</span>
               <img src="assets/icons/chevron-down-full.svg" alt="" class="status-filter-chevron">
             </button>
 
-            <div class="dropdown-panel status-filter-panel" id="status-filter-panel">
-              <button type="button" class="status-filter-option" data-status="all">All Statuses</button>
-              <button type="button" class="status-filter-option" data-status="pending">Pending</button>
-              <button type="button" class="status-filter-option" data-status="processing">Processing</button>
-              <button type="button" class="status-filter-option" data-status="ready">Ready</button>
-              <button type="button" class="status-filter-option" data-status="completed">Completed</button>
-              <button type="button" class="status-filter-option" data-status="rejected">Rejected</button>
+            <div class="dropdown-panel status-filter-panel" id="dashboard-document-filter-panel">
+              <button type="button" class="status-filter-option" data-document="all">All Documents</button>
+              <button type="button" class="status-filter-option" data-document="sf10">SF10 (Form 137)</button>
+              <button type="button" class="status-filter-option" data-document="enrollment">Certificate of Enrollment</button>
+              <button type="button" class="status-filter-option" data-document="good-moral">Good Moral Certificate</button>
+              <button type="button" class="status-filter-option" data-document="4ps">4ps Certificate</button>
+              <button type="button" class="status-filter-option" data-document="diploma">Diploma</button>
             </div>
           </div>
         </div>
       </div>
 
       <div class="table-responsive requests-table-wrap">
-        <table class="requests-table" id="requests-table">
+        <table class="requests-table dashboard-table" id="requests-table">
           <thead>
             <tr>
               <th scope="col">Request No.</th>
@@ -217,28 +217,11 @@
               <th scope="col">Document</th>
               <th scope="col">Date</th>
               <th scope="col">Status</th>
+              <th scope="col">Details</th>
             </tr>
           </thead>
           <tbody>
-            <tr data-status="pending">
-              <td class="req-no">REQ-2024-089</td>
-              <td>Maria Santos</td>
-              <td>SF10 (Form 137)</td>
-              <td>Aug 13, 2026</td>
-              <td>
-                <span class="status-badge status-badge-pending">Pending</span>
-              </td>
-            </tr>
-            <tr data-status="processing">
-              <td class="req-no">REQ-2024-088</td>
-              <td>Juan Dela Cruz</td>
-              <td>Good Moral Certificate</td>
-              <td>Aug 14, 2026</td>
-              <td>
-                <span class="status-badge status-badge-processing">Processing</span>
-              </td>
-            </tr>
-            <tr data-status="ready">
+            <tr data-document="enrollment">
               <td class="req-no">REQ-2024-087</td>
               <td>Derick Dizon</td>
               <td>Certificate of Enrollment</td>
@@ -246,26 +229,16 @@
               <td>
                 <span class="status-badge status-badge-ready">Ready</span>
               </td>
-            </tr>
-            <tr data-status="completed">
-              <td class="req-no">REQ-2024-086</td>
-              <td>John Reyes</td>
-              <td>4Ps Certificate</td>
-              <td>Aug 1, 2026</td>
-              <td>
-                <span class="status-badge status-badge-completed">Completed</span>
-              </td>
+              <td><a href="staff-request-details-ready.html" class="view-btn">View</a></td>
             </tr>
             <tr id="no-results-row" class="no-results-row" style="display: none;">
-              <td colspan="5">No requests found for this status.</td>
+              <td colspan="6">No requests found.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="table-pagination">
-        <p class="pagination-info">Showing 1-4 of 50</p>
-
+      <div class="table-pagination table-pagination-end">
         <div class="pagination-controls">
           <button type="button" class="pagination-btn" id="pagination-prev" aria-label="Previous page" disabled>
             <img src="assets/icons/chevron-left.svg" alt="">

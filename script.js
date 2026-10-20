@@ -336,6 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     requiredFields.forEach(function (field) {
       const input = document.getElementById(field.id);
+      if (input && input.closest('[hidden]')) return;
       const errorText = document.getElementById(field.errorId);
       const value = input ? input.value.trim() : '';
 
@@ -683,25 +684,25 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Status filter + search (Staff Dashboard - Recent Requests table)
+// Document Type filter + search (Staff Dashboard - Ready to realease table)
 document.addEventListener('DOMContentLoaded', function () {
-  const filterOptions = document.querySelectorAll('.status-filter-option');
-  const filterLabel = document.getElementById('status-filter-label');
-  const filterPanel = document.getElementById('status-filter-panel');
+  const filterOptions = document.querySelectorAll('#dashboard-document-filter-panel .status-filter-option');
+  const filterLabel = document.getElementById('dashboard-document-filter-label');
+  const filterPanel = document.getElementById('dashboard-document-filter-panel');
   const searchInput = document.getElementById('request-search');
-  const tableRows = document.querySelectorAll('#requests-table tbody tr[data-status]');
+  const tableRows = document.querySelectorAll('#requests-table tbody tr[data-document]');
   const noResultsRow = document.getElementById('no-results-row');
 
   if (!tableRows.length) return;
 
-  let currentStatus = 'all';
+  let currentDocument = 'all';
 
   function applyFilters() {
     const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
     let visibleCount = 0;
 
     tableRows.forEach(function (row) {
-      const statusMatch = currentStatus === 'all' || row.getAttribute('data-status') === currentStatus;
+      const documentMatch = currentDocument === 'all' || row.getAttribute('data-document') === currentDocument;
 
       const reqNoCell = row.querySelector('.req-no');
       const reqNo = reqNoCell ? reqNoCell.textContent.trim().toLowerCase() : '';
@@ -711,7 +712,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const searchMatch = searchTerm === '' || reqNo.includes(searchTerm) || requesterName.includes(searchTerm);
 
-      const isMatch = statusMatch && searchMatch;
+      const isMatch = documentMatch && searchMatch;
       row.style.display = isMatch ? '' : 'none';
       if (isMatch) visibleCount++;
     });
@@ -723,10 +724,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   filterOptions.forEach(function (option) {
     option.addEventListener('click', function () {
-      currentStatus = option.getAttribute('data-status');
+      currentDocument = option.getAttribute('data-document');
 
-      if (filterLabel) filterLabel.textContent = option.textContent.trim();
-
+      if (filterLabel) {
+        filterLabel.textContent = currentDocument === 'all' ? 'Document Type' : option.textContent.trim();
+      }
+      
       filterOptions.forEach(function (opt) {
         opt.classList.remove('active');
       });
@@ -754,6 +757,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const clearBtn = document.getElementById('requests-clear-filters-btn');
   const tableRows = document.querySelectorAll('#management-requests-table tbody tr[data-status]');
   const noResultsRow = document.getElementById('management-no-results-row');
+  const docOptions = document.querySelectorAll('#requests-document-filter-panel .status-filter-option');
+  const docLabel = document.getElementById('requests-document-filter-label');
+  const docPanel = document.getElementById('requests-document-filter-panel');
+  let currentDocument = 'all';
 
   if (!tableRows.length) return;
 
@@ -779,8 +786,9 @@ document.addEventListener('DOMContentLoaded', function () {
         reqNo.includes(searchTerm) ||
         studentName.includes(searchTerm) ||
         parentName.includes(searchTerm);
-
-      const isMatch = statusMatch && dateMatch && searchMatch;
+      
+      const documentMatch = currentDocument === 'all' || row.getAttribute('data-document') === currentDocument;
+      const isMatch = statusMatch && dateMatch && searchMatch && documentMatch;
       row.style.display = isMatch ? '' : 'none';
       if (isMatch) visibleCount++;
     });
@@ -808,6 +816,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+    // Document type dropdown options
+  docOptions.forEach(function (option) {
+    option.addEventListener('click', function () {
+      currentDocument = option.getAttribute('data-document');
+
+      if (docLabel) docLabel.textContent = option.textContent.trim();
+
+      docOptions.forEach(function (opt) {
+        opt.classList.remove('active');
+      });
+      option.classList.add('active');
+
+      if (docPanel) docPanel.classList.remove('show');
+
+      applyFilters();
+    });
+  });
+
   // Search by Request ID, Student Name, or Parent/Guardian
   if (searchInput) {
     searchInput.addEventListener('input', applyFilters);
@@ -825,6 +851,11 @@ document.addEventListener('DOMContentLoaded', function () {
   if (clearBtn) {
     clearBtn.addEventListener('click', function () {
       currentStatus = 'all';
+      currentDocument = 'all';
+      if (docLabel) docLabel.textContent = 'All Documents';
+      docOptions.forEach(function (opt) {
+        opt.classList.remove('active');
+      });
       if (searchInput) searchInput.value = '';
       if (dateInput) dateInput.value = '';
       if (filterLabel) filterLabel.textContent = 'All Statuses';
@@ -1408,3 +1439,28 @@ document.addEventListener('DOMContentLoaded', function () {
       if (exists) docTypeSelect.value = docParam;
     }
   });
+
+  // Show/hide fields depending on the selected document type
+document.addEventListener('DOMContentLoaded', function () {
+  const docType = document.getElementById('document-type');
+  const yearLevelField = document.getElementById('year-level-field');
+  const yearLevelInput = document.getElementById('year-level');
+  const yearLevelError = document.getElementById('year-level-error');
+  const yearGradHint = document.getElementById('year-graduated-hint');
+  if (!docType || !yearLevelField) return;
+
+  function updateFormForDocument() {
+    const isDiploma = docType.value === 'diploma';
+
+    yearLevelField.hidden = isDiploma;
+    if (yearGradHint) yearGradHint.hidden = isDiploma;
+
+    if (isDiploma) {
+      yearLevelInput.value = '';
+      yearLevelError.style.display = 'none';
+    }
+  }
+
+  docType.addEventListener('change', updateFormForDocument);
+  updateFormForDocument(); 
+});
